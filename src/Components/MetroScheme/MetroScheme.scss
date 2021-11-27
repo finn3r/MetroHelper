@@ -27,6 +27,10 @@
 
 .hide{
   display: none;
+  &.map_station{
+    display: block;
+    opacity: 0.5;
+  }
 }
 
 .map_background {
