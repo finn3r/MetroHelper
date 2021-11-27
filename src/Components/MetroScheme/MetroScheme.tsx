@@ -80,7 +80,7 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
                     let station = element.previousElementSibling!.id.replace('Station:', '');
                     changeElementStatus(element, way.includes(station));
                 } else {
-                    element.classList.add('hide');
+                    changeElementStatus(element, false);
                 }
             });
         }else{
