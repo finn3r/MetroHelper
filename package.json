@@ -2,6 +2,7 @@
   "name": "metro-helper",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://finn3r.github.io/MetroHelper",
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -30,7 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +55,7 @@
   "devDependencies": {
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
-    "@types/react-router-dom": "^5.3.1"
+    "@types/react-router-dom": "^5.3.1",
+    "gh-pages": "^3.2.3"
   }
 }
