@@ -23,6 +23,7 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
     const city = useContext(CityContext).city;
+    const all_elements = document.getElementsByClassName('visual map_element');
     useEffect(() => {
         const metro_map = {
             width: 2000,
@@ -62,18 +63,17 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
         map.call(zoom.transform, d3Zoom.zoomIdentity.scale(1 / k).translate(x, y));
     }, []);
     useEffect(() => {
-        const all_elements = document.getElementsByClassName('visual map_element');
         if(way.length > 1) {
+            let roads: string[] = [];
+            for(let i=0;i<way.length;i++)roads.push(way.slice(i,i+2).join('-'));
             Array.from(all_elements).forEach((element) => {
                 const className: string = element.classList.value;
                 if (className.includes('map_station')) {
                     let station = element.id.replace('Station:', '');
                     changeElementStatus(element, way.includes(station));
                 } else if (className.includes('map_road')) {
-                    let id = element.id.replace('Road:', '').split('-');
-                    let station_first = id[0];
-                    let station_second = id[1];
-                    changeElementStatus(element, (way.includes(station_first) && way.includes(station_second)));
+                    let road = element.id.replace('Road:', '');
+                    changeElementStatus(element, roads.includes(road));
                 } else if (className.includes('map_text')) {
                     let station = element.previousElementSibling!.id.replace('Station:', '');
                     changeElementStatus(element, way.includes(station));
@@ -84,7 +84,7 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
         }else{
             Array.from(all_elements).forEach((element) => changeElementStatus(element, true));
         }
-    }, [way]);
+    }, [way, all_elements]);
     return (
         <div className="metro_map__container">
             <svg xmlns="http://www.w3.org/2000/svg" className="metro_map__content" preserveAspectRatio='xMinYMin slice'

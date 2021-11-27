@@ -21,7 +21,6 @@ const WayList: React.FC<WayListProps> = ({from, to, changeNowWay}) => {
 
     useEffect(() => {
         const best_ways_and_times = get_best_ways(from, to, city);
-        console.log(best_ways_and_times);
         setWays(best_ways_and_times[0]);
         setTimes(best_ways_and_times[1]);
         setShowOtherWays(true);
