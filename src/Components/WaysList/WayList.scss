@@ -1,0 +1,71 @@
+.menu__waylist_container {
+  margin-top: 20px;
+  max-height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.menu__waylist_variant {
+  font-size: 19px;
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 10px;
+  transition: all 0.2s, opacity 0.35s, margin-top 0.7s;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &.status_hide:not(#NowWay){
+    margin-top: -80.8px;
+    opacity: 0;
+  }
+}
+
+.menu__waylist_time {
+  font-weight: 600;
+}
+
+.menu__waylist_transfers_text {
+  font-size: 15px;
+  margin-left: 3%;
+  color: grey;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.menu__waylist_transfers {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+
+#NowWay {
+  border-left: 4px solid rgba(0, 162, 255, 1);
+  background-color: rgba(229, 229, 227, 0.3);
+  z-index: 5;
+}
+
+.menu__waylist_hide_button_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.menu__waylist_hide_button {
+  width: MAX(15px, 0.9vh);
+  margin-left: -5px;
+  margin-top: -20px;
+  transition: all 0.7s, opacity 0.2s;
+
+  &.status_hide {
+    transform: rotate(180deg);
+  }
+
+  &.status_show {
+    transform: rotate(0deg);
+    opacity: 0.6;
+    &:hover:enabled {
+      opacity: 1;
+    }
+  }
+}
