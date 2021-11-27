@@ -12,12 +12,8 @@
   fill: none;
 }
 
-.hide{
+.map_background_layer{
   opacity: 0.5;
-}
-
-.map_background {
-  fill: #6dbfe0;
 }
 
 .map_text {
@@ -27,6 +23,14 @@
   &:hover{
     fill:tomato;
   }
+}
+
+.hide{
+  display: none;
+}
+
+.map_background {
+  fill: #6dbfe0;
 }
 
 .map_text_left {

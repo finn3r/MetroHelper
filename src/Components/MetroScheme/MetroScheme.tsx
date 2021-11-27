@@ -9,6 +9,16 @@ interface MetroSchemeProps {
     way: string[]
 }
 
+const changeElementStatus = (element: Element, show: boolean) => {
+    if(show){
+        element.classList.remove('hide');
+        element.classList.add('show');
+    }else{
+        element.classList.remove('show');
+        element.classList.add('hide');
+    }
+}
+
 const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
@@ -52,26 +62,27 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
         map.call(zoom.transform, d3Zoom.zoomIdentity.scale(1 / k).translate(x, y));
     }, []);
     useEffect(() => {
-        const all_elements = document.getElementsByClassName('map_element');
-        console.log(way);
+        const all_elements = document.getElementsByClassName('visual map_element');
         if(way.length > 1) {
-            Array.from(all_elements).forEach(function (element) {
+            Array.from(all_elements).forEach((element) => {
                 const className: string = element.classList.value;
                 if (className.includes('map_station')) {
                     let station = element.id.replace('Station:', '');
-                    if (!way.includes(station)) element.classList.add('hide');
+                    changeElementStatus(element, way.includes(station));
                 } else if (className.includes('map_road')) {
-                    let id = element.id.replace('Station:', '').split('-');
+                    let id = element.id.replace('Road:', '').split('-');
                     let station_first = id[0];
                     let station_second = id[1];
-                    if (!(way.includes(station_first) && way.includes(station_second))) element.classList.add('hide');
+                    changeElementStatus(element, (way.includes(station_first) && way.includes(station_second)));
                 } else if (className.includes('map_text')) {
-                    let station = element.innerHTML;
-                    if (!way.includes(station)) element.classList.add('hide');
+                    let station = element.previousElementSibling!.id.replace('Station:', '');
+                    changeElementStatus(element, way.includes(station));
                 } else {
                     element.classList.add('hide');
                 }
             });
+        }else{
+            Array.from(all_elements).forEach((element) => changeElementStatus(element, true));
         }
     }, [way]);
     return (

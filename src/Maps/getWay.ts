@@ -53,6 +53,7 @@ export function get_best_ways(start_station: string, end_station: string, city: 
             break;
         }
     }
+    if((start_station==="")||(end_station==="")) return [[],[]];
     search_for_best_way(start_station, end_station, times, [], 0, []);
     let best_time: number[] = [99999,99999,99999];
     let best_ways: string[][] = [[],[],[]];

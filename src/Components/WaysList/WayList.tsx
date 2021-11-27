@@ -20,12 +20,13 @@ const WayList: React.FC<WayListProps> = ({from, to, changeNowWay}) => {
     const disabled = (from === "") || (to === "");
 
     useEffect(() => {
-        const best_ways_and_times = ((from!=="")&&(to!=="")) ? get_best_ways(from, to, city) : [[[]],[[]]];
-        setWays((best_ways_and_times[0]===[[]]) ? undefined : best_ways_and_times[0]);
+        const best_ways_and_times = get_best_ways(from, to, city);
+        console.log(best_ways_and_times);
+        setWays(best_ways_and_times[0]);
         setTimes(best_ways_and_times[1]);
         setShowOtherWays(true);
         setNowWayNumber(0);
-        changeNowWay(best_ways_and_times[0][0]);
+        (best_ways_and_times[0][0] === undefined) ? changeNowWay([]) : changeNowWay(best_ways_and_times[0][0]);
     }, [from, to, city, changeNowWay]);
 
     const WayTransfers = (way: string[]) => {
