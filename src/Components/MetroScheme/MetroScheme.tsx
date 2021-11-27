@@ -72,8 +72,10 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
                     let station = element.id.replace('Station:', '');
                     changeElementStatus(element, way.includes(station));
                 } else if (className.includes('map_road')) {
-                    let road = element.id.replace('Road:', '');
-                    changeElementStatus(element, roads.includes(road));
+                    let id = element.id.replace('Road:', '').split('-');
+                    let road_first = id[0] + '-' + id[1];
+                    let road_second = id[1] + '-' + id[0];
+                    changeElementStatus(element, (roads.includes(road_first)||roads.includes(road_second)));
                 } else if (className.includes('map_text')) {
                     let station = element.previousElementSibling!.id.replace('Station:', '');
                     changeElementStatus(element, way.includes(station));
