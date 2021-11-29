@@ -6,6 +6,7 @@ import {CityContext} from "../../custom_settings";
 import {get_names} from "../../Maps/getWay";
 import ClearButton from "../ClearButton/ClearButton";
 import MetroScheme from "../MetroScheme/MetroScheme";
+import SelectMenu from "../SelectMenu/SelectMenu";
 import './App.scss';
 
 const App: React.FC = () => {
@@ -46,15 +47,16 @@ const App: React.FC = () => {
     return (
         <div className="main">
             <MetroScheme way={NowWay}/>
-            <div className="menu__container" id={"main_menu"}>
-                <div className="menu__content">
-                    <header className="menu__header">Санкт-Петербург — схема метро</header>
+            <div className="menu__container">
+                <div className="menu__input_content">
+                    <header className="menu__input_header">Санкт-Петербург — схема метро</header>
                     <AutoCompleteField id="from_input" label={"Откуда"} inputValue={FromInput} changeInput={setFromInput} showError={FromErrorShow} stationValue={FromValue} changeState={setFromValue} secondStationValue={ToValue}/>
                     <SwapButton first={FromInput} second={ToInput} swap={() => changeValues(FromInput, ToInput)}/>
                     <AutoCompleteField id="to_input" label={"Куда"} inputValue={ToInput} changeInput={setToInput} showError={ToErrorShow} stationValue={ToValue} changeState={setToValue} secondStationValue={FromValue}/>
                     <ClearButton first={FromInput} second={ToInput} clear={() => changeValues("", "")}/>
                     <WayList from={FromValue} to={ToValue} changeNowWay={setNowWay}/>
                 </div>
+                <SelectMenu station={"test"}/>
             </div>
         </div>
     );
