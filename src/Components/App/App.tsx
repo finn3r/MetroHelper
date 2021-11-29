@@ -14,7 +14,7 @@ const App: React.FC = () => {
     const [ToValue, setToValue] = useState<string>("");
     const [FromInput, setFromInput] = useState<string>("");
     const [ToInput, setToInput] = useState<string>("");
-
+    const [stationSelected, setStationSelected] = useState<string>("");
     const [NowWay, setNowWay] = useState<string[]>([]);
 
     const FromErrorShow: boolean = !((FromValue!=="")||(FromInput===""));
@@ -46,9 +46,9 @@ const App: React.FC = () => {
 
     return (
         <div className="main">
-            <MetroScheme way={NowWay}/>
+            <MetroScheme way={NowWay} changeSelected={setStationSelected}/>
             <div className="menu__container">
-                <div className="menu__input_content">
+                <div className="menu__input_content menu__content">
                     <header className="menu__input_header">Санкт-Петербург — схема метро</header>
                     <AutoCompleteField id="from_input" label={"Откуда"} inputValue={FromInput} changeInput={setFromInput} showError={FromErrorShow} stationValue={FromValue} changeState={setFromValue} secondStationValue={ToValue}/>
                     <SwapButton first={FromInput} second={ToInput} swap={() => changeValues(FromInput, ToInput)}/>
@@ -56,7 +56,7 @@ const App: React.FC = () => {
                     <ClearButton first={FromInput} second={ToInput} clear={() => changeValues("", "")}/>
                     <WayList from={FromValue} to={ToValue} changeNowWay={setNowWay}/>
                 </div>
-                <SelectMenu station={"test"}/>
+                <SelectMenu station={stationSelected} fromStation={FromValue} toStation={ToValue} changeFrom={setFromInput} changeTo={setToInput} changeSelected={setStationSelected}/>
             </div>
         </div>
     );

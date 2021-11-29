@@ -7,6 +7,8 @@ import {CityContext} from "../../custom_settings";
 
 interface MetroSchemeProps {
     way: string[]
+
+    changeSelected(station: string): void
 }
 
 const changeElementStatus = (element: Element, show: boolean) => {
@@ -19,7 +21,7 @@ const changeElementStatus = (element: Element, show: boolean) => {
     }
 }
 
-const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
+const MetroScheme: React.FC<MetroSchemeProps> = ({way, changeSelected}) => {
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
     const city = useContext(CityContext).city;
@@ -67,13 +69,13 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
         const all_text = Array.from(document.getElementsByClassName('map_text'))
         all_station.forEach((station) => {
             let station_text = station.id.replace('Station:', '');
-            station.addEventListener('click',() => console.log(station_text));
+            station.addEventListener('click',() => changeSelected(station_text));
         })
         all_text.forEach((text) => {
             let station_text = text.previousElementSibling!.id.replace('Station:', '');
-            text.addEventListener('click',() => console.log(station_text));
+            text.addEventListener('click',() => changeSelected(station_text));
         })
-    }, []);
+    }, [changeSelected]);
     useEffect(() => {
         if(way.length > 1) {
             let roads: string[] = [];
