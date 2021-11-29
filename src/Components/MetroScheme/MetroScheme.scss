@@ -17,10 +17,12 @@
 }
 
 .map_text {
+  padding: 20px;
   font: 1.5em sans-serif;
   fill:black;
   transition: 0.1s;
   &:hover{
+    cursor: pointer;
     fill:tomato;
   }
 }
@@ -45,6 +47,10 @@
   fill: none;
   stroke-miterlimit: 10;
   stroke-width: 25px;
+}
+
+.map_station{
+  cursor: pointer;
 }
 
 .map_river {

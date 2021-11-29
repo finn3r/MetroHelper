@@ -51,7 +51,7 @@ const WayList: React.FC<WayListProps> = ({from, to, changeNowWay}) => {
                        alt={showOtherWays ? "Hide" : "Show"} disabled={disabled}/>
             </div>
             {ways.map((way, i) =>
-                <div className={"menu__waylist_variant status_" + (!showOtherWays ? "hide" : "show")} key={i}
+                <div className={"menu__waylist_variant status_" + (!showOtherWays ? "hide" : "show")} key={i + way.join()}
                      id={(NowWayNumber === i) ? "NowWay" : ""} onClick={() => {
                     setNowWayNumber(i);
                     changeNowWay(way);

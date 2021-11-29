@@ -25,6 +25,7 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
     const city = useContext(CityContext).city;
     const all_elements = document.getElementsByClassName('visual map_element');
     useEffect(() => {
+        //Работа с контейнером карты
         const metro_map = {
             width: 2000,
             height: 2000
@@ -51,16 +52,27 @@ const MetroScheme: React.FC<MetroSchemeProps> = ({way}) => {
             const margin = 500;
             const worldTopLeft: [number, number] = [
                 margin - widthScreen,
-                margin - heightScreen]
-            ;
+                margin - heightScreen
+            ];
             const worldBottomRight: [number, number] = [
                 widthScreen + metro_map.width - margin,
-                heightScreen + metro_map.height - margin
+                heightScreen + metro_map.height  - margin
             ];
             zoom.translateExtent([worldTopLeft, worldBottomRight]);
         }
         map.call(zoom);
         map.call(zoom.transform, d3Zoom.zoomIdentity.scale(1 / k).translate(x, y));
+        //Работа с кликами
+        const all_station = Array.from(document.getElementsByClassName('map_station'));
+        const all_text = Array.from(document.getElementsByClassName('map_text'))
+        all_station.forEach((station) => {
+            let station_text = station.id.replace('Station:', '');
+            station.addEventListener('click',() => console.log(station_text));
+        })
+        all_text.forEach((text) => {
+            let station_text = text.previousElementSibling!.id.replace('Station:', '');
+            text.addEventListener('click',() => console.log(station_text));
+        })
     }, []);
     useEffect(() => {
         if(way.length > 1) {
