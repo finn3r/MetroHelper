@@ -269,7 +269,7 @@ const SanktPetersburg = () => {
                       d="M1300,1100v100"/>
                 <path id="Road:Пушкинская-Технологический институт 1"
                       className="visual map_element map_road map_red_road"
-                      d="M1300.5,1200H1025"/>
+                      d="M1300.5,1200H1000"/>
                 <path id="Road:Технологический институт 1-Балтийская"
                       className="visual map_element map_road map_red_road"
                       d="M986.15,1198.12,705,1400"/>
