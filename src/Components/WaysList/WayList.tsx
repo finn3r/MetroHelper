@@ -59,8 +59,8 @@ const WayList: React.FC<WayListProps> = ({from, to, changeNowWay}) => {
                     <span className="menu__waylist_time">{times[i]} мин</span>
                     <span
                         className="menu__waylist_transfers_text">{(WayTransfers(way).length - 1 === 0) ? "Без пересадок" : (WayTransfers(way).length - 1 === 1) ? "1 пересадка" : (WayTransfers(way).length - 1) + " пересадки"}</span>
-                    <p className="menu__waylist_transfers">{WayTransfers(way).map((transfer) =>
-                        <svg height="16" width="16" key={i + transfer}>
+                    <p className="menu__waylist_transfers">{WayTransfers(way).map((transfer, j) =>
+                        <svg height="16" width="16" key={j + transfer}>
                             <circle cx="8" cy="8" r="8" fill={transfer}/>
                         </svg>
                     )}</p>
