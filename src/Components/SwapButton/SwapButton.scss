@@ -2,11 +2,14 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  width: 97%;
 }
 
 .menu__swap_button {
-  width: MAX(30px, 1.8vh);
-  margin-left: -5px;
-  transition: opacity 0.2s;
+  width: MAX(35px, 1.8vh);
+  transition: all 1s ease, opacity 0.2s;
+}
+
+.button_rotate_360_deg {
+  transform:rotate(360deg);
 }

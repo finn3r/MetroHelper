@@ -1,63 +1,25 @@
-import React, {useState, useEffect, useContext} from 'react';
-import AutoCompleteField from "../AutoCompleteField/AutoCompleteField";
+import React, {useContext} from 'react';
 import WayList from "../WaysList/WayList";
-import SwapButton from "../SwapButton/SwapButton";
-import {CityContext} from "../../custom_settings";
-import {get_names} from "../../Maps/getWay";
-import ClearButton from "../ClearButton/ClearButton";
 import MetroScheme from "../MetroScheme/MetroScheme";
-import SelectMenu from "../SelectMenu/SelectMenu";
+import InputMenu from "../InputMenu/InputMenu";
+import {MetroHelperProvider} from "../MetroHelperContext/MetroHelperContext";
+import {CityContext} from "../../custom_settings";
 import './App.scss';
 
 const App: React.FC = () => {
-    const [FromValue, setFromValue] = useState<string>("");
-    const [ToValue, setToValue] = useState<string>("");
-    const [FromInput, setFromInput] = useState<string>("");
-    const [ToInput, setToInput] = useState<string>("");
-    const [stationSelected, setStationSelected] = useState<string>("");
-    const [NowWay, setNowWay] = useState<string[]>([]);
-
-    const FromErrorShow: boolean = !((FromValue!=="")||(FromInput===""));
-    const ToErrorShow: boolean = (!((ToValue!=="")||(ToInput===""))&&!FromErrorShow);
-    const stations: any = get_names(useContext(CityContext).city);
-
-    const changeValues = (from: string, to: string) => {
-        setFromInput(to);
-        setToInput(from);
-        setFromValue((stations[to]!==undefined) ? to : "");
-        setToValue((stations[from]!==undefined) ? from : "");
-    }
-    useEffect(() => {
-        document.getElementById('from_input')!.focus();
-    }, []);
-
-    useEffect(() => {
-        const From: HTMLElement = document.getElementById('from_input')!;
-        const To: HTMLElement = document.getElementById('to_input')!;
-        if ((FromValue === "")&&(ToValue !== "")) {
-            From!.focus();
-        } else if ((ToValue === "")&&(FromValue !== "")) {
-            To!.focus();
-        } else if ((ToValue !== "")&&(FromValue !== "")) {
-            From!.blur();
-            To!.blur();
-        }
-    }, [FromValue, ToValue]);
-
+    const city: string = useContext(CityContext).city;
     return (
         <div className="main">
-            <MetroScheme way={NowWay} changeSelected={setStationSelected}/>
-            <div className="menu__container">
-                <div className="menu__input_content menu__content">
-                    <header className="menu__input_header">Санкт-Петербург — схема метро</header>
-                    <AutoCompleteField id="from_input" label={"Откуда"} inputValue={FromInput} changeInput={setFromInput} showError={FromErrorShow} stationValue={FromValue} changeState={setFromValue} secondStationValue={ToValue}/>
-                    <SwapButton first={FromInput} second={ToInput} swap={() => changeValues(FromInput, ToInput)}/>
-                    <AutoCompleteField id="to_input" label={"Куда"} inputValue={ToInput} changeInput={setToInput} showError={ToErrorShow} stationValue={ToValue} changeState={setToValue} secondStationValue={FromValue}/>
-                    <ClearButton first={FromInput} second={ToInput} clear={() => changeValues("", "")}/>
-                    <WayList from={FromValue} to={ToValue} changeNowWay={setNowWay}/>
+            <MetroHelperProvider city={city}>
+                <MetroScheme/>
+                <div className="menu__container">
+                    <div className="menu__content">
+                        <header className="menu__header">Санкт-Петербург — схема метро</header>
+                        <InputMenu/>
+                        <WayList/>
+                    </div>
                 </div>
-                <SelectMenu station={stationSelected} fromStation={FromValue} toStation={ToValue} changeFrom={setFromInput} changeTo={setToInput} changeSelected={setStationSelected}/>
-            </div>
+            </MetroHelperProvider>
         </div>
     );
 }

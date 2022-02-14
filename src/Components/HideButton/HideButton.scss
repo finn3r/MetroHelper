@@ -1,0 +1,24 @@
+.menu__hide_button_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 97%;
+}
+
+.menu__hide_button {
+  width: MAX(35px, 1.8vh);
+  margin-top: -10px;
+  transition: all 0.7s, opacity 0.2s;
+
+  &.status_hide {
+    transform: rotate(180deg);
+  }
+
+  &.status_show {
+    transform: rotate(0deg);
+    opacity: 0.6;
+    &:hover:enabled {
+      opacity: 1;
+    }
+  }
+}

@@ -1,60 +1,62 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {get_best_ways, get_names} from "../../Maps/getWay";
+import React, {useContext, useState, useEffect} from 'react';
+import {get_color} from "../AdditionalFiles/get_scripts";
 import {CityContext} from "../../custom_settings";
+import {MetroHelperContext} from "../MetroHelperContext/MetroHelperContext";
 import './WayList.scss';
-import arrows from './arrows.png';
 
-interface WayListProps {
-    from: string
-    to: string
-
-    changeNowWay(way: string[]): void
-}
-
-const WayList: React.FC<WayListProps> = ({from, to, changeNowWay}) => {
-    const [ways, setWays] = useState<string[][]>([[]]);
-    const [times, setTimes] = useState<number[]>([]);
+const WayList: React.FC = () => {
+    const city: string = useContext(CityContext).city;
+    const {state, dispatch} = useContext(MetroHelperContext);
+    const from: string = state.InputList.from.state;
+    const to: string = state.InputList.to.state;
+    const ways: string[][] = state.WayList.all_ways;
+    const times: number[] = state.WayList.all_times;
     const [NowWayNumber, setNowWayNumber] = useState<number>(0);
-    const [showOtherWays, setShowOtherWays] = useState<boolean>(true);
-    const city = useContext(CityContext).city;
-    const disabled = (from === "") || (to === "");
+    const showOtherWays = state.WayList.show_all;
 
     useEffect(() => {
-        const best_ways_and_times = get_best_ways(from, to, city);
-        setWays(best_ways_and_times[0]);
-        setTimes(best_ways_and_times[1]);
-        setShowOtherWays(true);
-        setNowWayNumber(0);
-        (best_ways_and_times[0][0] === undefined) ? changeNowWay([]) : changeNowWay(best_ways_and_times[0][0]);
-    }, [from, to, city, changeNowWay]);
+        dispatch({
+            type: "change_now_way",
+            way_number: NowWayNumber
+        })
+    }, [NowWayNumber, dispatch])
+
+    useEffect(() => {
+        const changeAllWays = (from: string, to: string) => {
+            dispatch({
+                type: "change_ways",
+                from: from,
+                to: to
+            })
+        }
+        if ((from !== "") && (to !== "")) changeAllWays(from, to);
+        else {
+            changeAllWays("", "");
+            setNowWayNumber(0);
+        }
+    }, [NowWayNumber, from, to, dispatch]);
 
     const WayTransfers = (way: string[]) => {
-        let stations = get_names(city);
         let NowStation = way[0];
-        let NowColor = stations[NowStation];
+        let NowColor = get_color(city, NowStation);
         let Transfers = [NowColor];
         for (let i = 1; i < way.length; ++i) {
-            if (NowColor !== stations[way[i]]) {
-                NowColor = stations[way[i]];
+            if (NowColor !== get_color(city, way[i])) {
+                NowColor = get_color(city, way[i]);
                 Transfers.push(NowColor);
             }
             NowStation = way[i];
         }
         return Transfers;
     }
+    if (ways.length === 1) return <div className="menu__waylist_container"/>;
     return (
         <div className="menu__waylist_container">
-            <div className="menu__waylist_hide_button_container">
-                <input type="image"
-                       className={"menu__waylist_hide_button menu__button status_" + (showOtherWays ? "hide" : "show")}
-                       src={arrows} onClick={() => setShowOtherWays(!showOtherWays)}
-                       alt={showOtherWays ? "Hide" : "Show"} disabled={disabled}/>
-            </div>
             {ways.map((way, i) =>
-                <div className={"menu__waylist_variant status_" + (!showOtherWays ? "hide" : "show")} key={i + way.join()}
+                <div className={"menu__waylist_variant status_" + (!showOtherWays ? "hide" : "show")}
+                     key={i + way.join()}
                      id={(NowWayNumber === i) ? "NowWay" : ""} onClick={() => {
                     setNowWayNumber(i);
-                    changeNowWay(way);
                 }}>
                     <span className="menu__waylist_time">{times[i]} мин</span>
                     <span
