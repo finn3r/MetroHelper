@@ -14,14 +14,18 @@ const WayList: React.FC = () => {
     const [NowWayNumber, setNowWayNumber] = useState<number>(0);
     const showOtherWays = state.WayList.show_all;
 
-    useEffect(() => {
-        dispatch({
-            type: "change_now_way",
-            way_number: NowWayNumber
-        })
-    }, [NowWayNumber, dispatch])
+    const clickHandler = (way_number: number) => {
+        return () => {
+            setNowWayNumber(way_number);
+            dispatch({
+                type: "change_now_way",
+                way_number: way_number
+            })
+        }
+    }
 
     useEffect(() => {
+        console.log("lol")
         const changeAllWays = (from: string, to: string) => {
             dispatch({
                 type: "change_ways",
@@ -34,7 +38,7 @@ const WayList: React.FC = () => {
             changeAllWays("", "");
             setNowWayNumber(0);
         }
-    }, [NowWayNumber, from, to, dispatch]);
+    }, [from, to, dispatch]);
 
     const WayTransfers = (way: string[]) => {
         let NowStation = way[0];
@@ -49,15 +53,13 @@ const WayList: React.FC = () => {
         }
         return Transfers;
     }
-    if (ways.length === 1) return <div className="menu__waylist_container"/>;
+    if (ways[0] === undefined) return <div className="menu__waylist_container"/>;
     return (
         <div className="menu__waylist_container">
             {ways.map((way, i) =>
                 <div className={"menu__waylist_variant status_" + (!showOtherWays ? "hide" : "show")}
                      key={i + way.join()}
-                     id={(NowWayNumber === i) ? "NowWay" : ""} onClick={() => {
-                    setNowWayNumber(i);
-                }}>
+                     id={(NowWayNumber === i) ? "NowWay" : ""} onClick={clickHandler(i)}>
                     <span className="menu__waylist_time">{times[i]} мин</span>
                     <span
                         className="menu__waylist_transfers_text">{(WayTransfers(way).length - 1 === 0) ? "Без пересадок" : (WayTransfers(way).length - 1 === 1) ? "1 пересадка" : (WayTransfers(way).length - 1) + " пересадки"}</span>

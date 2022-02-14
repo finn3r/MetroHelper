@@ -1,7 +1,7 @@
 import React from 'react';
 import {IBackgroundElement, ICreateScheme, IOtherElements, IRoadElement, IStation, IStationElement} from "./interfaces";
 
-const Background: React.FC<{background: IBackgroundElement}> = ({background}) => {
+const Background: React.FC<{ background: IBackgroundElement }> = ({background}) => {
     return (
         <g className={"background"}>
             {React.createElement(background.type, background.props)}
@@ -9,7 +9,7 @@ const Background: React.FC<{background: IBackgroundElement}> = ({background}) =>
     )
 }
 
-const OtherElements: React.FC<{others: IOtherElements[]}> = ({others}) => {
+const OtherElements: React.FC<{ others: IOtherElements[] }> = ({others}) => {
     return (
         <g className={"other_elements"}>
             {others.map((element) => {
@@ -19,7 +19,7 @@ const OtherElements: React.FC<{others: IOtherElements[]}> = ({others}) => {
     )
 }
 
-const RoadsElements: React.FC<{roads: IRoadElement[]}> = ({roads}) => {
+const RoadsElements: React.FC<{ roads: IRoadElement[] }> = ({roads}) => {
     return (
         <g className={"roads"}>
             {roads.map((element) => {
@@ -29,7 +29,10 @@ const RoadsElements: React.FC<{roads: IRoadElement[]}> = ({roads}) => {
     )
 }
 
-const StationElements: React.FC<{stations: IStationElement[], selectStation(station: IStation):void}> = ({stations, selectStation}) => {
+const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation): void }> = ({
+                                                                                                                stations,
+                                                                                                                selectStation
+                                                                                                            }) => {
     return (
         <g className={"stations"}>
             {stations.map((station) => {
@@ -51,6 +54,8 @@ const StationElements: React.FC<{stations: IStationElement[], selectStation(stat
 }
 
 const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, way}) => {
+    let roads: string[] = [];
+    for (let i = 0; i < way.length - 1; i++) roads.push(way.slice(i, i + 2).join('-'));
     if (way.length === 0) return (
         <g>
             <Background background={elements.background}/>
@@ -62,7 +67,7 @@ const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, way}) =
         <g>
             <g className={"roads"}>
                 {elements.roads.map((element) => {
-                    const show: boolean = (way.includes(element.from)) && (way.includes(element.to));
+                    const show: boolean = roads.includes(element.from + '-' + element.to) || roads.includes(element.to + '-' + element.from);
                     if (show) return React.createElement(element.type, element.props); else return null;
                 })}
             </g>
