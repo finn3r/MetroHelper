@@ -19,6 +19,8 @@
     "@types/material-ui": "^0.21.12",
     "@types/node": "^12.0.0",
     "d3": "^7.1.1",
+    "d3-ease": "^3.0.1",
+    "d3-interpolate": "^3.0.1",
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
     "debounce": "^1.2.1",

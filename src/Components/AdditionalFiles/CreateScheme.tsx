@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {IBackgroundElement, ICreateScheme, IOtherElements, IRoadElement, IStation, IStationElement} from "./interfaces";
+import {MetroHelperWayContext} from "../MetroHelperContext/MetroHelperContext";
 
 const Background: React.FC<{ background: IBackgroundElement }> = ({background}) => {
     return (
@@ -29,10 +30,7 @@ const RoadsElements: React.FC<{ roads: IRoadElement[] }> = ({roads}) => {
     )
 }
 
-const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation): void }> = ({
-                                                                                                                stations,
-                                                                                                                selectStation
-                                                                                                            }) => {
+const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation): void }> = ({stations, selectStation}) => {
     return (
         <g className={"stations"}>
             {stations.map((station) => {
@@ -53,9 +51,18 @@ const StationElements: React.FC<{ stations: IStationElement[], selectStation(sta
     )
 }
 
-const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, way}) => {
+const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, zoomPath}) => {
+    const {WayState} = useContext(MetroHelperWayContext);
+    const wayRef = useRef<null | SVGSVGElement>(null);
+    const way = WayState.now_way;
     let roads: string[] = [];
     for (let i = 0; i < way.length - 1; i++) roads.push(way.slice(i, i + 2).join('-'));
+    useEffect(() => {
+        if (way.length !== 0) {
+            const bounds = wayRef.current!.getBBox();
+            zoomPath(bounds);
+        }
+    }, [way, zoomPath])
     if (way.length === 0) return (
         <g>
             <Background background={elements.background}/>
@@ -65,7 +72,7 @@ const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, way}) =
         </g>
     ); else return (
         <g>
-            <g className={"roads"}>
+            <g className={"roads"} ref={wayRef}>
                 {elements.roads.map((element) => {
                     const show: boolean = roads.includes(element.from + '-' + element.to) || roads.includes(element.to + '-' + element.from);
                     if (show) return React.createElement(element.type, element.props); else return null;
@@ -101,5 +108,5 @@ const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, way}) =
         </g>
     );
 };
-//className: (show) ? "" : "opacity"
+
 export default CreateScheme;

@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
 
 import './ClearButton.scss';
-import {MetroHelperContext} from "../MetroHelperContext/MetroHelperContext";
+import {MetroHelperInputContext} from "../MetroHelperContext/MetroHelperContext";
 
 const ClearButton: React.FC = () => {
-    const {state, dispatch} = useContext(MetroHelperContext);
-    const display = (state.InputList.from.value !== "") || (state.InputList.to.value !== "");
+    const {InputState, InputDispatch} = useContext(MetroHelperInputContext);
+    const display = (InputState.from.value !== "") || (InputState.to.value !== "");
     const clickHandler = () => {
-        dispatch({
+        InputDispatch({
             type: "clear"
         })
     }

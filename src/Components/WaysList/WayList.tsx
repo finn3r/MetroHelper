@@ -1,23 +1,21 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {get_color} from "../AdditionalFiles/get_scripts";
 import {CityContext} from "../../custom_settings";
-import {MetroHelperContext} from "../MetroHelperContext/MetroHelperContext";
+import {MetroHelperWayContext} from "../MetroHelperContext/MetroHelperContext";
 import './WayList.scss';
 
 const WayList: React.FC = () => {
     const city: string = useContext(CityContext).city;
-    const {state, dispatch} = useContext(MetroHelperContext);
-    const from: string = state.InputList.from.state;
-    const to: string = state.InputList.to.state;
-    const ways: string[][] = state.WayList.all_ways;
-    const times: number[] = state.WayList.all_times;
+    const {WayState, WayDispatch} = useContext(MetroHelperWayContext);
+    const ways: string[][] = WayState.all_ways;
+    const times: number[] = WayState.all_times;
     const [NowWayNumber, setNowWayNumber] = useState<number>(0);
-    const showOtherWays = state.WayList.show_all;
+    const showOtherWays = WayState.show_all;
 
     const clickHandler = (way_number: number) => {
         return () => {
             setNowWayNumber(way_number);
-            dispatch({
+            WayDispatch({
                 type: "change_now_way",
                 way_number: way_number
             })
@@ -25,20 +23,8 @@ const WayList: React.FC = () => {
     }
 
     useEffect(() => {
-        console.log("lol")
-        const changeAllWays = (from: string, to: string) => {
-            dispatch({
-                type: "change_ways",
-                from: from,
-                to: to
-            })
-        }
-        if ((from !== "") && (to !== "")) changeAllWays(from, to);
-        else {
-            changeAllWays("", "");
-            setNowWayNumber(0);
-        }
-    }, [from, to, dispatch]);
+        setNowWayNumber(0);
+    }, [ways]);
 
     const WayTransfers = (way: string[]) => {
         let NowStation = way[0];

@@ -15,7 +15,8 @@ export interface IStation {
 
 export interface ICreateScheme {
     elements: ISchemeElements;
-    way: string[];
+
+    zoomPath(cords: DOMRect): void;
 
     selectStation(station: IStation): void;
 }
@@ -31,10 +32,10 @@ export interface IStationWays {
 }
 
 export interface IBackgroundElement {
-        type: string;
-        props: React.SVGProps<any>;
-        width: number;
-        height: number;
+    type: string;
+    props: React.SVGProps<any>;
+    width: number;
+    height: number;
 }
 
 export interface IOtherElements {

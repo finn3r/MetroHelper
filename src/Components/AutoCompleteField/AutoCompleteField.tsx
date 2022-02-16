@@ -1,5 +1,5 @@
 import React, {SyntheticEvent, useContext} from 'react';
-import {MetroHelperContext} from "../MetroHelperContext/MetroHelperContext";
+import {MetroHelperInputContext} from "../MetroHelperContext/MetroHelperContext";
 import {CityContext} from "../../custom_settings";
 
 import Autocomplete from '@mui/material/Autocomplete';
@@ -70,13 +70,13 @@ const filterOptions = (options: string[], inputValue: FilterOptionsState<string>
 
 const AutoCompleteField: React.FC<IAutoCompleteFieldProps> = ({type, label, options, errorShow}) => {
     const city: string = useContext(CityContext).city;
-    const {state, dispatch} = useContext(MetroHelperContext);
+    const {InputState, InputDispatch} = useContext(MetroHelperInputContext);
 
-    const inputValue: string = state.InputList[type].value;
-    const inputState: string = state.InputList[type].state;
+    const inputValue: string = InputState[type].value;
+    const inputState: string = InputState[type].state;
     const inputColor: string = get_color(city, inputState);
     const inputChangeHandler = (event: SyntheticEvent, value: string) => {
-        dispatch({
+        InputDispatch({
             type: type,
             newValue: value
         })

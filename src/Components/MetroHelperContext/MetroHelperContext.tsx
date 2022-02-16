@@ -1,4 +1,4 @@
-import React, {createContext, Dispatch, useReducer} from 'react';
+import React, {createContext, Dispatch, useEffect, useReducer} from 'react';
 import {IMetroHelperProviderProps, IStation} from "../AdditionalFiles/interfaces";
 import {get_names, get_ways} from "../AdditionalFiles/get_scripts";
 
@@ -20,11 +20,6 @@ type WayList = {
     show_all: boolean;
 }
 
-type InitialStateType = {
-    InputList: InputList;
-    WayList: WayList;
-}
-
 export type OnlyInputTypes = {
     [k in keyof InputList]: InputList[k] extends InputType ? k : never
 }[keyof InputList];
@@ -32,27 +27,26 @@ export type OnlyInputTypes = {
 type InputListPayload =
     | { type: 'from', newValue: string }
     | { type: 'to', newValue: string }
-    | { type: 'select', station: IStation}
+    | { type: 'select', station: IStation }
     | { type: 'swap' }
-    | { type: 'clear'};
+    | { type: 'clear' };
 
 type WayListPayload =
     | { type: 'change_now_way', way_number: number }
     | { type: 'change_ways', from: string, to: string }
     | { type: 'change_show_all' };
 
-const initialState = {
-    InputList: {
-        from: {value: "", state: ""},
-        to: {value: "", state: ""},
-        selected: undefined
-    },
-    WayList: {
-        now_way: [],
-        all_ways: [[]],
-        all_times: [],
-        show_all: true
-    }
+const initialInputState = {
+    from: {value: "", state: ""},
+    to: {value: "", state: ""},
+    selected: undefined
+}
+
+const initialWayState = {
+    now_way: [],
+    all_ways: [[]],
+    all_times: [],
+    show_all: true
 }
 
 const getInputListReducer = (city: string) => {
@@ -135,31 +129,41 @@ const getWayListReducer = (city: string) => {
     }
 }
 
-const getReducer = (city: string) => {
-    const InputListReducer = getInputListReducer(city);
-    const WayListReducer = getWayListReducer(city);
-    return ({ InputList, WayList}: InitialStateType, action: InputListPayload | WayListPayload) => ({
-        InputList: InputListReducer(InputList, action as InputListPayload),
-        WayList: WayListReducer(WayList, action as WayListPayload)
-    });
-}
-
-const MetroHelperContext = createContext<{
-    state: InitialStateType;
-    dispatch: Dispatch<InputListPayload | WayListPayload>;
+const MetroHelperInputContext = createContext<{
+    InputState: InputList;
+    InputDispatch: Dispatch<InputListPayload>;
 }>({
-    state: initialState,
-    dispatch: () => null
+    InputState: initialInputState,
+    InputDispatch: () => null
+});
+
+const MetroHelperWayContext = createContext<{
+    WayState: WayList;
+    WayDispatch: Dispatch<WayListPayload>;
+}>({
+    WayState: initialWayState,
+    WayDispatch: () => null
 });
 
 const MetroHelperProvider: React.FC<IMetroHelperProviderProps> = ({city, children}) => {
-    const [state, dispatch] = useReducer(getReducer(city), initialState);
+    const [InputState, InputDispatch] = useReducer(getInputListReducer(city), initialInputState);
+    const [WayState, WayDispatch] = useReducer(getWayListReducer(city), initialWayState);
+
+    useEffect(() => {
+        WayDispatch({
+            type: "change_ways",
+            from: InputState.from.state,
+            to: InputState.to.state
+        })
+    }, [InputState.from.state, InputState.to.state])
 
     return (
-        <MetroHelperContext.Provider value={{state, dispatch}}>
-            {children}
-        </MetroHelperContext.Provider>
+        <MetroHelperInputContext.Provider value={{InputState, InputDispatch}}>
+            <MetroHelperWayContext.Provider value={{WayState, WayDispatch}}>
+                {children}
+            </MetroHelperWayContext.Provider>
+        </MetroHelperInputContext.Provider>
     )
 };
 
-export {MetroHelperProvider, MetroHelperContext};
+export {MetroHelperProvider, MetroHelperInputContext, MetroHelperWayContext};

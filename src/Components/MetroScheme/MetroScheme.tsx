@@ -1,6 +1,8 @@
-import React, {useEffect, useContext, useRef, useMemo} from 'react';
+import React, {useEffect, useContext, useRef, useMemo, useState, useCallback} from 'react';
 import {debounce} from "@mui/material";
 import * as d3Zoom from 'd3-zoom';
+import * as d3Ease from 'd3-ease';
+import {interpolateZoom, ZoomView} from "d3-interpolate";
 import {select} from 'd3-selection';
 import {get_scheme} from "../AdditionalFiles/get_scripts";
 import SelectMenu from "../SelectMenu/SelectMenu";
@@ -8,16 +10,21 @@ import CreateScheme from "../AdditionalFiles/CreateScheme";
 import {CityContext} from "../../custom_settings";
 import './MetroScheme.scss';
 import {ISchemeElements, IStation} from "../AdditionalFiles/interfaces";
-import {MetroHelperContext} from "../MetroHelperContext/MetroHelperContext";
+import {MetroHelperInputContext} from "../MetroHelperContext/MetroHelperContext";
 
 
 const MetroScheme: React.FC = () => {
-    const {state, dispatch} = useContext(MetroHelperContext);
-    const way: string[] = state.WayList.now_way;
+    const {InputDispatch} = useContext(MetroHelperInputContext);
     const city: string = useContext(CityContext).city;
     const elements: ISchemeElements = get_scheme(city);
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
+    const [zoomProps, setZoomProps] = useState({
+        scale: 0,
+        x: 0,
+        y: 0,
+        zoom: d3Zoom.zoom<any, any>()
+    });
     const mapSize: { width: number, height: number } = useMemo(() => {
         return {
             width: elements.background.width,
@@ -28,12 +35,13 @@ const MetroScheme: React.FC = () => {
         const get_zoomed_func = (mapSize: { width: number, height: number }, screenSize: { width: number, height: number }) => {
             return (event: d3Zoom.D3ZoomEvent<any, any>) => {
                 const g = select(gRef.current);
+                const map = select(mapRef.current);
                 const transform = event.transform;
                 g.attr("transform", transform.toString());
-                let scale = gRef.current!.transform.baseVal[1].matrix.a;
+                const scale = d3Zoom.zoomTransform(map.node()!).k;
                 const widthScreen: number = screenSize.width / scale;
                 const heightScreen: number = screenSize.height / scale;
-                const margin: number = 500;
+                const margin: number = 500 / scale;
                 const worldTopLeft: [number, number] = [
                     margin - widthScreen,
                     margin - heightScreen
@@ -50,36 +58,71 @@ const MetroScheme: React.FC = () => {
             height: window.innerHeight
         };
         const map = select(mapRef.current);
-        const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.3, 1]).on("zoom", get_zoomed_func(mapSize, screenSize));
-        const bounds = mapRef.current!.getBBox();
-        const scale = Math.max(bounds.width / screenSize.width, bounds.height / screenSize.height),
-            x = (screenSize.width / 2 - bounds.width / (2 * scale)) * scale,
-            y = (screenSize.height / 2 - bounds.height / (2 * scale)) * scale;
-        map.call(zoom).call(zoom.transform, d3Zoom.zoomIdentity.scale(1/scale).translate(x, y));
-        window.onresize = debounce(() => zoom.on("zoom", get_zoomed_func(mapSize, {width: window.innerWidth, height: window.innerHeight})), 200);
-        /*const zoom_on_point = ([[x0, y0], [x1, y1]]) => {
-            map.transition().duration(750).call(
-                zoom.transform,
-                d3Zoom.zoomIdentity
-                    .scale(points.k)
-                    .translate(points.x, points.y)
-                    .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
-                    .translate(-(x0 + x1) / 2, -(y0 + y1) / 2)
-            );
-        }*/
+        const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.3, 1.75]).on("zoom", get_zoomed_func(mapSize, screenSize));
+        const bounds: DOMRect = mapRef.current!.getBBox();
+        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
+        const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
+            x = screenSize.width / 2 - zoom_cords[0] * scale,
+            y = screenSize.height / 2 - zoom_cords[1] * scale;
+        map.call(zoom).call(zoom.transform, d3Zoom.zoomIdentity.translate(x, y).scale(scale));
+        window.onresize = debounce(() => zoom.on("zoom", get_zoomed_func(mapSize, {
+            width: window.innerWidth,
+            height: window.innerHeight
+        })), 200);
+        setZoomProps({
+            scale: scale,
+            x: x,
+            y: y,
+            zoom: zoom
+        })
     }, [mapSize]);
     const elementClickHandler = (station: IStation) => {
-        dispatch({
+        InputDispatch({
             type: "select",
             station: station
         })
     };
+    const zoom_on_point = useCallback((bounds: DOMRect) => {
+        const map = select(mapRef.current);
+        const screenSize: { width: number, height: number } = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        const current_bounds = mapRef.current!.getBBox();
+        const current_zoom = d3Zoom.zoomTransform(map.node()!).k;
+        const current_cords: ZoomView = [screenSize.width / 2 - current_bounds.x / current_zoom, screenSize.height / 2 - current_bounds.y / current_zoom, Math.max(screenSize.width / current_zoom, screenSize.height / current_zoom)];
+        const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 550, bounds.height + 120)];
+        const interpolator = interpolateZoom(current_cords, zoom_cords);
+        function transform(t: number) {
+            let zoom_enable: boolean = false;
+            interpolator(t).forEach((value, index) => {
+                if (value - interpolator(t - 0.5)[index] > 100) zoom_enable = true;
+            })
+            const view = (zoom_enable) ? interpolator(t) : interpolator(1);
+            const scale = Math.min(screenSize.width, screenSize.height) / view[2],
+                x = screenSize.width / 2 - view[0] * scale,
+                y = screenSize.height / 2 - view[1] * scale;
+            return [x, y, scale];
+        }
+        map.transition().duration(500).ease(d3Ease.easeCubicIn).call(
+            zoomProps.zoom.transform,
+            d3Zoom.zoomIdentity
+                .translate(transform(0.5)[0], transform(0.5)[1])
+                .scale(transform(0.5)[2])
+        );
+        map.transition().delay(500).duration(500).ease(d3Ease.easeCubicOut).call(
+            zoomProps.zoom.transform,
+            d3Zoom.zoomIdentity
+                .translate(transform(1)[0], transform(1)[1])
+                .scale(transform(1)[2])
+        );
+    }, [zoomProps.zoom.transform]);
     return (
         <div className="metro_map__container">
             <svg xmlns="http://www.w3.org/2000/svg" className="metro_map__content" preserveAspectRatio='xMinYMin slice'
                  ref={mapRef}>
                 <g ref={gRef}>
-                    <CreateScheme elements={elements} selectStation={elementClickHandler} way={way}/>
+                    <CreateScheme elements={elements} selectStation={elementClickHandler} zoomPath={zoom_on_point}/>
                     <SelectMenu/>
                 </g>
             </svg>
