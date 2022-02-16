@@ -1,39 +1,15 @@
-.menu__select_content{
-  right: 0;
-  min-width: 15vw;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu__select_container{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.menu__select_text{
-  text-align: center;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 5px;
-}
-
-.menu__select_text_circle{
-  margin: 5px;
-}
-
 .menu__select_button{
-  flex: 0 1 50%;
-  font-size: 1em;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: rgba(229, 229, 227, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  &:focus{
-    outline: none;
-  }
+  fill:grey;
   &:hover{
+    fill: black;
     cursor: pointer;
-    background-color: rgba(229, 229, 227, 0.8);
+    transition: 0.25s;
+  }
+}
+
+.menu__select_button_now{
+  fill: tomato;
+  &:hover{
+    fill:red;
   }
 }

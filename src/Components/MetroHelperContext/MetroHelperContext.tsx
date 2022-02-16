@@ -11,6 +11,7 @@ type InputList = {
     from: InputType;
     to: InputType;
     selected: IStation | undefined;
+    cleared: boolean;
 }
 
 type WayList = {
@@ -27,7 +28,7 @@ export type OnlyInputTypes = {
 type InputListPayload =
     | { type: 'from', newValue: string }
     | { type: 'to', newValue: string }
-    | { type: 'select', station: IStation }
+    | { type: 'select', station: IStation | undefined }
     | { type: 'swap' }
     | { type: 'clear' };
 
@@ -39,7 +40,8 @@ type WayListPayload =
 const initialInputState = {
     from: {value: "", state: ""},
     to: {value: "", state: ""},
-    selected: undefined
+    selected: undefined,
+    cleared: true
 }
 
 const initialWayState = {
@@ -66,6 +68,10 @@ const getInputListReducer = (city: string) => {
                     to: {value: action.newValue, state: newToState},
                 };
             case 'select':
+                if (action.station === undefined) return {
+                    ...state,
+                    selected: undefined
+                };
                 if ((state.from.state === "") && (state.to.state !== action.station.name)) {
                     return {
                         ...state,
@@ -95,6 +101,7 @@ const getInputListReducer = (city: string) => {
                     from: {value: "", state: ""},
                     to: {value: "", state: ""},
                     selected: undefined,
+                    cleared: !state.cleared
                 };
             default:
                 return state;

@@ -14,15 +14,12 @@ import {MetroHelperInputContext} from "../MetroHelperContext/MetroHelperContext"
 
 
 const MetroScheme: React.FC = () => {
-    const {InputDispatch} = useContext(MetroHelperInputContext);
+    const {InputState, InputDispatch} = useContext(MetroHelperInputContext);
     const city: string = useContext(CityContext).city;
     const elements: ISchemeElements = get_scheme(city);
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
     const [zoomProps, setZoomProps] = useState({
-        scale: 0,
-        x: 0,
-        y: 0,
         zoom: d3Zoom.zoom<any, any>()
     });
     const mapSize: { width: number, height: number } = useMemo(() => {
@@ -59,7 +56,7 @@ const MetroScheme: React.FC = () => {
         };
         const map = select(mapRef.current);
         const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.3, 1.75]).on("zoom", get_zoomed_func(mapSize, screenSize));
-        const bounds: DOMRect = mapRef.current!.getBBox();
+        const bounds: DOMRect = gRef.current!.getBBox();
         const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
         const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
             x = screenSize.width / 2 - zoom_cords[0] * scale,
@@ -70,9 +67,6 @@ const MetroScheme: React.FC = () => {
             height: window.innerHeight
         })), 200);
         setZoomProps({
-            scale: scale,
-            x: x,
-            y: y,
             zoom: zoom
         })
     }, [mapSize]);
@@ -91,7 +85,7 @@ const MetroScheme: React.FC = () => {
         const current_bounds = mapRef.current!.getBBox();
         const current_zoom = d3Zoom.zoomTransform(map.node()!).k;
         const current_cords: ZoomView = [screenSize.width / 2 - current_bounds.x / current_zoom, screenSize.height / 2 - current_bounds.y / current_zoom, Math.max(screenSize.width / current_zoom, screenSize.height / current_zoom)];
-        const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 550, bounds.height + 120)];
+        const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 650, bounds.height + 120)];
         const interpolator = interpolateZoom(current_cords, zoom_cords);
         function transform(t: number) {
             let zoom_enable: boolean = false;
@@ -117,6 +111,24 @@ const MetroScheme: React.FC = () => {
                 .scale(transform(1)[2])
         );
     }, [zoomProps.zoom.transform]);
+    useEffect(() => {
+        const map = select(mapRef.current);
+        const screenSize: { width: number, height: number } = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        const bounds: DOMRect = gRef.current!.getBBox();
+        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
+        const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
+            x = screenSize.width / 2 - zoom_cords[0] * scale,
+            y = screenSize.height / 2 - zoom_cords[1] * scale;
+        map.transition().duration(750).ease(d3Ease.easeCubicOut).call(
+            zoomProps.zoom.transform,
+            d3Zoom.zoomIdentity
+                .translate(x, y)
+                .scale(scale)
+        );
+    },[zoomProps.zoom.transform, InputState.cleared])
     return (
         <div className="metro_map__container">
             <svg xmlns="http://www.w3.org/2000/svg" className="metro_map__content" preserveAspectRatio='xMinYMin slice'
