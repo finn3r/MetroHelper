@@ -18,7 +18,7 @@ export interface ICreateScheme {
 
     zoomPath(cords: DOMRect): void;
 
-    selectStation(station: IStation): void;
+    selectStation(station: IStation | undefined): void;
 }
 
 export interface IStationNames {

@@ -70,7 +70,7 @@ const MetroScheme: React.FC = () => {
             zoom: zoom
         })
     }, [mapSize]);
-    const elementClickHandler = (station: IStation) => {
+    const elementClickHandler = (station: IStation | undefined) => {
         InputDispatch({
             type: "select",
             station: station
@@ -83,16 +83,16 @@ const MetroScheme: React.FC = () => {
             height: window.innerHeight
         };
         const current_bounds = mapRef.current!.getBBox();
-        const current_zoom = d3Zoom.zoomTransform(map.node()!).k;
-        const current_cords: ZoomView = [screenSize.width / 2 - current_bounds.x / current_zoom, screenSize.height / 2 - current_bounds.y / current_zoom, Math.max(screenSize.width / current_zoom, screenSize.height / current_zoom)];
+        const current_scale = d3Zoom.zoomTransform(map.node()!).k;
+        const current_cords: ZoomView = [(screenSize.width/2 - current_bounds.x) / current_scale, (screenSize.height/2 - current_bounds.y) / current_scale, Math.min(screenSize.width, screenSize.height) / current_scale];
         const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 650, bounds.height + 120)];
         const interpolator = interpolateZoom(current_cords, zoom_cords);
         function transform(t: number) {
             let zoom_enable: boolean = false;
             interpolator(t).forEach((value, index) => {
-                if (value - interpolator(t - 0.5)[index] > 100) zoom_enable = true;
+                if (Math.round(value) !== Math.round(interpolator(t-0.5)[index])) zoom_enable = true;
             })
-            const view = (zoom_enable) ? interpolator(t) : interpolator(1);
+            const view = (zoom_enable) ? interpolator(t) : interpolator(1)
             const scale = Math.min(screenSize.width, screenSize.height) / view[2],
                 x = screenSize.width / 2 - view[0] * scale,
                 y = screenSize.height / 2 - view[1] * scale;

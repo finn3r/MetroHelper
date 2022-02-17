@@ -1,15 +1,16 @@
 .menu__select_button{
-  fill:grey;
+  fill:black;
+  opacity: 0.3;
   &:hover{
-    fill: black;
     cursor: pointer;
+    opacity: 0.5;
     transition: 0.25s;
   }
 }
 
 .menu__select_button_now{
-  fill: tomato;
+  opacity: 0.5;
   &:hover{
-    fill:red;
+    opacity: 0.9;
   }
 }

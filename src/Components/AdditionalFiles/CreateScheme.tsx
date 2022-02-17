@@ -2,17 +2,17 @@ import React, {useContext, useEffect, useRef} from 'react';
 import {IBackgroundElement, ICreateScheme, IOtherElements, IRoadElement, IStation, IStationElement} from "./interfaces";
 import {MetroHelperWayContext} from "../MetroHelperContext/MetroHelperContext";
 
-const Background: React.FC<{ background: IBackgroundElement }> = ({background}) => {
+const Background: React.FC<{ background: IBackgroundElement, selectStation(station: IStation | undefined): void }> = ({background, selectStation}) => {
     return (
-        <g className={"background"}>
+        <g className={"background"} onClick={() => selectStation(undefined)}>
             {React.createElement(background.type, background.props)}
         </g>
     )
 }
 
-const OtherElements: React.FC<{ others: IOtherElements[] }> = ({others}) => {
+const OtherElements: React.FC<{ others: IOtherElements[], selectStation(station: IStation | undefined): void }> = ({others, selectStation}) => {
     return (
-        <g className={"other_elements"}>
+        <g className={"other_elements"} onClick={() => selectStation(undefined)}>
             {others.map((element) => {
                 return React.createElement(element.type, element.props);
             })}
@@ -20,9 +20,9 @@ const OtherElements: React.FC<{ others: IOtherElements[] }> = ({others}) => {
     )
 }
 
-const RoadsElements: React.FC<{ roads: IRoadElement[] }> = ({roads}) => {
+const RoadsElements: React.FC<{ roads: IRoadElement[], selectStation(station: IStation | undefined): void }> = ({roads, selectStation}) => {
     return (
-        <g className={"roads"}>
+        <g className={"roads"} onClick={() => selectStation(undefined)}>
             {roads.map((element) => {
                 return React.createElement(element.type, element.props);
             })}
@@ -30,7 +30,7 @@ const RoadsElements: React.FC<{ roads: IRoadElement[] }> = ({roads}) => {
     )
 }
 
-const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation): void }> = ({stations, selectStation}) => {
+const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation | undefined): void }> = ({stations, selectStation}) => {
     return (
         <g className={"stations"}>
             {stations.map((station) => {
@@ -65,9 +65,9 @@ const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, zoomPat
     }, [way, zoomPath])
     if (way.length === 0) return (
         <g>
-            <Background background={elements.background}/>
-            <OtherElements others={elements.others}/>
-            <RoadsElements roads={elements.roads}/>
+            <Background background={elements.background} selectStation={selectStation}/>
+            <OtherElements others={elements.others} selectStation={selectStation}/>
+            <RoadsElements roads={elements.roads} selectStation={selectStation}/>
             <StationElements stations={elements.stations} selectStation={selectStation}/>
         </g>
     ); else return (
@@ -79,9 +79,9 @@ const CreateScheme: React.FC<ICreateScheme> = ({elements, selectStation, zoomPat
                 })}
             </g>
             <g className={"opacity"}>
-                <Background background={elements.background}/>
-                <OtherElements others={elements.others}/>
-                <RoadsElements roads={elements.roads}/>
+                <Background background={elements.background} selectStation={selectStation}/>
+                <OtherElements others={elements.others} selectStation={selectStation}/>
+                <RoadsElements roads={elements.roads} selectStation={selectStation}/>
                 <StationElements stations={elements.stations} selectStation={selectStation}/>
             </g>
             <g className={"stations"}>
