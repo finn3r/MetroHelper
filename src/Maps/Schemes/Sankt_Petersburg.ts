@@ -2093,7 +2093,7 @@ export const SanktPetersburg: ISchemeElements = {
             }
         }, {
             from: "Василеостровская",
-            to: "Гостинный двор",
+            to: "Гостиный двор",
             type: "path",
             props: {
                 className: "map_element map_road map_green_road",
@@ -2101,7 +2101,7 @@ export const SanktPetersburg: ISchemeElements = {
                 key: "road_39"
             }
         }, {
-            from: "Гостинный двор",
+            from: "Гостиный двор",
             to: "Маяковская",
             type: "path",
             props: {
