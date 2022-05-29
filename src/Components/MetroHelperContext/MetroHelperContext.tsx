@@ -60,12 +60,14 @@ const getInputListReducer = (city: string) => {
                 return {
                     ...state,
                     from: {value: action.newValue, state: newFromState},
+                    to: ((state.to.state === action.newValue)&&(action.newValue !== "")) ? state.from : state.to
                 };
             case 'to':
                 let newToState = (names.includes(action.newValue)) ? action.newValue : "";
                 return {
                     ...state,
                     to: {value: action.newValue, state: newToState},
+                    from: ((state.from.state === action.newValue)&&(action.newValue !== "")) ? state.to : state.from
                 };
             case 'select':
                 if (action.station === undefined) return {
@@ -128,7 +130,7 @@ const getWayListReducer = (city: string) => {
                     all_ways: best_ways_and_times[0],
                     all_times: best_ways_and_times[1],
                     now_way: (best_ways_and_times[0][0] === undefined) ? [] : best_ways_and_times[0][0],
-                    show_all: true
+                    show_all: false
                 };
             default:
                 return state;

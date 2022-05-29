@@ -1,7 +1,8 @@
 .menu__input{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 87% 13%;
+  grid-template-rows: 1fr 1fr 0.5fr;
   min-width: 380px;
-  width: 22vw;
+  width: 100%;
   left: 0;
 }

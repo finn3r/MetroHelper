@@ -17,7 +17,7 @@ import CustomField from "./CustomField";
 const toTransit = (text: string): string => {
     text = text.toLowerCase().replace(/ё/gi, 'е');
     let newText: string = '';
-    let converter: {[letter: string]: string} = {
+    let converter: { [letter: string]: string } = {
         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
         'е': 'e', 'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y',
         'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
@@ -27,13 +27,13 @@ const toTransit = (text: string): string => {
         'ю': 'yu', 'я': 'ya'
     };
 
-    for (let i = 0; i < text.length; ++i ) {
-        if (converter[text[i]] === undefined){
+    for (let i = 0; i < text.length; ++i) {
+        if (converter[text[i]] === undefined) {
             newText += text[i];
         } else {
             newText += converter[text[i]];
         }
-    };
+    }
 
     return newText;
 };
@@ -41,7 +41,7 @@ const toTransit = (text: string): string => {
 const fromEngToRu = (text: string): string => {
     text = text.toLowerCase().replace(/ё/gi, 'е');
     let newText: string = "";
-    let converter: {[letter: string]: string} = {
+    let converter: { [letter: string]: string } = {
         '`': 'е', 'q': 'й', 'w': 'ц', 'e': 'у', 'r': 'к',
         't': 'е', 'y': 'н', 'u': 'г', 'i': 'ш', 'o': 'щ',
         'p': 'з', '[': 'х', ']': 'ъ', 'a': 'ф', 's': 'ы',
@@ -52,13 +52,13 @@ const fromEngToRu = (text: string): string => {
         '}': 'Ъ', ':': 'Ж', '"': 'Э', '<': 'Б', '>': 'Ю'
     };
 
-    for (let i = 0; i < text.length; ++i ) {
-        if (converter[text[i]] === undefined){
+    for (let i = 0; i < text.length; ++i) {
+        if (converter[text[i]] === undefined) {
             newText += text[i];
         } else {
             newText += converter[text[i]];
         }
-    };
+    }
 
     return newText;
 };
@@ -84,10 +84,12 @@ const AutoCompleteField: React.FC<IAutoCompleteFieldProps> = ({type, label, opti
     const showOptions = !((inputState !== "") || (inputValue === ""));
 
     return (
-        <div className="menu__input_container">
-            <svg className="menu__input_circle" height="16" width="16" >
-                <circle	cx="8" cy="8" r="8" fill={inputColor}/>
-            </svg>
+        <div className="menu__input_container" id={type + "_input_container"}>
+            <div className={"menu__input_circle_container"} id={type + "_circle"}>
+                <svg className="menu__input_circle_content" height="16" width="16">
+                    <circle cx="8" cy="8" r="8" fill={inputColor}/>
+                </svg>
+            </div>
             <Autocomplete
                 freeSolo
                 id={type + "_input"}
@@ -120,9 +122,12 @@ const AutoCompleteField: React.FC<IAutoCompleteFieldProps> = ({type, label, opti
                     />
                 )}
             />
-            <div style={(errorShow) ? {} : {display: 'none'}} className="input_error__container" id={type+"_input_error"}>
+            <div style={(errorShow) ? {} : {display: 'none'}} className="input_error__container"
+                 id={type + "_input_error"}>
                 <div className="input_error__arrow"/>
-                <span className="input_error__content">Вы не задали точку маршрута</span>
+                <div className="input_error__text_container">
+                    <span className="input_error__text">Вы не задали точку маршрута</span>
+                </div>
             </div>
         </div>
     );

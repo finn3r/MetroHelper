@@ -2,45 +2,52 @@
   display: block;
   border-radius: 10px;
   width: 100%;
-  margin: 10px 40px 10px 40px;
+  margin: 10px 0;
   &:focus-within + .input_error__container{
     display: none;
   }
 }
 
-.menu__input_circle {
-  position: absolute;
-  left: 15px;
+.menu__input_circle_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu__input_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 95%;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 50px 1fr 0;
+  width: 100%;
 }
 
 .input_error__container {
-  position: absolute;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  left: MAX(calc(25vw - 20px), calc(350px - 20px));
 }
 
-.input_error__content {
+.input_error__content{
+  position: relative;
+}
+
+.input_error__text_container{
+  position: relative;
+}
+
+.input_error__text {
+  top:0;
+  position: absolute;
   border-radius: 5px;
   color: white;
   background-color: rgba(253, 86, 80, 1);
   padding: 5px 10px;
-  left: MAX(1.8vh, 15px);
   font-size: 1.2em;
-  flex: auto;
-  @media (min-width: 635px) {
-    flex: none;
-  }
 }
 
 .input_error__arrow {
+  position: relative;
   background-color: rgba(253, 86, 80, 1);
   width: 3%;
   padding: MAX(0.7vh, 7.5px);
@@ -50,6 +57,10 @@
 
 .MuiAutocomplete-paper {
   display: inline;
+}
+
+.MuiTextField-root{
+  background-color: rgba(229, 229, 227, 0.3);
 }
 
 .MuiAutocomplete-listbox {

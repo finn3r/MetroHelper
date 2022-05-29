@@ -1,8 +1,9 @@
 .menu__hide_button_container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  width: 97%;
+  width: 100%;
+  grid-column-start: 2;
 }
 
 .menu__hide_button {

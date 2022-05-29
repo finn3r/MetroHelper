@@ -2,9 +2,7 @@ import {styled} from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 
 const CustomField = styled(TextField)({
-    backgroundColor: 'rgba(229, 229, 227, 0.3)',
     borderRadius: '10px',
-
     'input': {
         fontWeight: '500',
         fontSize: '1em',

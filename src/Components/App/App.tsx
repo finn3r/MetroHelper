@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import WayList from "../WaysList/WayList";
 import MetroScheme from "../MetroScheme/MetroScheme";
 import InputMenu from "../InputMenu/InputMenu";
@@ -8,6 +8,17 @@ import './App.scss';
 
 const App: React.FC = () => {
     const city: string = useContext(CityContext).city;
+    useEffect(() => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        window.onresize = () => {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        };
+        return () => {
+            window.onresize = null;
+        }
+    },[])
     return (
         <div className="main">
             <MetroHelperProvider city={city}>
