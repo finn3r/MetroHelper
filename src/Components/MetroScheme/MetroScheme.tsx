@@ -38,7 +38,7 @@ const MetroScheme: React.FC = () => {
                 const scale = d3Zoom.zoomTransform(map.node()!).k;
                 const widthScreen: number = screenSize.width / scale;
                 const heightScreen: number = screenSize.height / scale;
-                const margin: number = 500 / scale;
+                const margin: number = (screenSize.width/3) / scale;
                 const worldTopLeft: [number, number] = [
                     margin - widthScreen,
                     margin - heightScreen
@@ -57,8 +57,8 @@ const MetroScheme: React.FC = () => {
         const map = select(mapRef.current);
         const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.25, 1.75]).on("zoom", get_zoomed_func(mapSize, screenSize));
         const bounds: DOMRect = gRef.current!.getBBox();
-        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
-        const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
+        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)/2];
+        const scale = Math.min(screenSize.width, screenSize.height)*1.5 / zoom_cords[2],
             x = screenSize.width / 2 - zoom_cords[0] * scale,
             y = screenSize.height / 2 - zoom_cords[1] * scale;
         map.call(zoom).call(zoom.transform, d3Zoom.zoomIdentity.translate(x, y).scale(scale));
@@ -88,7 +88,7 @@ const MetroScheme: React.FC = () => {
         const current_bounds = mapRef.current!.getBBox();
         const current_scale = d3Zoom.zoomTransform(map.node()!).k;
         const current_cords: ZoomView = [(screenSize.width/2 - current_bounds.x) / current_scale, (screenSize.height/2 - current_bounds.y) / current_scale, Math.min(screenSize.width, screenSize.height) / current_scale];
-        const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 650, bounds.height + 120)];
+        const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width + 650, bounds.height + 200)];
         const interpolator = interpolateZoom(current_cords, zoom_cords);
         function transform(t: number) {
             let zoom_enable: boolean = false;
@@ -121,7 +121,7 @@ const MetroScheme: React.FC = () => {
             height: window.innerHeight
         };
         const bounds: DOMRect = gRef.current!.getBBox();
-        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
+        const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)/2];
         const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
             x = screenSize.width / 2 - zoom_cords[0] * scale,
             y = screenSize.height / 2 - zoom_cords[1] * scale;
