@@ -55,7 +55,7 @@ const MetroScheme: React.FC = () => {
             height: window.innerHeight
         };
         const map = select(mapRef.current);
-        const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.3, 1.75]).on("zoom", get_zoomed_func(mapSize, screenSize));
+        const zoom = d3Zoom.zoom<any, any>().scaleExtent([0.25, 1.75]).on("zoom", get_zoomed_func(mapSize, screenSize));
         const bounds: DOMRect = gRef.current!.getBBox();
         const zoom_cords = [bounds.width / 2, bounds.height / 2, Math.max(bounds.width, bounds.height)];
         const scale = Math.min(screenSize.width, screenSize.height) / zoom_cords[2],
@@ -69,6 +69,9 @@ const MetroScheme: React.FC = () => {
         setZoomProps({
             zoom: zoom
         })
+        return () => {
+            window.onresize = null;
+        }
     }, [mapSize]);
     const elementClickHandler = (station: IStation | undefined) => {
         InputDispatch({

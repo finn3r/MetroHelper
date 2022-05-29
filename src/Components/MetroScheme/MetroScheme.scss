@@ -13,28 +13,30 @@
   fill: none;
 }
 
-.opacity{
+.opacity {
   opacity: 0.35;
 }
 
 .map_text {
-  font: 1.5em sans-serif;
+  font: 1.15em sans-serif;
   font-weight: 600;
-  fill:black;
+  fill: black;
   transition: 0.1s;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
-    fill:tomato;
+    fill: tomato;
   }
 }
 
-.chosen_text{
+.chosen_text {
   font-weight: 800;
 }
 
-.hide{
+.hide {
   display: none;
-  &.map_station{
+
+  &.map_station {
     display: block;
     opacity: 0.5;
   }
@@ -54,12 +56,15 @@
   stroke-width: 25px;
 }
 
-.map_road_not_stroke{
+.map_road_not_stroke {
   stroke: none;
 }
 
 .map_station{
   cursor: pointer;
+  &:hover + .map_text{
+    fill: tomato;
+  }
 }
 
 .map_river {
@@ -89,4 +94,31 @@
 
 .map_red_station {
   fill: #ee6352;
+}
+
+.map_purple_road {
+  stroke: #3E0B96;
+  fill: #3E0B96;
+}
+
+.map_purple_station {
+  fill: #4A02C9;
+}
+
+.map_orange_road {
+  stroke: #C96902;
+  fill: #C96902;
+}
+
+.map_orange_station {
+  fill: #FC8C17;
+}
+
+.map_green_road {
+  stroke: #055718;
+  fill: #055718;
+}
+
+.map_green_station {
+  fill: #038A22;
 }

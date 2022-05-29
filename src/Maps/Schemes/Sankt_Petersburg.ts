@@ -6,39 +6,62 @@ export const SanktPetersburg: ISchemeElements = {
         type: "rect",
         props: {
             className: "visual map_element map_background",
-            width: "2000",
-            height: "2000",
+            width: "2400",
+            height: "2050",
             key: "background_1"
         },
-        width: 2000,
-        height: 2000
+        width: 2400,
+        height: 2050
     },
     others: [
         {
             type: "path",
             props: {
                 className: "map_element map_river",
-                d: "M548.28,490c8.8,0,16,6.1,16,13.59V692.52c0,7.49-7.16,13.59-16,13.59H40V503.59C40,496.1,47.16,490,56,490H548.28m0-40H56c-30.91,0-56,24-56,53.59V746.11H548.28c30.9,0,56-24,56-53.59V503.59c0-29.6-25.06-53.59-56-53.59Z",
+                d: "M722.28 410C731.08 410 738.28 416.1 738.28 423.59V612.52C738.28 620.01 731.12 626.11 722.28 626.11H214V423.59C214 416.1 221.16 410 230 410H722.28ZM722.28 370H230C199.09 370 174 394 174 423.59V666.11H722.28C753.18 666.11 778.28 642.11 778.28 612.52V423.59C778.28 393.99 753.22 370 722.28 370Z",
                 key: "path_1"
             },
         }, {
             type: "path",
             props: {
                 className: "map_element map_river",
-                d: "M951.15,745.6c8.78,0,15.91,6.11,15.91,13.59V1087c0,7.5-7.16,13.59-16,13.59L40,1101.53V747.45l911.15-1.85m0-40L0,707.53v434l951.1-1c30.91,0,56-24,56-53.59V759.19c0-29.6-25-53.59-56-53.59Z",
+                d: "M1125.15 665.6C1133.93 665.6 1141.06 671.71 1141.06 679.19V1007C1141.06 1014.5 1133.9 1020.59 1125.06 1020.59L214 1021.53V667.45L1125.15 665.6ZM1125.15 625.6L174 627.53V1061.53L1125.1 1060.53C1156.01 1060.53 1181.1 1036.53 1181.1 1006.94V679.19C1181.1 649.59 1156.1 625.6 1125.1 625.6H1125.15Z",
                 key: "path_2"
             },
         }, {
-            type: "polyline",
+            type: "path",
             props: {
                 className: "map_element map_river_no_fill",
-                points: "981.88 939.02 1712 939.02 1712 2000",
-                key: "polyline_1"
+                d: "M1156 859H1979V1920",
+                key: "path_3"
             }
         }
     ],
     stations: [{
         stationName: "Парнас",
+        stationX: 1000,
+        stationY: 100,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_blue_station",
+                cx: "1000",
+                cy: "100",
+                r: "30",
+                key: "circle_1"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1035",
+                y: "105",
+                children: "Парнас",
+                key: "text_1"
+            },
+        }]
+    }, {
+        stationName: "Проспект Просвещения",
         stationX: 1000,
         stationY: 200,
         stationElements: [{
@@ -48,7 +71,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "200",
                 r: "30",
-                key: "circle_1"
+                key: "circle_2"
             },
         }, {
             type: "text",
@@ -56,12 +79,16 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "205",
-                children: "Парнас",
-                key: "text_1"
+                children: ["Проспект", React.createElement("tspan", {
+                    x: "1035",
+                    dy: "1em",
+                    key: "text_2_2"
+                }, "Просвещения")],
+                key: "text_2_1"
             },
         }]
     }, {
-        stationName: "Проспект Просвещения",
+        stationName: "Озерки",
         stationX: 1000,
         stationY: 300,
         stationElements: [{
@@ -71,7 +98,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "300",
                 r: "30",
-                key: "circle_2"
+                key: "circle_3"
             },
         }, {
             type: "text",
@@ -79,12 +106,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "305",
-                children: ["Проспект", React.createElement("tspan", {x: "1035", dy: "1em", key: "text_2_2"}, "Просвещения")],
-                key: "text_2_1"
+                children: "Озерки",
+                key: "text_3"
             },
         }]
     }, {
-        stationName: "Озерки",
+        stationName: "Удельная",
         stationX: 1000,
         stationY: 400,
         stationElements: [{
@@ -94,7 +121,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "400",
                 r: "30",
-                key: "circle_3"
+                key: "circle_4"
             },
         }, {
             type: "text",
@@ -102,12 +129,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "405",
-                children: "Озерки",
-                key: "text_3"
+                children: "Удельная",
+                key: "text_4"
             },
         }]
     }, {
-        stationName: "Удельная",
+        stationName: "Пионерская",
         stationX: 1000,
         stationY: 500,
         stationElements: [{
@@ -117,7 +144,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "500",
                 r: "30",
-                key: "circle_4"
+                key: "circle_5"
             },
         }, {
             type: "text",
@@ -125,12 +152,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "505",
-                children: "Удельная",
-                key: "text_4"
+                children: "Пионерская",
+                key: "text_5"
             },
         }]
     }, {
-        stationName: "Пионерская",
+        stationName: "Чёрная речка",
         stationX: 1000,
         stationY: 600,
         stationElements: [{
@@ -140,7 +167,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "600",
                 r: "30",
-                key: "circle_5"
+                key: "circle_6"
             },
         }, {
             type: "text",
@@ -148,12 +175,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "605",
-                children: "Пионерская",
-                key: "text_5"
+                children: "Чёрная речка",
+                key: "text_6"
             },
         }]
     }, {
-        stationName: "Чёрная речка",
+        stationName: "Петроградская",
         stationX: 1000,
         stationY: 700,
         stationElements: [{
@@ -163,7 +190,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "700",
                 r: "30",
-                key: "circle_6"
+                key: "circle_7"
             },
         }, {
             type: "text",
@@ -171,12 +198,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "705",
-                children: "Чёрная речка",
-                key: "text_6"
+                children: "Петроградская",
+                key: "text_7"
             },
         }]
     }, {
-        stationName: "Петроградская",
+        stationName: "Горьковская",
         stationX: 1000,
         stationY: 800,
         stationElements: [{
@@ -186,29 +213,6 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "800",
                 r: "30",
-                key: "circle_7"
-            },
-        }, {
-            type: "text",
-            props: {
-                className: "visual map_element map_text",
-                x: "1035",
-                y: "805",
-                children: "Петроградская",
-                key: "text_7"
-            },
-        }]
-    }, {
-        stationName: "Горьковская",
-        stationX: 1000,
-        stationY: 900,
-        stationElements: [{
-            type: "circle",
-            props: {
-                className: "map_element map_station map_blue_station",
-                cx: "1000",
-                cy: "900",
-                r: "30",
                 key: "circle_8"
             },
         }, {
@@ -216,7 +220,7 @@ export const SanktPetersburg: ISchemeElements = {
             props: {
                 className: "visual map_element map_text",
                 x: "1035",
-                y: "905",
+                y: "805",
                 children: "Горьковская",
                 key: "text_8"
             },
@@ -226,21 +230,23 @@ export const SanktPetersburg: ISchemeElements = {
         stationX: 1000,
         stationY: 1000,
         stationElements: [{
-            type: "circle",
+            type: "path",
             props: {
                 className: "map_element map_station map_blue_station",
-                cx: "1000",
-                cy: "1000",
-                r: "30",
-                key: "circle_9"
+                d: "M1000,1030a30,30,0,0,0,0-60",
+                key: "circle_69"
             },
         }, {
             type: "text",
             props: {
                 className: "visual map_element map_text",
                 x: "1035",
-                y: "1005",
-                children: ["Невский", React.createElement("tspan", {x: "1035", dy: "1em", key: "text_9_2"}, "проспект")],
+                y: "960",
+                children: ["Невский", React.createElement("tspan", {
+                    x: "1035",
+                    dy: "1em",
+                    key: "text_9_2"
+                }, "проспект")],
                 key: "text_9_1"
             },
         }]
@@ -249,33 +255,35 @@ export const SanktPetersburg: ISchemeElements = {
         stationX: 1000,
         stationY: 1100,
         stationElements: [{
-            type: "circle",
+            type: "path",
             props: {
                 className: "map_element map_station map_blue_station",
-                cx: "1000",
-                cy: "1100",
-                r: "30",
+                d: "M1025.98 1115C1023.35 1119.56 1019.56 1123.35 1015 1125.98C1010.44 1128.61 1005.27 1130 1000 1130C994.738 1130 989.565 1128.62 985.004 1125.98C980.444 1123.35 976.656 1119.57 974.022 1115.01L1000 1100L1025.98 1115Z",
                 key: "circle_10"
             },
         }, {
             type: "text",
             props: {
-                className: "visual map_element map_text",
-                x: "1035",
-                y: "1105",
-                children: ["Сенная", React.createElement("tspan", {x: "1035", dy: "1em", key: "text_10_2"}, "площадь")],
+                className: "visual map_element map_text map_text_left",
+                x: "970",
+                y: "1140",
+                children: ["Сенная", React.createElement("tspan", {
+                    dx: "-4.4em",
+                    dy: "1em",
+                    key: "text_10_2"
+                }, "площадь")],
                 key: "text_10_1"
             },
         }]
     }, {
         stationName: "Технологический институт 2",
         stationX: 1015,
-        stationY: 1200,
+        stationY: 1300,
         stationElements: [{
             type: "path",
             props: {
                 className: "map_element map_station map_blue_station",
-                d: "M1000,1230a30,30,0,0,0,0-60",
+                d: "M1000,1330a30,30,0,0,0,0-60",
                 key: "circle_11"
             },
         }, {
@@ -283,36 +291,17 @@ export const SanktPetersburg: ISchemeElements = {
             props: {
                 className: "visual map_element map_text",
                 x: "1035",
-                y: "1235",
-                children: ["Технологический", React.createElement("tspan", {x: "1035", dy: "1em", key: "text_11_2"}, "институт 2")],
+                y: "1335",
+                children: ["Технологический", React.createElement("tspan", {
+                    x: "1035",
+                    dy: "1em",
+                    key: "text_11_2"
+                }, "институт 2")],
                 key: "text_11_1"
             },
         }]
     }, {
         stationName: "Фрунзенская",
-        stationX: 1000,
-        stationY: 1300,
-        stationElements: [{
-            type: "circle",
-            props: {
-                className: "map_element map_station map_blue_station",
-                cx: "1000",
-                cy: "1300",
-                r: "30",
-                key: "circle_12"
-            },
-        }, {
-            type: "text",
-            props: {
-                className: "visual map_element map_text",
-                x: "1035",
-                y: "1305",
-                children: "Фрунзенская",
-                key: "text_12"
-            },
-        }]
-    }, {
-        stationName: "Московские ворота",
         stationX: 1000,
         stationY: 1400,
         stationElements: [{
@@ -322,7 +311,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1400",
                 r: "30",
-                key: "circle_13"
+                key: "circle_12"
             },
         }, {
             type: "text",
@@ -330,12 +319,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1405",
-                children: "Московские ворота",
-                key: "text_13"
+                children: "Фрунзенская",
+                key: "text_12"
             },
         }]
     }, {
-        stationName: "Электросила",
+        stationName: "Московские ворота",
         stationX: 1000,
         stationY: 1500,
         stationElements: [{
@@ -345,7 +334,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1500",
                 r: "30",
-                key: "circle_14"
+                key: "circle_13"
             },
         }, {
             type: "text",
@@ -353,12 +342,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1505",
-                children: "Электросила",
-                key: "text_14"
+                children: "Московские ворота",
+                key: "text_13"
             },
         }]
     }, {
-        stationName: "Парк Победы",
+        stationName: "Электросила",
         stationX: 1000,
         stationY: 1600,
         stationElements: [{
@@ -368,7 +357,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1600",
                 r: "30",
-                key: "circle_15"
+                key: "circle_14"
             },
         }, {
             type: "text",
@@ -376,12 +365,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1605",
-                children: "Парк Победы",
-                key: "text_15"
+                children: "Электросила",
+                key: "text_14"
             },
         }]
     }, {
-        stationName: "Московская",
+        stationName: "Парк Победы",
         stationX: 1000,
         stationY: 1700,
         stationElements: [{
@@ -391,7 +380,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1700",
                 r: "30",
-                key: "circle_16"
+                key: "circle_15"
             },
         }, {
             type: "text",
@@ -399,12 +388,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1705",
-                children: "Московская",
-                key: "text_16"
+                children: "Парк Победы",
+                key: "text_15"
             },
         }]
     }, {
-        stationName: "Звёздная",
+        stationName: "Московская",
         stationX: 1000,
         stationY: 1800,
         stationElements: [{
@@ -414,7 +403,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1800",
                 r: "30",
-                key: "circle_17"
+                key: "circle_16"
             },
         }, {
             type: "text",
@@ -422,12 +411,12 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1805",
-                children: "Звёздная",
-                key: "text_17"
+                children: "Московская",
+                key: "text_16"
             },
         }]
     }, {
-        stationName: "Купчино",
+        stationName: "Звёздная",
         stationX: 1000,
         stationY: 1900,
         stationElements: [{
@@ -437,7 +426,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "1000",
                 cy: "1900",
                 r: "30",
-                key: "circle_18"
+                key: "circle_17"
             },
         }, {
             type: "text",
@@ -445,6 +434,29 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text",
                 x: "1035",
                 y: "1905",
+                children: "Звёздная",
+                key: "text_17"
+            },
+        }]
+    }, {
+        stationName: "Купчино",
+        stationX: 1000,
+        stationY: 2000,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_blue_station",
+                cx: "1000",
+                cy: "2000",
+                r: "30",
+                key: "circle_18"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1035",
+                y: "2005",
                 children: "Купчино",
                 key: "text_18"
             },
@@ -669,20 +681,18 @@ export const SanktPetersburg: ISchemeElements = {
         stationX: 1300,
         stationY: 1000,
         stationElements: [{
-            type: "circle",
+            type: "path",
             props: {
                 className: "map_element map_station map_red_station",
-                cx: "1300",
-                cy: "1000",
-                r: "30",
-                key: "circle_28"
+                d: "M1300,1030a30,30,0,0,0,0-60",
+                key: "circle_67"
             },
         }, {
             type: "text",
             props: {
                 className: "visual map_element map_text",
-                x: "1335",
-                y: "1005",
+                x: "1325",
+                y: "980",
                 children: "Площадь Восстания",
                 key: "text_28"
             },
@@ -693,20 +703,18 @@ export const SanktPetersburg: ISchemeElements = {
         stationX: 1300,
         stationY: 1100,
         stationElements: [{
-            type: "circle",
+            type: "path",
             props: {
                 className: "map_element map_station map_red_station",
-                cx: "1300",
-                cy: "1100",
-                r: "30",
+                d: "M1300,1130a30,30,0,0,0,0-60",
                 key: "circle_29"
             },
         }, {
             type: "text",
             props: {
                 className: "visual map_element map_text",
-                x: "1335",
-                y: "1105",
+                x: "1325",
+                y: "1080",
                 children: "Владимирская",
                 key: "text_29"
             },
@@ -715,22 +723,20 @@ export const SanktPetersburg: ISchemeElements = {
     }, {
         stationName: "Пушкинская",
         stationX: 1300,
-        stationY: 1200,
+        stationY: 1300,
         stationElements: [{
-            type: "circle",
+            type: "path",
             props: {
                 className: "map_element map_station map_red_station",
-                cx: "1300",
-                cy: "1200",
-                r: "30",
-                key: "circle_30"
+                d: "M1300,1330a30,30,0,0,0,0-60",
+                key: "circle_29"
             },
         }, {
             type: "text",
             props: {
                 className: "visual map_element map_text",
-                x: "1335",
-                y: "1205",
+                x: "1325",
+                y: "1280",
                 children: "Пушкинская",
                 key: "text_30"
             },
@@ -739,12 +745,12 @@ export const SanktPetersburg: ISchemeElements = {
     }, {
         stationName: "Технологический институт 1",
         stationX: 985,
-        stationY: 1200,
+        stationY: 1300,
         stationElements: [{
             type: "path",
             props: {
                 className: "map_element map_station map_red_station",
-                d: "M1000,1230a30,30,0,0,1,0-60",
+                d: "M1000,1330a30,30,0,0,1,0-60",
                 key: "circle_31"
             },
         }, {
@@ -752,38 +758,18 @@ export const SanktPetersburg: ISchemeElements = {
             props: {
                 className: "visual map_element map_text map_text_left",
                 x: "950",
-                y: "1180",
-                children: ["Технологический", React.createElement("tspan", {dx: "-5em", dy: "1em", key: "text_31_2"}, "институт 1")],
+                y: "1280",
+                children: ["Технологический", React.createElement("tspan", {
+                    dx: "-5em",
+                    dy: "1em",
+                    key: "text_31_2"
+                }, "институт 1")],
                 key: "text_31_1"
             },
         }]
 
     }, {
         stationName: "Балтийская",
-        stationX: 705,
-        stationY: 1400,
-        stationElements: [{
-            type: "circle",
-            props: {
-                className: "map_element map_station map_red_station",
-                cx: "705",
-                cy: "1400",
-                r: "30",
-                key: "circle_32"
-            },
-        }, {
-            type: "text",
-            props: {
-                className: "visual map_element map_text map_text_left",
-                x: "670",
-                y: "1410",
-                children: "Балтийская",
-                key: "text_32"
-            },
-        }]
-
-    }, {
-        stationName: "Нарвская",
         stationX: 705,
         stationY: 1500,
         stationElements: [{
@@ -793,21 +779,21 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "705",
                 cy: "1500",
                 r: "30",
-                key: "circle_33"
+                key: "circle_32"
             },
         }, {
             type: "text",
             props: {
                 className: "visual map_element map_text map_text_left",
                 x: "670",
-                y: "1505",
-                children: "Нарвская",
-                key: "text_33"
+                y: "1510",
+                children: "Балтийская",
+                key: "text_32"
             },
         }]
 
     }, {
-        stationName: "Кировский завод",
+        stationName: "Нарвская",
         stationX: 705,
         stationY: 1600,
         stationElements: [{
@@ -817,7 +803,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "705",
                 cy: "1600",
                 r: "30",
-                key: "circle_34"
+                key: "circle_33"
             },
         }, {
             type: "text",
@@ -825,13 +811,13 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1605",
-                children: "Кировский завод",
-                key: "text_34"
+                children: "Нарвская",
+                key: "text_33"
             },
         }]
 
     }, {
-        stationName: "Автово",
+        stationName: "Кировский завод",
         stationX: 705,
         stationY: 1700,
         stationElements: [{
@@ -841,7 +827,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "705",
                 cy: "1700",
                 r: "30",
-                key: "circle_35"
+                key: "circle_34"
             },
         }, {
             type: "text",
@@ -849,13 +835,13 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1705",
-                children: "Автово",
-                key: "text_35"
+                children: "Кировский завод",
+                key: "text_34"
             },
         }]
 
     }, {
-        stationName: "Ленинский проспект",
+        stationName: "Автово",
         stationX: 705,
         stationY: 1800,
         stationElements: [{
@@ -865,7 +851,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "705",
                 cy: "1800",
                 r: "30",
-                key: "circle_36"
+                key: "circle_35"
             },
         }, {
             type: "text",
@@ -873,13 +859,13 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1805",
-                children: "Ленинский проспект",
-                key: "text_36"
+                children: "Автово",
+                key: "text_35"
             },
         }]
 
     }, {
-        stationName: "Проспект Ветеранов",
+        stationName: "Ленинский проспект",
         stationX: 705,
         stationY: 1900,
         stationElements: [{
@@ -889,7 +875,7 @@ export const SanktPetersburg: ISchemeElements = {
                 cx: "705",
                 cy: "1900",
                 r: "30",
-                key: "circle_37"
+                key: "circle_36"
             },
         }, {
             type: "text",
@@ -897,12 +883,871 @@ export const SanktPetersburg: ISchemeElements = {
                 className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1905",
+                children: "Ленинский проспект",
+                key: "text_36"
+            },
+        }]
+
+    }, {
+        stationName: "Проспект Ветеранов",
+        stationX: 705,
+        stationY: 2000,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_red_station",
+                cx: "705",
+                cy: "2000",
+                r: "30",
+                key: "circle_37"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "2005",
                 children: "Проспект Ветеранов",
                 key: "text_37"
             },
         }]
+    }, {
+        stationName: "Обводный канал",
+        stationX: 1300,
+        stationY: 1400,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1400",
+                r: "30",
+                key: "circle_38"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1405",
+                children: "Обводный канал",
+                key: "text_38"
+            },
+        }]
 
-    }],
+    }, {
+        stationName: "Волковская",
+        stationX: 1300,
+        stationY: 1500,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1500",
+                r: "30",
+                key: "circle_39"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1505",
+                children: "Волковская",
+                key: "text_39"
+            },
+        }]
+
+    }, {
+        stationName: "Бухарестская",
+        stationX: 1300,
+        stationY: 1600,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1600",
+                r: "30",
+                key: "circle_40"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1605",
+                children: "Бухарестская",
+                key: "text_40"
+            },
+        }]
+
+    }, {
+        stationName: "Международная",
+        stationX: 1300,
+        stationY: 1700,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1700",
+                r: "30",
+                key: "circle_41"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1705",
+                children: "Международная",
+                key: "text_41"
+            },
+        }]
+
+    }, {
+        stationName: "Проспект Славы",
+        stationX: 1300,
+        stationY: 1800,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1800",
+                r: "30",
+                key: "circle_42"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1805",
+                children: "Проспект Славы",
+                key: "text_42"
+            },
+        }]
+
+    }, {
+        stationName: "Дунайская",
+        stationX: 1300,
+        stationY: 1900,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "1900",
+                r: "30",
+                key: "circle_43"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "1905",
+                children: "Дунайская",
+                key: "text_43"
+            },
+        }]
+
+    }, {
+        stationName: "Шушары",
+        stationX: 1300,
+        stationY: 2000,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "1300",
+                cy: "2000",
+                r: "30",
+                key: "circle_44"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1335",
+                y: "2005",
+                children: "Шушары",
+                key: "text_44"
+            },
+        }]
+
+    }, {
+        stationName: "Адмиралтейская",
+        stationX: 705,
+        stationY: 1100,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "1100",
+                r: "30",
+                key: "circle_45"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "1095",
+                children: "Адмиралтейская",
+                key: "text_45"
+            },
+        }]
+
+    }, {
+        stationName: "Спортивная",
+        stationX: 705,
+        stationY: 900,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "900",
+                r: "30",
+                key: "circle_46"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "910",
+                children: "Спортивная",
+                key: "text_46"
+            },
+        }]
+
+    }, {
+        stationName: "Чкаловская",
+        stationX: 705,
+        stationY: 800,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "800",
+                r: "30",
+                key: "circle_47"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "810",
+                children: "Чкаловская",
+                key: "text_47"
+            },
+        }]
+
+    }, {
+        stationName: "Крестовский остров",
+        stationX: 705,
+        stationY: 700,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "700",
+                r: "30",
+                key: "circle_48"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "710",
+                children: ["Крестовский", React.createElement("tspan", {
+                    dx: "-3.5em",
+                    dy: "1em",
+                    key: "text_48_2"
+                }, "остров")],
+                key: "text_48"
+            },
+        }]
+
+    }, {
+        stationName: "Старая Деревня",
+        stationX: 705,
+        stationY: 600,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "600",
+                r: "30",
+                key: "circle_49"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "610",
+                children: "Старая Деревня",
+                key: "text_49"
+            },
+        }]
+
+    }, {
+        stationName: "Комендантский проспект",
+        stationX: 705,
+        stationY: 500,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_purple_station",
+                cx: "705",
+                cy: "500",
+                r: "30",
+                key: "circle_50"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "670",
+                y: "510",
+                children: ["Комендантский", React.createElement("tspan", {
+                    dx: "-4.5em",
+                    dy: "1em",
+                    key: "text_50_2"
+                }, "проспект")],
+                key: "text_50"
+            },
+        }]
+
+    }, {
+        stationName: "Василеостровская",
+        stationX: 425,
+        stationY: 1000,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "425",
+                cy: "1000",
+                r: "30",
+                key: "circle_51"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "390",
+                y: "1010",
+                children: "Василеостровская",
+                key: "text_51"
+            },
+        }]
+
+    }, {
+        stationName: "Приморская",
+        stationX: 425,
+        stationY: 800,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "425",
+                cy: "800",
+                r: "30",
+                key: "circle_52"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "390",
+                y: "810",
+                children: "Приморская",
+                key: "text_52"
+            },
+        }]
+
+    }, {
+        stationName: "Зенит",
+        stationX: 425,
+        stationY: 700,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "425",
+                cy: "700",
+                r: "30",
+                key: "circle_53"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "390",
+                y: "710",
+                children: "Зенит",
+                key: "text_53"
+            },
+        }]
+
+    }, {
+        stationName: "Беговая",
+        stationX: 425,
+        stationY: 600,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "425",
+                cy: "600",
+                r: "30",
+                key: "circle_54"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "390",
+                y: "610",
+                children: "Беговая",
+                key: "text_54"
+            },
+        }]
+
+    }, {
+        stationName: "Елизаровская",
+        stationX: 1860,
+        stationY: 1200,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "1860",
+                cy: "1200",
+                r: "30",
+                key: "circle_55"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1205",
+                children: "Елизаровская",
+                key: "text_55"
+            },
+        }]
+
+    }, {
+        stationName: "Ломоносовская",
+        stationX: 1860,
+        stationY: 1300,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "1860",
+                cy: "1300",
+                r: "30",
+                key: "circle_56"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1305",
+                children: "Ломоносовская",
+                key: "text_56"
+            },
+        }]
+
+    }, {
+        stationName: "Пролетарская",
+        stationX: 1860,
+        stationY: 1400,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "1860",
+                cy: "1400",
+                r: "30",
+                key: "circle_57"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1405",
+                children: "Пролетарская",
+                key: "text_57"
+            },
+        }]
+
+    }, {
+        stationName: "Обухово",
+        stationX: 1860,
+        stationY: 1500,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "1860",
+                cy: "1500",
+                r: "30",
+                key: "circle_58"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1505",
+                children: "Обухово",
+                key: "text_58"
+            },
+        }]
+
+    }, {
+        stationName: "Рыбацкое",
+        stationX: 1860,
+        stationY: 1600,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_green_station",
+                cx: "1860",
+                cy: "1600",
+                r: "30",
+                key: "circle_59"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1605",
+                children: "Рыбацкое",
+                key: "text_59"
+            },
+        }]
+
+    }, {
+        stationName: "Новочеркасская",
+        stationX: 2140,
+        stationY: 1200,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_orange_station",
+                cx: "2140",
+                cy: "1200",
+                r: "30",
+                key: "circle_60"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "2175",
+                y: "1205",
+                children: "Новочеркасская",
+                key: "text_60"
+            },
+        }]
+
+    }, {
+        stationName: "Ладожская",
+        stationX: 2140,
+        stationY: 1300,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_orange_station",
+                cx: "2140",
+                cy: "1300",
+                r: "30",
+                key: "circle_61"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "2175",
+                y: "1305",
+                children: "Ладожская",
+                key: "text_61"
+            },
+        }]
+
+    }, {
+        stationName: "Проспект Большевиков",
+        stationX: 2140,
+        stationY: 1400,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_orange_station",
+                cx: "2140",
+                cy: "1400",
+                r: "30",
+                key: "circle_62"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "2175",
+                y: "1405",
+                children: "Проспект Большевиков",
+                key: "text_62"
+            },
+        }]
+
+    }, {
+        stationName: "Улица Дыбенко",
+        stationX: 2140,
+        stationY: 1500,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_orange_station",
+                cx: "2140",
+                cy: "1500",
+                r: "30",
+                key: "circle_63"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "2175",
+                y: "1505",
+                children: "Улица Дыбенко",
+                key: "text_63"
+            },
+        }]
+
+    }, {
+        stationName: "Площадь Александра Невского 1",
+        stationX: 1860,
+        stationY: 1100,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_green_station",
+                d: "M1860,1130a30,30,0,0,1,0-60",
+                key: "circle_64"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1065",
+                children: "Площадь Александра Невского 1",
+                key: "text_64"
+            },
+        }]
+
+    }, {
+        stationName: "Площадь Александра Невского 2",
+        stationX: 1860,
+        stationY: 1100,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_orange_station",
+                d: "M1860,1130a30,30,0,0,0,0-60",
+                key: "circle_64"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1895",
+                y: "1135",
+                children: "Площадь Александра Невского 2",
+                key: "text_64"
+            },
+        }]
+
+    }, {
+        stationName: "Лиговский проспект",
+        stationX: 1580,
+        stationY: 1100,
+        stationElements: [{
+            type: "circle",
+            props: {
+                className: "map_element map_station map_orange_station",
+                cx: "1580",
+                cy: "1100",
+                r: "30",
+                key: "circle_65"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1615",
+                y: "1130",
+                children: "Лиговский проспект",
+                key: "text_65"
+            },
+        }]
+
+    }, {
+        stationName: "Достоевская",
+        stationX: 1300,
+        stationY: 1100,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_orange_station",
+                d: "M1300,1130a30,30,0,0,1,0-60",
+                key: "circle_66"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "1280",
+                y: "1135",
+                children: "Достоевская",
+                key: "text_66"
+            },
+        }]
+
+    }, {
+        stationName: "Маяковская",
+        stationX: 1300,
+        stationY: 1000,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_green_station",
+                d: "M1300,1030a30,30,0,0,1,0-60",
+                key: "circle_67"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "1275",
+                y: "980",
+                children: "Маяковская",
+                key: "text_67"
+            },
+        }]
+
+    }, {
+        stationName: "Звенигородская",
+        stationX: 1300,
+        stationY: 1300,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_purple_station",
+                d: "M1300,1330a30,30,0,0,1,0-60",
+                key: "circle_68"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1325",
+                y: "1330",
+                children: "Звенигородская",
+                key: "text_68"
+            },
+        }]
+
+    }, {
+        stationName: "Гостиный двор",
+        stationX: 1000,
+        stationY: 1000,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_green_station",
+                d: "M1000,1030a30,30,0,0,1,0-60",
+                key: "circle_69"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "875",
+                y: "960",
+                children: ["Гостиный", React.createElement("tspan", {
+                    dx: "-2.5em",
+                    dy: "1em",
+                    key: "text_69_2"
+                }, "двор")],
+                key: "text_69"
+            },
+        }]
+
+    }, {
+        stationName: "Спасская",
+        stationX: 1000,
+        stationY: 1100,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_orange_station",
+                d: "M1000 1070C1005.27 1070 1010.44 1071.39 1015 1074.02C1019.56 1076.65 1023.35 1080.44 1025.98 1085.01C1028.62 1089.57 1030 1094.74 1030 1100.01C1030 1105.28 1028.61 1110.45 1025.97 1115.01L1000 1100L1000 1070Z",
+                key: "circle_70"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text",
+                x: "1025",
+                y: "1080",
+                children: "Спасская",
+                key: "text_70"
+            },
+        }]
+
+    }, {
+        stationName: "Садовая",
+        stationX: 1000,
+        stationY: 1100,
+        stationElements: [{
+            type: "path",
+            props: {
+                className: "map_element map_station map_purple_station",
+                d: "M974.019 1115C971.386 1110.44 970 1105.27 970 1100C970 1094.74 971.385 1089.56 974.018 1085C976.65 1080.44 980.436 1076.66 984.996 1074.02C989.556 1071.39 994.728 1070 999.994 1070L1000 1100L974.019 1115Z",
+                key: "circle_71"
+            },
+        }, {
+            type: "text",
+            props: {
+                className: "visual map_element map_text map_text_left",
+                x: "975",
+                y: "1080",
+                children: "Садовая",
+                key: "text_71"
+            },
+        }]
+
+    },],
     roads: [
         {
             from: "Парнас",
@@ -910,7 +1755,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,200V300",
+                d: "M1000,100V200",
                 key: "road_1"
             }
         }, {
@@ -919,7 +1764,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,300V400",
+                d: "M1000,200V300",
                 key: "road_2"
             }
         }, {
@@ -928,7 +1773,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,400V500",
+                d: "M1000,300V400",
                 key: "road_3"
             }
         }, {
@@ -937,7 +1782,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,500V600",
+                d: "M1000,400V500",
                 key: "road_4"
             }
         }, {
@@ -946,7 +1791,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,600V700",
+                d: "M1000,500V600",
                 key: "road_5"
             }
         }, {
@@ -955,7 +1800,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,700V800",
+                d: "M1000,600V700",
                 key: "road_6"
             }
         }, {
@@ -964,7 +1809,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,800V900",
+                d: "M1000,700V800",
                 key: "road_7"
             }
         }, {
@@ -973,7 +1818,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,900v100",
+                d: "M1000,800v200",
                 key: "road_8"
             }
         }, {
@@ -991,7 +1836,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1100v105",
+                d: "M1000,1100v200",
                 key: "road_10"
             }
         }, {
@@ -1000,7 +1845,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1200v100",
+                d: "M1000,1300v100",
                 key: "road_11"
             }
         }, {
@@ -1009,7 +1854,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1300v100",
+                d: "M1000,1400v100",
                 key: "road_12"
             }
         }, {
@@ -1018,7 +1863,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1400v100",
+                d: "M1000,1500v100",
                 key: "road_13"
             }
         }, {
@@ -1027,7 +1872,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1500v100",
+                d: "M1000,1600v100",
                 key: "road_14"
             }
         }, {
@@ -1036,7 +1881,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1600v100",
+                d: "M1000,1700v100",
                 key: "road_15"
             }
         }, {
@@ -1045,7 +1890,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1700v100",
+                d: "M1000,1800v100",
                 key: "road_16"
             }
         }, {
@@ -1054,7 +1899,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_blue_road",
-                d: "M1000,1800v100",
+                d: "M1000,1900v100",
                 key: "road_17"
             }
         }, {
@@ -1153,7 +1998,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M1300,1100v100",
+                d: "M1300,1100v200",
                 key: "road_28"
             }
         }, {
@@ -1161,8 +2006,8 @@ export const SanktPetersburg: ISchemeElements = {
             to: "Технологический институт 1",
             type: "path",
             props: {
-                className: "map_element map_road_not_stroke map_red_road",
-                d: "M1027.75 1212.5H1293.82V1187.5H1027C1029.04 1191.65 1030.13 1196.19 1030.13 1200.83C1030.13 1204.86 1029.31 1208.81 1027.75 1212.5Z",
+                className: "map_element map_road map_red_road",
+                d: "M1300 1300H1025",
                 key: "road_29"
             }
         }, {
@@ -1171,7 +2016,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M986.15,1198.12,705,1400",
+                d: "M1000.15 1294L719 1495.88",
                 key: "road_30"
             }
         }, {
@@ -1180,7 +2025,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M705,1400v100",
+                d: "M705,1500v100",
                 key: "road_31"
             }
         }, {
@@ -1189,7 +2034,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M705,1500v100",
+                d: "M705,1600v100",
                 key: "road_32"
             }
         }, {
@@ -1198,7 +2043,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M705,1600v100",
+                d: "M705,1700v100",
                 key: "road_33"
             }
         }, {
@@ -1207,7 +2052,7 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M705,1700v100",
+                d: "M705,1800v100",
                 key: "road_34"
             }
         }, {
@@ -1216,8 +2061,314 @@ export const SanktPetersburg: ISchemeElements = {
             type: "path",
             props: {
                 className: "map_element map_road map_red_road",
-                d: "M705,1800v100",
+                d: "M705,1900v100",
                 key: "road_35"
+            }
+        }, {
+            from: "Беговая",
+            to: "Зенит",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M425,600V700",
+                key: "road_36"
+            }
+        }, {
+            from: "Зенит",
+            to: "Приморская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M425,700V800",
+                key: "road_37"
+            }
+        }, {
+            from: "Приморская",
+            to: "Василеостровская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M425,800v200",
+                key: "road_38"
+            }
+        }, {
+            from: "Василеостровская",
+            to: "Гостинный двор",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M425 1000H1000",
+                key: "road_39"
+            }
+        }, {
+            from: "Гостинный двор",
+            to: "Маяковская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1000 1000H1300",
+                key: "road_40"
+            }
+        }, {
+            from: "Маяковская",
+            to: "Площадь Александра Невского 1",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1300 1000H1860",
+                key: "road_41"
+            }
+        }, {
+            from: "Маяковская",
+            to: "Площадь Александра Невского 1",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,987.5v112.5",
+                key: "road_42"
+            }
+        }, {
+            from: "Площадь Александра Невского 1",
+            to: "Елизаровская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,1100v100",
+                key: "road_43"
+            }
+        }, {
+            from: "Елизаровская",
+            to: "Ломоносовская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,1200v100",
+                key: "road_44"
+            }
+        }, {
+            from: "Ломоносовская",
+            to: "Пролетарская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,1300v100",
+                key: "road_45"
+            }
+        }, {
+            from: "Пролетарская",
+            to: "Обухово",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,1400v100",
+                key: "road_46"
+            }
+        }, {
+            from: "Обухово",
+            to: "Рыбацкое",
+            type: "path",
+            props: {
+                className: "map_element map_road map_green_road",
+                d: "M1860,1500v100",
+                key: "road_47"
+            }
+        }, {
+            from: "Комендантский проспект",
+            to: "Старая Деревня",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705,500V600",
+                key: "road_48"
+            }
+        }, {
+            from: "Старая Деревня",
+            to: "Крестовский остров",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705,600V700",
+                key: "road_49"
+            }
+        }, {
+            from: "Крестовский остров",
+            to: "Чкаловская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705,700V800",
+                key: "road_50"
+            }
+        }, {
+            from: "Чкаловская",
+            to: "Спортивная",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705,800V900",
+                key: "road_51"
+            }
+        }, {
+            from: "Спортивная",
+            to: "Адмиралтейская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705,900v200",
+                key: "road_52"
+            }
+        }, {
+            from: "Адмиралтейская",
+            to: "Садовая",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M705 1100H1000",
+                key: "road_53"
+            }
+        }, {
+            from: "Садовая",
+            to: "Звенигородская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300 1300L1000 1100",
+                key: "road_54"
+            }
+        }, {
+            from: "Звенигородская",
+            to: "Обводный канал",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1300v100",
+                key: "road_55"
+            }
+        }, {
+            from: "Обводный канал",
+            to: "Волковская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1400v100",
+                key: "road_56"
+            }
+        }, {
+            from: "Волковская",
+            to: "Бухарестская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1500v100",
+                key: "road_57"
+            }
+        }, {
+            from: "Бухарестская",
+            to: "Международная",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1600v100",
+                key: "road_58"
+            }
+        }, {
+            from: "Международная",
+            to: "Проспект Славы",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1700v100",
+                key: "road_59"
+            }
+        }, {
+            from: "Проспект Славы",
+            to: "Дунайская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1800v100",
+                key: "road_60"
+            }
+        }, {
+            from: "Дунайская",
+            to: "Шушары",
+            type: "path",
+            props: {
+                className: "map_element map_road map_purple_road",
+                d: "M1300,1900v100",
+                key: "road_61"
+            }
+        }, {
+            from: "Спасская",
+            to: "Достоевская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M1000 1100H1300",
+                key: "road_62"
+            }
+        }, {
+            from: "Достоевская",
+            to: "Лиговский проспект",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M1300 1100H1580",
+                key: "road_63"
+            }
+        }, {
+            from: "Лиговский проспект",
+            to: "Площадь Александра Невского 2",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M1580 1100H1860",
+                key: "road_64"
+            }
+        }, {
+            from: "Площадь Александра Невского 2",
+            to: "Новочеркасская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M1860 1100H2140",
+                key: "road_65"
+            }
+        }, {
+            from: "Площадь Александра Невского 2",
+            to: "Новочеркасская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M2140,1087.5v112.5",
+                key: "road_66"
+            }
+        }, {
+            from: "Новочеркасская",
+            to: "Ладожская",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M2140,1200v100",
+                key: "road_67"
+            }
+        }, {
+            from: "Ладожская",
+            to: "Проспект Большевиков",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M2140,1300v100",
+                key: "road_68"
+            }
+        }, {
+            from: "Проспект Большевиков",
+            to: "Улица Дыбенко",
+            type: "path",
+            props: {
+                className: "map_element map_road map_orange_road",
+                d: "M2140,1400v100",
+                key: "road_69"
             }
         }
     ]
