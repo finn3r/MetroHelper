@@ -25,7 +25,7 @@ const App: React.FC = () => {
                 <MetroScheme/>
                 <div className="menu__container">
                     <div className="menu__content">
-                        <header className="menu__header">Санкт-Петербург — схема метро</header>
+                        <h1 className="menu__header">Санкт-Петербург — схема метро</h1>
                         <InputMenu/>
                         <WayList/>
                     </div>
