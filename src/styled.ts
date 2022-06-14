@@ -114,6 +114,10 @@ export const HideButtonContent = styled(ButtonContent)<{status: boolean}>`
   width: 3rem;
 `;
 
+export const SwapButtonContent = styled(ButtonContent)<{rotate: boolean}>`
+  transform: ${props => props.rotate ? "rotate(360deg)" : ""};
+`;
+
 export const InputContainer = styled.div`
   display: grid;
   grid-template-areas: "circle field";

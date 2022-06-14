@@ -16,6 +16,7 @@ const InputList: React.FC = () => {
     const stationsNames: string[] = Object.keys(stations);
     const [fromFocus, setFromFocus] = useState(false);
     const [toFocus, setToFocus] = useState(false);
+    const [rotate, setRotate] = useState(false);
 
     const stationOptions = {
         from: stationsNames.filter(station => station !== to.state),
@@ -68,9 +69,14 @@ const InputList: React.FC = () => {
                    options={stationOptions.to}/>
             {/*SWAP BUTTON*/}
             <ST.ButtonContainer style={{gridArea: "swap"}}>
-                <ST.ButtonContent disabled={!from.state && !to.state}>
-                    <SwapButton style={{width: "100%"}} onClick={() => dispatch(swap())}/>
-                </ST.ButtonContent>
+                <ST.SwapButtonContent disabled={!from.state && !to.state} rotate={rotate}>
+                    <SwapButton style={{width: "100%"}}
+                                onClick={() => {
+                                    dispatch(swap());
+                                    setRotate(!rotate);
+                                }}
+                    />
+                </ST.SwapButtonContent>
             </ST.ButtonContainer>
             {/*CLEAR BUTTON*/}
             <ST.ButtonContainer style={{gridArea: "clear", marginLeft: ".7rem"}}>
