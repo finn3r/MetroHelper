@@ -41,7 +41,7 @@ export const MenuContainer = styled.div`
   display: flex;
   background: ${props => props.theme.second_bg};
   position: absolute;
-  width: 350px;
+  width: 25rem;
   flex-direction: column;
 
   backdrop-filter: blur(3px);
