@@ -13,10 +13,10 @@ interface ThemeState {
 
 const lightTheme: ThemeState = {
     name: "light",
-    bg: "rgba(109, 191, 224, 1)",
+    bg: "whitesmoke",
     dark_bg: "rgba(0, 162, 255, 1)",
-    alter_bg: "whitesmoke",
-    second_bg: "rgba(192, 192, 192, 0.45)",
+    alter_bg: "rgba(109, 191, 224, 1)",
+    second_bg: "rgba(192, 192, 192, 0.9)",
     second_dark_bg: "rgba(192, 192, 192, 1)",
     third_bg: "rgba(229,229,227,0.5)",
     fg: "rgba(0, 0, 0, 1)"
@@ -24,13 +24,13 @@ const lightTheme: ThemeState = {
 
 const darkTheme: ThemeState = {
     name: "dark",
-    bg: "rgba(0, 0, 0, 1)",
+    bg: "rgba(28, 28, 28, 1)",
     dark_bg: "grey",
-    alter_bg: "darkgrey",
-    second_bg: "rgba(109, 191, 224, 0.45)",
+    alter_bg: "rgb(37,95,112)",
+    second_bg: "rgba(70,70,70,0.9)",
     second_dark_bg: "rgba(109, 191, 224, 1)",
-    third_bg: "rgba(109, 191, 224, 0.2)",
-    fg: "rgba(109, 191, 224, 1)",
+    third_bg: "rgba(140,139,139,0.5)",
+    fg: "rgb(255,255,255)",
 }
 
 export const themeSlice = createSlice({
