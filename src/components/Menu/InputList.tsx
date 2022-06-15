@@ -69,7 +69,7 @@ const InputList: React.FC = () => {
                    options={stationOptions.to}/>
             {/*SWAP BUTTON*/}
             <ST.ButtonContainer style={{gridArea: "swap"}}>
-                <ST.SwapButtonContent disabled={!from.state && !to.state} rotate={rotate}>
+                <ST.SwapButtonContent disabled={!from.state && !to.state} status={rotate}>
                     <SwapButton style={{width: "100%"}}
                                 onClick={() => {
                                     dispatch(swap());
