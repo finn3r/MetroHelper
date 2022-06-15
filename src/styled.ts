@@ -67,10 +67,16 @@ const MenuItem = styled.div`
 `;
 
 export const MenuHeaderContainer = styled(MenuItem)`
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: space-around;
   border-bottom: 2px solid rgba(255, 255, 255, 0.18);
-  font-size: 135%;
+  font-size: 1.3rem;
   @media (max-width: 700px) {
-    display: none;
+    position: fixed;
+    top: calc(100% - var(--vh, 1vh) * 100 + 1px);
+    background: ${props => props.theme.second_bg};
   }
 `;
 
@@ -96,6 +102,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonContent = styled.div<{ disabled?: boolean, hidden?: boolean }>`
+  display: flex;
+  align-items: center;
   opacity: ${props => props.disabled ? 0.3 : 0.5};
   visibility: ${props => props.hidden ? "hidden" : "visible"};
   transition: all 0.7s, opacity 0.2s;
@@ -206,7 +214,7 @@ export const InputField = styled.input.attrs({
 
   ::placeholder {
     font-weight: 400;
-    color: ${props => props.theme.fg};
+    color: black;
     opacity: 0.6;
   }
 
@@ -252,7 +260,7 @@ export const InputUnFocusButton = styled(ButtonContent).attrs({
   align-items: center;
   justify-content: center;
   position: absolute;
-  color: ${props => props.theme.fg};
+  color: black;
   height: calc(100% - 1rem);
   right: .2rem;
   top: 1.2rem;

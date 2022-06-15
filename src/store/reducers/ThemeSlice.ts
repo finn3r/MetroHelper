@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface ThemeState {
+    name: string;
     bg: string;
     dark_bg: string;
     alter_bg: string;
@@ -10,6 +11,7 @@ interface ThemeState {
 }
 
 const lightTheme: ThemeState = {
+    name: "light",
     bg: "rgba(109, 191, 224, 1)",
     dark_bg: "rgba(0, 162, 255, 1)",
     alter_bg: "whitesmoke",
@@ -19,6 +21,7 @@ const lightTheme: ThemeState = {
 }
 
 const darkTheme: ThemeState = {
+    name: "dark",
     bg: "rgba(0, 0, 0, 1)",
     dark_bg: "grey",
     alter_bg: "darkgrey",
@@ -28,11 +31,11 @@ const darkTheme: ThemeState = {
 }
 
 export const themeSlice = createSlice({
-    name: 'user',
+    name: 'theme',
     initialState: lightTheme,
     reducers: {
         changeTheme(state) {
-            (state === lightTheme) ? state = darkTheme : state = lightTheme;
+            (state.name === "light") ? Object.assign(state, darkTheme) : state = Object.assign(state, lightTheme);
         }
     }
 })
