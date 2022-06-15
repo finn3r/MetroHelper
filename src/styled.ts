@@ -75,8 +75,10 @@ export const MenuHeaderContainer = styled(MenuItem)`
   font-size: 1.3rem;
   @media (max-width: 700px) {
     position: fixed;
+    font-size: 1rem;
+    color: black;
     top: calc(100% - var(--vh, 1vh) * 100 + 1px);
-    background: ${props => props.theme.second_bg};
+    background: ${props => props.theme.second_dark_bg};
   }
 `;
 
