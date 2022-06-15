@@ -1,4 +1,5 @@
 import styled, {createGlobalStyle} from "styled-components";
+import {IColors} from "./interfaces/IColors";
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -109,13 +110,13 @@ export const HideButtonContainer = styled(ButtonContainer)`
   justify-content: right;
 `;
 
-export const HideButtonContent = styled(ButtonContent)<{status: boolean}>`
+export const HideButtonContent = styled(ButtonContent)<{ status: boolean }>`
   transform: ${props => props.status ? "rotate(0deg)" : "rotate(180deg)"};
   width: 3rem;
 `;
 
-export const SwapButtonContent = styled(ButtonContent)<{rotate: boolean}>`
-  transform: ${props => props.rotate ? "rotate(360deg)" : ""};
+export const SwapButtonContent = styled(ButtonContent)<{ status: boolean }>`
+  transform: ${props => props.status ? "rotate(360deg)" : ""};
 `;
 
 export const InputContainer = styled.div`
@@ -357,4 +358,95 @@ export const MapContent = styled.svg`
   height: 100%;
   touch-action: none !important;
   fill: none;
+`;
+
+export const MapOpacity = styled.g`
+  opacity: 0.35;
+`;
+
+export const MapBackground = styled.rect`
+  fill: ${props => props.theme.bg};
+`;
+
+export const MapRiver = styled.path`
+  fill: ${props => props.theme.alter_bg};
+`;
+
+export const MapRiverNoFill = styled.path`
+  fill: none;
+  stroke: ${props => props.theme.alter_bg};
+  stroke-linejoin: round;
+  stroke-width: 40px;
+`;
+
+export const MapText = styled.text.attrs({
+    className: "map_text"
+})`
+  font-size: 1.2rem;
+  font-weight: 600;
+  fill: ${props => props.theme.fg};
+  transition: 0.1s;
+
+  :hover {
+    cursor: pointer;
+    fill: tomato;
+  }
+`;
+
+export const MapTextLeft = styled(MapText)`
+  text-anchor: end;
+`;
+
+const colors: IColors = {
+    "blue": {
+        road: "#29335c",
+        station: "#0b86bd"
+    },
+    "red": {
+        road: "#780116",
+        station: "#ee6352"
+    },
+    "purple": {
+        road: "#4A02C9",
+        station: "#7302C9"
+    },
+    "orange": {
+        road: "#C96902",
+        station: "#FC8C17"
+    },
+    "green": {
+        road: "#055718",
+        station: "#038A22"
+    }
+};
+
+export const MapRoad = styled.path<{ color: string }>`
+  fill: ${props => colors[props.color].road};
+  stroke: ${props => colors[props.color].road};
+  stroke-miterlimit: 10;
+  stroke-width: 25px;
+`;
+
+export const MapStationCircle = styled.circle<{ color: string }>`
+  fill: ${props => colors[props.color].station};
+
+  :hover {
+    cursor: pointer;
+
+    & + .map_text {
+      fill: tomato;
+    }
+  }
+`;
+
+export const MapStationPath = styled.path<{ color: string }>`
+  fill: ${props => colors[props.color].station};
+
+  :hover {
+    cursor: pointer;
+
+    & + .map_text {
+      fill: tomato;
+    }
+  }
 `;

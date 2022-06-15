@@ -8,7 +8,7 @@ import {
     IStationElement
 } from "../../interfaces/ISchemeElements";
 import {useAppSelector} from "../../hooks/redux";
-import './style.scss';
+import * as ST from '../../styled';
 
 const Background: React.FC<{ background: IBackgroundElement, selectStation(station: IStation | undefined): void }> = ({background, selectStation}) => {
     return (
@@ -85,12 +85,12 @@ const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
                     if (show) return React.createElement(element.type, element.props); else return null;
                 })}
             </g>
-            <g className={"opacity"}>
+            <ST.MapOpacity>
                 <Background background={elements.background} selectStation={selectStation}/>
                 <OtherElements others={elements.others} selectStation={selectStation}/>
                 <RoadsElements roads={elements.roads} selectStation={selectStation}/>
                 <StationElements stations={elements.stations} selectStation={selectStation}/>
-            </g>
+            </ST.MapOpacity>
             <g className={"stations"}>
                 {elements.stations.map((station) => {
                     const show: boolean = way.includes(station.stationName);

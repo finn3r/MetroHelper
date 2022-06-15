@@ -1,11 +1,11 @@
 import React from 'react';
 import {ISchemeElements} from "../../interfaces/ISchemeElements";
+import * as ST from '../../styled';
 
 const metroStationsElementsSPB: ISchemeElements = {
     background: {
-        type: "rect",
+        type: ST.MapBackground,
         props: {
-            className: "visual map_element map_background",
             width: "2400",
             height: "2050",
             key: "background_1"
@@ -15,23 +15,20 @@ const metroStationsElementsSPB: ISchemeElements = {
     },
     others: [
         {
-            type: "path",
+            type: ST.MapRiver,
             props: {
-                className: "map_element map_river",
                 d: "M722.28 410C731.08 410 738.28 416.1 738.28 423.59V612.52C738.28 620.01 731.12 626.11 722.28 626.11H214V423.59C214 416.1 221.16 410 230 410H722.28ZM722.28 370H230C199.09 370 174 394 174 423.59V666.11H722.28C753.18 666.11 778.28 642.11 778.28 612.52V423.59C778.28 393.99 753.22 370 722.28 370Z",
                 key: "path_1"
             },
         }, {
-            type: "path",
+            type: ST.MapRiver,
             props: {
-                className: "map_element map_river",
                 d: "M1125.15 665.6C1133.93 665.6 1141.06 671.71 1141.06 679.19V1007C1141.06 1014.5 1133.9 1020.59 1125.06 1020.59L214 1021.53V667.45L1125.15 665.6ZM1125.15 625.6L174 627.53V1061.53L1125.1 1060.53C1156.01 1060.53 1181.1 1036.53 1181.1 1006.94V679.19C1181.1 649.59 1156.1 625.6 1125.1 625.6H1125.15Z",
                 key: "path_2"
             },
         }, {
-            type: "path",
+            type: ST.MapRiverNoFill,
             props: {
-                className: "map_element map_river_no_fill",
                 d: "M1156 859H1979V1920",
                 key: "path_3"
             }
@@ -42,18 +39,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 100,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "100",
                 r: "30",
                 key: "circle_1"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "105",
                 children: "Парнас",
@@ -65,18 +61,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 200,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "200",
                 r: "30",
                 key: "circle_2"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "205",
                 children: ["Проспект", React.createElement("tspan", {
@@ -92,18 +87,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 300,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "300",
                 r: "30",
                 key: "circle_3"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "305",
                 children: "Озерки",
@@ -115,18 +109,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "400",
                 r: "30",
                 key: "circle_4"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "405",
                 children: "Удельная",
@@ -138,18 +131,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "500",
                 r: "30",
                 key: "circle_5"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "505",
                 children: "Пионерская",
@@ -161,18 +153,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "600",
                 r: "30",
                 key: "circle_6"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "605",
                 children: "Чёрная речка",
@@ -184,18 +175,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "700",
                 r: "30",
                 key: "circle_7"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "705",
                 children: "Петроградская",
@@ -207,18 +197,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "800",
                 r: "30",
                 key: "circle_8"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "805",
                 children: "Горьковская",
@@ -230,16 +219,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1000,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 d: "M1000,1030a30,30,0,0,0,0-60",
                 key: "circle_69"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "960",
                 children: ["Невский", React.createElement("tspan", {
@@ -255,16 +243,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 d: "M1025.98 1115C1023.35 1119.56 1019.56 1123.35 1015 1125.98C1010.44 1128.61 1005.27 1130 1000 1130C994.738 1130 989.565 1128.62 985.004 1125.98C980.444 1123.35 976.656 1119.57 974.022 1115.01L1000 1100L1025.98 1115Z",
                 key: "circle_10"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "970",
                 y: "1140",
                 children: ["Сенная", React.createElement("tspan", {
@@ -280,16 +267,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1015,
         stationY: 1300,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 d: "M1000,1330a30,30,0,0,0,0-60",
                 key: "circle_11"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1335",
                 children: ["Технологический", React.createElement("tspan", {
@@ -305,18 +291,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1400",
                 r: "30",
                 key: "circle_12"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1405",
                 children: "Фрунзенская",
@@ -328,18 +313,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1500",
                 r: "30",
                 key: "circle_13"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1505",
                 children: "Московские ворота",
@@ -351,18 +335,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1600",
                 r: "30",
                 key: "circle_14"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1605",
                 children: "Электросила",
@@ -374,18 +357,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1700",
                 r: "30",
                 key: "circle_15"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1705",
                 children: "Парк Победы",
@@ -397,18 +379,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1800",
                 r: "30",
                 key: "circle_16"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1805",
                 children: "Московская",
@@ -420,18 +401,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1900,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "1900",
                 r: "30",
                 key: "circle_17"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "1905",
                 children: "Звёздная",
@@ -443,18 +423,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 2000,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_blue_station",
+                color: "blue",
                 cx: "1000",
                 cy: "2000",
                 r: "30",
                 key: "circle_18"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1035",
                 y: "2005",
                 children: "Купчино",
@@ -466,18 +445,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 100,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "100",
                 r: "30",
                 key: "circle_19"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "105",
                 children: "Девяткино",
@@ -490,18 +468,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 200,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "200",
                 r: "30",
                 key: "circle_20"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "205",
                 children: "Гражданский проспект",
@@ -513,18 +490,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 300,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "300",
                 r: "30",
                 key: "circle_21"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "305",
                 children: "Академическая",
@@ -537,18 +513,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "400",
                 r: "30",
                 key: "circle_22"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "405",
                 children: "Политехническая",
@@ -561,18 +536,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "500",
                 r: "30",
                 key: "circle_23"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "505",
                 children: "Площадь Мужества",
@@ -585,18 +559,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "600",
                 r: "30",
                 key: "circle_24"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "605",
                 children: "Лесная",
@@ -609,18 +582,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "700",
                 r: "30",
                 key: "circle_25"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "705",
                 children: "Выборгская",
@@ -633,18 +605,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "800",
                 r: "30",
                 key: "circle_26"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "805",
                 children: "Площадь Ленина",
@@ -657,18 +628,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 900,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "1300",
                 cy: "900",
                 r: "30",
                 key: "circle_27"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "905",
                 children: "Чернышевская",
@@ -681,16 +651,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1000,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 d: "M1300,1030a30,30,0,0,0,0-60",
                 key: "circle_67"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1325",
                 y: "980",
                 children: "Площадь Восстания",
@@ -703,16 +672,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 d: "M1300,1130a30,30,0,0,0,0-60",
                 key: "circle_29"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1325",
                 y: "1080",
                 children: "Владимирская",
@@ -725,16 +693,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1300,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 d: "M1300,1330a30,30,0,0,0,0-60",
                 key: "circle_29"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1325",
                 y: "1280",
                 children: "Пушкинская",
@@ -747,16 +714,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 985,
         stationY: 1300,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 d: "M1000,1330a30,30,0,0,1,0-60",
                 key: "circle_31"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "950",
                 y: "1280",
                 children: ["Технологический", React.createElement("tspan", {
@@ -773,18 +739,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "1500",
                 r: "30",
                 key: "circle_32"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1510",
                 children: "Балтийская",
@@ -797,18 +762,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "1600",
                 r: "30",
                 key: "circle_33"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1605",
                 children: "Нарвская",
@@ -821,18 +785,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "1700",
                 r: "30",
                 key: "circle_34"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1705",
                 children: "Кировский завод",
@@ -845,18 +808,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "1800",
                 r: "30",
                 key: "circle_35"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1805",
                 children: "Автово",
@@ -869,18 +831,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1900,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "1900",
                 r: "30",
                 key: "circle_36"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1905",
                 children: "Ленинский проспект",
@@ -893,18 +854,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 2000,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_red_station",
+                color: "red",
                 cx: "705",
                 cy: "2000",
                 r: "30",
                 key: "circle_37"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "2005",
                 children: "Проспект Ветеранов",
@@ -916,18 +876,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1400",
                 r: "30",
                 key: "circle_38"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1405",
                 children: "Обводный канал",
@@ -940,18 +899,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1500",
                 r: "30",
                 key: "circle_39"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1505",
                 children: "Волковская",
@@ -964,18 +922,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1600",
                 r: "30",
                 key: "circle_40"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1605",
                 children: "Бухарестская",
@@ -988,18 +945,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1700",
                 r: "30",
                 key: "circle_41"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1705",
                 children: "Международная",
@@ -1012,18 +968,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1800",
                 r: "30",
                 key: "circle_42"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1805",
                 children: "Проспект Славы",
@@ -1036,18 +991,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1900,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "1900",
                 r: "30",
                 key: "circle_43"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "1905",
                 children: "Дунайская",
@@ -1060,18 +1014,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 2000,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "1300",
                 cy: "2000",
                 r: "30",
                 key: "circle_44"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1335",
                 y: "2005",
                 children: "Шушары",
@@ -1084,18 +1037,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 1100,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "1100",
                 r: "30",
                 key: "circle_45"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "1095",
                 children: "Адмиралтейская",
@@ -1108,18 +1060,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 900,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "900",
                 r: "30",
                 key: "circle_46"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "910",
                 children: "Спортивная",
@@ -1132,18 +1083,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "800",
                 r: "30",
                 key: "circle_47"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "810",
                 children: "Чкаловская",
@@ -1156,18 +1106,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "700",
                 r: "30",
                 key: "circle_48"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "710",
                 children: ["Крестовский", React.createElement("tspan", {
@@ -1184,18 +1133,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "600",
                 r: "30",
                 key: "circle_49"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "610",
                 children: "Старая Деревня",
@@ -1208,18 +1156,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 705,
         stationY: 500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 cx: "705",
                 cy: "500",
                 r: "30",
                 key: "circle_50"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "670",
                 y: "510",
                 children: ["Комендантский", React.createElement("tspan", {
@@ -1236,18 +1183,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 425,
         stationY: 1000,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "425",
                 cy: "1000",
                 r: "30",
                 key: "circle_51"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "390",
                 y: "1010",
                 children: "Василеостровская",
@@ -1260,18 +1206,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 425,
         stationY: 800,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "425",
                 cy: "800",
                 r: "30",
                 key: "circle_52"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "390",
                 y: "810",
                 children: "Приморская",
@@ -1284,18 +1229,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 425,
         stationY: 700,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "425",
                 cy: "700",
                 r: "30",
                 key: "circle_53"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "390",
                 y: "710",
                 children: "Зенит",
@@ -1308,18 +1252,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 425,
         stationY: 600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "425",
                 cy: "600",
                 r: "30",
                 key: "circle_54"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "390",
                 y: "610",
                 children: "Беговая",
@@ -1332,18 +1275,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1200,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "1860",
                 cy: "1200",
                 r: "30",
                 key: "circle_55"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1205",
                 children: "Елизаровская",
@@ -1356,18 +1298,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1300,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "1860",
                 cy: "1300",
                 r: "30",
                 key: "circle_56"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1305",
                 children: "Ломоносовская",
@@ -1380,18 +1321,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "1860",
                 cy: "1400",
                 r: "30",
                 key: "circle_57"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1405",
                 children: "Пролетарская",
@@ -1404,18 +1344,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "1860",
                 cy: "1500",
                 r: "30",
                 key: "circle_58"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1505",
                 children: "Обухово",
@@ -1428,18 +1367,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1600,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 cx: "1860",
                 cy: "1600",
                 r: "30",
                 key: "circle_59"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1605",
                 children: "Рыбацкое",
@@ -1452,18 +1390,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 2140,
         stationY: 1200,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 cx: "2140",
                 cy: "1200",
                 r: "30",
                 key: "circle_60"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "2175",
                 y: "1205",
                 children: "Новочеркасская",
@@ -1476,18 +1413,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 2140,
         stationY: 1300,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 cx: "2140",
                 cy: "1300",
                 r: "30",
                 key: "circle_61"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "2175",
                 y: "1305",
                 children: "Ладожская",
@@ -1500,18 +1436,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 2140,
         stationY: 1400,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 cx: "2140",
                 cy: "1400",
                 r: "30",
                 key: "circle_62"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "2175",
                 y: "1405",
                 children: "Проспект Большевиков",
@@ -1524,18 +1459,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 2140,
         stationY: 1500,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 cx: "2140",
                 cy: "1500",
                 r: "30",
                 key: "circle_63"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "2175",
                 y: "1505",
                 children: "Улица Дыбенко",
@@ -1548,16 +1482,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 d: "M1860,1130a30,30,0,0,1,0-60",
                 key: "circle_64"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1065",
                 children: "Площадь Александра Невского 1",
@@ -1570,16 +1503,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1860,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 d: "M1860,1130a30,30,0,0,0,0-60",
                 key: "circle_64"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1895",
                 y: "1135",
                 children: "Площадь Александра Невского 2",
@@ -1592,18 +1524,17 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1580,
         stationY: 1100,
         stationElements: [{
-            type: "circle",
+            type: ST.MapStationCircle,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 cx: "1580",
                 cy: "1100",
                 r: "30",
                 key: "circle_65"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1615",
                 y: "1130",
                 children: "Лиговский проспект",
@@ -1616,16 +1547,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 d: "M1300,1130a30,30,0,0,1,0-60",
                 key: "circle_66"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "1280",
                 y: "1135",
                 children: "Достоевская",
@@ -1638,16 +1568,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1000,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 d: "M1300,1030a30,30,0,0,1,0-60",
                 key: "circle_67"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "1275",
                 y: "980",
                 children: "Маяковская",
@@ -1660,16 +1589,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1300,
         stationY: 1300,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 d: "M1300,1330a30,30,0,0,1,0-60",
                 key: "circle_68"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1325",
                 y: "1330",
                 children: "Звенигородская",
@@ -1682,16 +1610,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1000,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_green_station",
+                color: "green",
                 d: "M1000,1030a30,30,0,0,1,0-60",
                 key: "circle_69"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "875",
                 y: "960",
                 children: ["Гостиный", React.createElement("tspan", {
@@ -1708,16 +1635,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_orange_station",
+                color: "orange",
                 d: "M1000 1070C1005.27 1070 1010.44 1071.39 1015 1074.02C1019.56 1076.65 1023.35 1080.44 1025.98 1085.01C1028.62 1089.57 1030 1094.74 1030 1100.01C1030 1105.28 1028.61 1110.45 1025.97 1115.01L1000 1100L1000 1070Z",
                 key: "circle_70"
             },
         }, {
-            type: "text",
+            type: ST.MapText,
             props: {
-                className: "visual map_element map_text",
                 x: "1025",
                 y: "1080",
                 children: "Спасская",
@@ -1730,16 +1656,15 @@ const metroStationsElementsSPB: ISchemeElements = {
         stationX: 1000,
         stationY: 1100,
         stationElements: [{
-            type: "path",
+            type: ST.MapStationPath,
             props: {
-                className: "map_element map_station map_purple_station",
+                color: "purple",
                 d: "M974.019 1115C971.386 1110.44 970 1105.27 970 1100C970 1094.74 971.385 1089.56 974.018 1085C976.65 1080.44 980.436 1076.66 984.996 1074.02C989.556 1071.39 994.728 1070 999.994 1070L1000 1100L974.019 1115Z",
                 key: "circle_71"
             },
         }, {
-            type: "text",
+            type: ST.MapTextLeft,
             props: {
-                className: "visual map_element map_text map_text_left",
                 x: "975",
                 y: "1080",
                 children: "Садовая",
@@ -1752,621 +1677,621 @@ const metroStationsElementsSPB: ISchemeElements = {
         {
             from: "Парнас",
             to: "Проспект Просвещения",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,100V200",
                 key: "road_1"
             }
         }, {
             from: "Проспект Просвещения",
             to: "Озерки",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,200V300",
                 key: "road_2"
             }
         }, {
             from: "Озерки",
             to: "Удельная",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,300V400",
                 key: "road_3"
             }
         }, {
             from: "Удельная",
             to: "Пионерская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,400V500",
                 key: "road_4"
             }
         }, {
             from: "Пионерская",
             to: "Чёрная речка",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,500V600",
                 key: "road_5"
             }
         }, {
             from: "Чёрная речка",
             to: "Петроградская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,600V700",
                 key: "road_6"
             }
         }, {
             from: "Петроградская",
             to: "Горьковская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,700V800",
                 key: "road_7"
             }
         }, {
             from: "Горьковская",
             to: "Невский проспект",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,800v200",
                 key: "road_8"
             }
         }, {
             from: "Невский проспект",
             to: "Сенная площадь",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1000v100",
                 key: "road_9"
             }
         }, {
             from: "Сенная площадь",
             to: "Технологический институт 2",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1100v200",
                 key: "road_10"
             }
         }, {
             from: "Технологический институт 2",
             to: "Фрунзенская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1300v100",
                 key: "road_11"
             }
         }, {
             from: "Фрунзенская",
             to: "Московские ворота",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1400v100",
                 key: "road_12"
             }
         }, {
             from: "Московские ворота",
             to: "Электросила",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1500v100",
                 key: "road_13"
             }
         }, {
             from: "Электросила",
             to: "Парк Победы",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1600v100",
                 key: "road_14"
             }
         }, {
             from: "Парк Победы",
             to: "Московская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1700v100",
                 key: "road_15"
             }
         }, {
             from: "Московская",
             to: "Звёздная",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1800v100",
                 key: "road_16"
             }
         }, {
             from: "Звёздная",
             to: "Купчино",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_blue_road",
+                color: "blue",
                 d: "M1000,1900v100",
                 key: "road_17"
             }
         }, {
             from: "Девяткино",
             to: "Гражданский проспект",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,100V200",
                 key: "road_18"
             }
         }, {
             from: "Гражданский проспект",
             to: "Академическая",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,200V300",
                 key: "road_19"
             }
         }, {
             from: "Академическая",
             to: "Политехническая",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,300V400",
                 key: "road_20"
             }
         }, {
             from: "Политехническая",
             to: "Площадь Мужества",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,400V500",
                 key: "road_21"
             }
         }, {
             from: "Площадь Мужества",
             to: "Лесная",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,500V600",
                 key: "road_22"
             }
         }, {
             from: "Лесная",
             to: "Выборгская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,600V700",
                 key: "road_23"
             }
         }, {
             from: "Выборгская",
             to: "Площадь Ленина",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,700V800",
                 key: "road_24"
             }
         }, {
             from: "Площадь Ленина",
             to: "Чернышевская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,800V900",
                 key: "road_25"
             }
         }, {
             from: "Чернышевская",
             to: "Площадь Восстания",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,900v100",
                 key: "road_26"
             }
         }, {
             from: "Площадь Восстания",
             to: "Владимирская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,1000v100",
                 key: "road_27"
             }
         }, {
             from: "Владимирская",
             to: "Пушкинская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300,1100v200",
                 key: "road_28"
             }
         }, {
             from: "Пушкинская",
             to: "Технологический институт 1",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1300 1300H1025",
                 key: "road_29"
             }
         }, {
             from: "Технологический институт 1",
             to: "Балтийская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M1000.15 1294L719 1495.88",
                 key: "road_30"
             }
         }, {
             from: "Балтийская",
             to: "Нарвская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M705,1500v100",
                 key: "road_31"
             }
         }, {
             from: "Нарвская",
             to: "Кировский завод",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M705,1600v100",
                 key: "road_32"
             }
         }, {
             from: "Кировский завод",
             to: "Автово",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M705,1700v100",
                 key: "road_33"
             }
         }, {
             from: "Автово",
             to: "Ленинский проспект",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M705,1800v100",
                 key: "road_34"
             }
         }, {
             from: "Ленинский проспект",
             to: "Проспект Ветеранов",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_red_road",
+                color: "red",
                 d: "M705,1900v100",
                 key: "road_35"
             }
         }, {
             from: "Беговая",
             to: "Зенит",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M425,600V700",
                 key: "road_36"
             }
         }, {
             from: "Зенит",
             to: "Приморская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M425,700V800",
                 key: "road_37"
             }
         }, {
             from: "Приморская",
             to: "Василеостровская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M425,800v200",
                 key: "road_38"
             }
         }, {
             from: "Василеостровская",
             to: "Гостиный двор",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M425 1000H1000",
                 key: "road_39"
             }
         }, {
             from: "Гостиный двор",
             to: "Маяковская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1000 1000H1300",
                 key: "road_40"
             }
         }, {
             from: "Маяковская",
             to: "Площадь Александра Невского 1",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1300 1000H1860",
                 key: "road_41"
             }
         }, {
             from: "Маяковская",
             to: "Площадь Александра Невского 1",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,987.5v112.5",
                 key: "road_42"
             }
         }, {
             from: "Площадь Александра Невского 1",
             to: "Елизаровская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,1100v100",
                 key: "road_43"
             }
         }, {
             from: "Елизаровская",
             to: "Ломоносовская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,1200v100",
                 key: "road_44"
             }
         }, {
             from: "Ломоносовская",
             to: "Пролетарская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,1300v100",
                 key: "road_45"
             }
         }, {
             from: "Пролетарская",
             to: "Обухово",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,1400v100",
                 key: "road_46"
             }
         }, {
             from: "Обухово",
             to: "Рыбацкое",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_green_road",
+                color: "green",
                 d: "M1860,1500v100",
                 key: "road_47"
             }
         }, {
             from: "Комендантский проспект",
             to: "Старая Деревня",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705,500V600",
                 key: "road_48"
             }
         }, {
             from: "Старая Деревня",
             to: "Крестовский остров",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705,600V700",
                 key: "road_49"
             }
         }, {
             from: "Крестовский остров",
             to: "Чкаловская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705,700V800",
                 key: "road_50"
             }
         }, {
             from: "Чкаловская",
             to: "Спортивная",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705,800V900",
                 key: "road_51"
             }
         }, {
             from: "Спортивная",
             to: "Адмиралтейская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705,900v200",
                 key: "road_52"
             }
         }, {
             from: "Адмиралтейская",
             to: "Садовая",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M705 1100H1000",
                 key: "road_53"
             }
         }, {
             from: "Садовая",
             to: "Звенигородская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300 1300L1000 1100",
                 key: "road_54"
             }
         }, {
             from: "Звенигородская",
             to: "Обводный канал",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1300v100",
                 key: "road_55"
             }
         }, {
             from: "Обводный канал",
             to: "Волковская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1400v100",
                 key: "road_56"
             }
         }, {
             from: "Волковская",
             to: "Бухарестская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1500v100",
                 key: "road_57"
             }
         }, {
             from: "Бухарестская",
             to: "Международная",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1600v100",
                 key: "road_58"
             }
         }, {
             from: "Международная",
             to: "Проспект Славы",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1700v100",
                 key: "road_59"
             }
         }, {
             from: "Проспект Славы",
             to: "Дунайская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1800v100",
                 key: "road_60"
             }
         }, {
             from: "Дунайская",
             to: "Шушары",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_purple_road",
+                color: "purple",
                 d: "M1300,1900v100",
                 key: "road_61"
             }
         }, {
             from: "Спасская",
             to: "Достоевская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M1000 1100H1300",
                 key: "road_62"
             }
         }, {
             from: "Достоевская",
             to: "Лиговский проспект",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M1300 1100H1580",
                 key: "road_63"
             }
         }, {
             from: "Лиговский проспект",
             to: "Площадь Александра Невского 2",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M1580 1100H1860",
                 key: "road_64"
             }
         }, {
             from: "Площадь Александра Невского 2",
             to: "Новочеркасская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M1860 1100H2140",
                 key: "road_65"
             }
         }, {
             from: "Площадь Александра Невского 2",
             to: "Новочеркасская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M2140,1087.5v112.5",
                 key: "road_66"
             }
         }, {
             from: "Новочеркасская",
             to: "Ладожская",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M2140,1200v100",
                 key: "road_67"
             }
         }, {
             from: "Ладожская",
             to: "Проспект Большевиков",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M2140,1300v100",
                 key: "road_68"
             }
         }, {
             from: "Проспект Большевиков",
             to: "Улица Дыбенко",
-            type: "path",
+            type: ST.MapRoad,
             props: {
-                className: "map_element map_road map_orange_road",
+                color: "orange",
                 d: "M2140,1400v100",
                 key: "road_69"
             }
