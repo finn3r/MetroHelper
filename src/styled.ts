@@ -4,7 +4,7 @@ import {IColors} from "./interfaces/IColors";
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: clamp(15px, calc(0.9375rem + ((1vw - 7.68px) * 0.3472)), 19px);
+    font-size: clamp(15px, calc(0.9375rem + ((1vw - 3px) * 0.2469)), 19px);
     margin: 0;
   }
 
@@ -40,7 +40,8 @@ export const AppWrapper = styled.div`
 
 export const MenuContainer = styled.div`
   display: flex;
-  background: ${props => props.theme.second_bg};
+  background: ${props => props.theme.menu_bg};
+  
   position: absolute;
   width: 25rem;
   flex-direction: column;
@@ -52,6 +53,7 @@ export const MenuContainer = styled.div`
   border-radius: 10px;
 
   @media (max-width: 700px) {
+    margin: 0;
     position: fixed;
     bottom: 0;
     border-radius: 10px 10px 0 0;
@@ -68,18 +70,21 @@ const MenuItem = styled.div`
 `;
 
 export const MenuHeaderContainer = styled(MenuItem)`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
   height: 3rem;
+  margin-right: .3rem;
   align-items: center;
   justify-content: space-around;
   border-bottom: 2px solid rgba(255, 255, 255, 0.18);
   font-size: 1.3rem;
   @media (max-width: 700px) {
     position: fixed;
-    font-size: 1rem;
+    margin: 0;
+    font-size: 1.1rem;
     color: black;
     top: calc(100% - var(--vh, 1vh) * 100 + 1px);
-    background: ${props => props.theme.second_dark_bg};
+    background: ${props => props.theme.menu_bg_no_opacity};
   }
 `;
 
@@ -94,13 +99,14 @@ export const MenuInputListContainer = styled(MenuItem)`
     grid-template-areas: "inputFrom swap inputTo"
                          "clear clear hide";
     grid-template-rows: 1fr .2fr;
-    grid-template-columns: 46% 8% 46%;
+    grid-template-columns: 40% 15% 40%;
   }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 0 .3rem;
 `;
 
@@ -110,6 +116,8 @@ export const ButtonContent = styled.div<{ disabled?: boolean, hidden?: boolean }
   opacity: ${props => props.disabled ? 0.3 : 0.5};
   visibility: ${props => props.hidden ? "hidden" : "visible"};
   transition: all 0.7s, opacity 0.2s;
+  color: ${props => props.theme.fg};
+  fill: ${props => props.theme.fg};
 
   :hover {
     cursor: ${props => props.disabled ? "" : "pointer"};
@@ -117,16 +125,25 @@ export const ButtonContent = styled.div<{ disabled?: boolean, hidden?: boolean }
   }
 `;
 
+export const SwapButtonContainer = styled(ButtonContainer)`
+  justify-content: center;
+`;
+
 export const HideButtonContainer = styled(ButtonContainer)`
-  justify-content: right;
+  justify-content: center;
+  @media (max-width: 700px) {
+    justify-content: right;
+  }
 `;
 
 export const HideButtonContent = styled(ButtonContent)<{ status: boolean }>`
   transform: ${props => props.status ? "rotate(0deg)" : "rotate(180deg)"};
-  width: 3rem;
 `;
 
 export const SwapButtonContent = styled(ButtonContent)<{ status: boolean }>`
+  @media (max-width: 700px) {
+    transform: ${props => props.status ? "rotate(270deg)" : "rotate(90deg)"};
+  }
   transform: ${props => props.status ? "rotate(360deg)" : ""};
 `;
 
@@ -174,7 +191,7 @@ export const InputFieldContainer = styled.div`
   @media (max-width: 700px) {
     &.focused {
       text-align: left;
-      background: ${props => props.theme.alter_bg};
+      background: ${props => props.theme.bg};
       z-index: 10;
       position: fixed;
       left: 0;
@@ -206,7 +223,7 @@ export const InputFieldContainer = styled.div`
 export const InputField = styled.input.attrs({
     className: "input__field"
 })`
-  background: ${props => props.theme.third_bg};
+  background: ${props => props.theme.menu_input_bg};
   font-size: 1rem;
   width: calc(100% - 2.6rem);
   padding: .6rem 2rem .6rem .6rem;
@@ -230,7 +247,7 @@ export const InputField = styled.input.attrs({
   }
 
   :focus {
-    border: 1px solid ${props => props.theme.bg};
+    border: 1px solid ${props => props.theme.fg};
 
     & ~ .input__clear_button {
       display: flex;
@@ -270,7 +287,7 @@ export const InputUnFocusButton = styled(ButtonContent).attrs({
 `;
 
 export const InputUnFocusButtonText = styled.div`
-  border: 1px ${props => props.theme.bg} solid;
+  border: 1px ${props => props.theme.fg} solid;
   padding: .2rem;
   border-radius: .5rem;
 `;
@@ -284,7 +301,7 @@ export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs
   width: 100%;
   border-radius: .5rem;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  background: ${props => props.theme.second_bg};
+  background: ${props => props.theme.menu_bg};
   backdrop-filter: blur(3px);
   max-height: 530%;
   overflow-y: auto;
@@ -294,7 +311,7 @@ export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs
     visibility: visible;
     position: fixed;
     box-shadow: none;
-    background: ${props => props.theme.alter_bg};
+    background: ${props => props.theme.bg};
     height: calc(var(--vh, 1vh) * 100 - 43%);
   }
 `
@@ -312,7 +329,10 @@ export const InputAutoCompleteContent = styled.div`
 
   &[id="selected"] {
     backdrop-filter: blur(5px);
-    background: ${props => props.theme.second_bg};
+    background: ${props => props.theme.menu_input_bg};
+    @media (max-width: 700px) {
+      background: ${props => props.theme.menu_bg_no_opacity};
+    }
   }
 `
 
@@ -326,7 +346,7 @@ export const MenuWayListVariant = styled.div<{ hide?: boolean, nowWay?: boolean 
   font-size: 1.2rem;
   text-align: left;
   height: 3rem;
-  border-left: 4px solid ${props => props.nowWay ? props.theme.dark_bg : "rgba(0, 0, 0, 0)"};
+  border-left: 4px solid ${props => props.nowWay ? props.theme.bg_blue : "rgba(0, 0, 0, 0)"};
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1.2rem .8rem;
   transition: all 0.2s, opacity 0.35s, margin-top 0.7s;
@@ -353,8 +373,6 @@ export const MenuWayListTransferText = styled.span`
 `;
 
 export const MenuWayListTransferCircles = styled.div`
-  margin-top: .8rem;
-  margin-bottom: -1rem;
 `;
 
 export const MapContainer = styled.div`
@@ -380,22 +398,22 @@ export const MapBackground = styled.rect`
 `;
 
 export const MapRiver = styled.path`
-  fill: ${props => props.theme.alter_bg};
+  fill: ${props => props.theme.bg_blue};
 `;
 
 export const MapRiverNoFill = styled.path`
   fill: none;
-  stroke: ${props => props.theme.alter_bg};
+  stroke: ${props => props.theme.bg_blue};
   stroke-linejoin: round;
   stroke-width: 40px;
 `;
 
 export const MapText = styled.text.attrs({
     className: "map_text"
-})`
+})<{ selected?: boolean }>`
   font-size: 1.2rem;
   font-weight: 600;
-  fill: ${props => props.theme.fg};
+  fill:  ${props => props.selected ? "tomato" : props.theme.fg};
   transition: 0.1s;
 
   :hover {
