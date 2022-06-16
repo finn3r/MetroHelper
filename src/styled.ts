@@ -230,10 +230,11 @@ export const InputField = styled.input.attrs({
   transition: border 150ms ease-in;
   border: 1px solid rgba(0, 0, 0, 0);
   text-overflow: ellipsis;
+  color: ${props => props.theme.fg};
 
   ::placeholder {
     font-weight: 400;
-    color: black;
+    color: ${props => props.theme.fg};
     opacity: 0.6;
   }
 
