@@ -68,7 +68,7 @@ const InputList: React.FC = () => {
                    changeValue={(value) => dispatch(changeTo({value, stations: stationOptions.to}))}
                    options={stationOptions.to}/>
             {/*SWAP BUTTON*/}
-            <ST.ButtonContainer style={{gridArea: "swap"}}>
+            <ST.SwapButtonContainer style={{gridArea: "swap"}}>
                 <ST.SwapButtonContent disabled={!from.state && !to.state} status={rotate}>
                     <SwapButton style={{width: "100%"}}
                                 onClick={() => {
@@ -77,7 +77,7 @@ const InputList: React.FC = () => {
                                 }}
                     />
                 </ST.SwapButtonContent>
-            </ST.ButtonContainer>
+            </ST.SwapButtonContainer>
             {/*CLEAR BUTTON*/}
             <ST.ButtonContainer style={{gridArea: "clear", marginLeft: ".7rem"}}>
                 <ST.ButtonContent onClick={() => dispatch(clear())} hidden={!from.state && !to.state}>
@@ -85,9 +85,9 @@ const InputList: React.FC = () => {
                 </ST.ButtonContent>
             </ST.ButtonContainer>
             {/*HIDE BUTTON*/}
-            <ST.HideButtonContainer style={{gridArea: "hide", marginLeft: "-.3rem"}}>
+            <ST.HideButtonContainer style={{gridArea: "hide"}}>
                 <ST.HideButtonContent hidden={!from.state || !to.state} status={hideWays}>
-                    <HideButton style={{width: "100%"}} onClick={() => dispatch(changeHideWays(!hideWays))}/>
+                    <HideButton onClick={() => dispatch(changeHideWays(!hideWays))}/>
                 </ST.HideButtonContent>
             </ST.HideButtonContainer>
         </ST.MenuInputListContainer>

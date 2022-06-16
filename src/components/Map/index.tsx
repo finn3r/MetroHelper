@@ -11,7 +11,7 @@ import {IStation} from "../../interfaces/ISchemeElements";
 import {inputSlice} from "../../store/reducers/InputSlice";
 
 const Map: React.FC = () => {
-    const {cleared, selectedStation} = useAppSelector(state => state.input);
+    const {cleared} = useAppSelector(state => state.input);
     const {elements} = useAppSelector(state => state.city);
     const mapRef = useRef<null | SVGSVGElement>(null);
     const gRef = useRef<null | SVGGElement>(null);
@@ -29,7 +29,7 @@ const Map: React.FC = () => {
     }, [elements]);
 
     const handleClick = (station: IStation | undefined) => {
-        if (selectedStation !== station) dispatch(selectStation(station))
+        dispatch(selectStation(station));
     }
 
     useEffect(() => {

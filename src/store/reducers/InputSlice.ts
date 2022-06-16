@@ -79,14 +79,16 @@ export const inputSlice = createSlice({
             state.way = action.payload;
         },
         selectStation(state, action: PayloadAction<IStation | undefined>) {
-            if(action.payload === undefined){
-                state.selectedStation = undefined;
-            }else if (state.from.state === "") {
-                state.from = {value: action.payload.name, state: action.payload.name};
-            } else if (state.to.state === "") {
-                state.to = {value: action.payload.name, state: action.payload.name};
-            } else {
-                state.selectedStation = action.payload;
+            if(state.selectedStation !== action.payload){
+                if(action.payload === undefined){
+                    state.selectedStation = undefined;
+                }else if ((state.from.state === "")&&(action.payload.name !== state.to.state)) {
+                    state.from = {value: action.payload.name, state: action.payload.name};
+                } else if ((state.to.state === "")&&(action.payload.name !== state.from.state)) {
+                    state.to = {value: action.payload.name, state: action.payload.name};
+                } else {
+                    state.selectedStation = action.payload;
+                }
             }
         },
         changeHideWays(state, action: PayloadAction<boolean>){

@@ -38,7 +38,7 @@ const RoadsElements: React.FC<{ roads: IRoadElement[], selectStation(station: IS
     )
 }
 
-const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation | undefined): void }> = ({stations, selectStation}) => {
+const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation | undefined): void, stationState: string[] }> = ({stations, selectStation, stationState}) => {
     return (
         <g className={"stations"}>
             {stations.map((station) => {
@@ -50,9 +50,10 @@ const StationElements: React.FC<{ stations: IStationElement[], selectStation(sta
                     }
                 };
                 const clickHandler = () => selectStation(stationInfo);
+                const selected = (stationState.includes(stationInfo.name));
                 return React.createElement("g", {onClick: clickHandler, key: ("g_stations_" + station.stationName)},
                     station.stationElements.map((element) => {
-                        return React.createElement(element.type, element.props);
+                        return React.createElement(element.type, {...element.props, selected:selected});
                     }));
             })}
         </g>
@@ -60,7 +61,7 @@ const StationElements: React.FC<{ stations: IStationElement[], selectStation(sta
 }
 
 const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
-    const {way} = useAppSelector(state => state.input);
+    const {way, to, from} = useAppSelector(state => state.input);
     const wayRef = useRef<null | SVGSVGElement>(null);
     let roads: string[] = [];
     for (let i = 0; i < way.length - 1; i++) roads.push(way.slice(i, i + 2).join('-'));
@@ -75,7 +76,7 @@ const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
             <Background background={elements.background} selectStation={selectStation}/>
             <OtherElements others={elements.others} selectStation={selectStation}/>
             <RoadsElements roads={elements.roads} selectStation={selectStation}/>
-            <StationElements stations={elements.stations} selectStation={selectStation}/>
+            <StationElements stations={elements.stations} selectStation={selectStation} stationState={[to.state, from.state]}/>
         </g>
     ); else return (
         <g>
@@ -89,7 +90,7 @@ const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
                 <Background background={elements.background} selectStation={selectStation}/>
                 <OtherElements others={elements.others} selectStation={selectStation}/>
                 <RoadsElements roads={elements.roads} selectStation={selectStation}/>
-                <StationElements stations={elements.stations} selectStation={selectStation}/>
+                <StationElements stations={elements.stations} selectStation={selectStation} stationState={[to.state, from.state]}/>
             </ST.MapOpacity>
             <g className={"stations"}>
                 {elements.stations.map((station) => {

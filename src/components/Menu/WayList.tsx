@@ -56,7 +56,7 @@ const WayList: React.FC = () => {
                         className="menu__waylist_transfers_text">{(WayTransfers(stations, way).length - 1 === 0) ? "Без пересадок" : (WayTransfers(stations, way).length - 1 === 1) ? "1 пересадка" : (WayTransfers(stations, way).length - 1) + " пересадки"}</ST.MenuWayListTransferText>
                     <ST.MenuWayListTransferCircles
                         className="menu__waylist_transfers">{WayTransfers(stations, way).map((transfer, j) =>
-                        <CircleInput fill={transfer} key={j + transfer}/>
+                        <CircleInput style={{paddingRight: ".2rem"}} fill={transfer} key={j + transfer}/>
                     )}</ST.MenuWayListTransferCircles>
                 </ST.MenuWayListVariant>
             ) : null}
