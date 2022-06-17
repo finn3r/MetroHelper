@@ -1,10 +1,5 @@
 import React from "react";
 
-export interface IStation {
-    name: string;
-    cords: { x: number; y: number; };
-}
-
 export interface ISchemeElements {
     background: IBackgroundElement;
     others: IOtherElements[];

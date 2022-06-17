@@ -1,26 +1,20 @@
 import React, {useEffect, useRef} from 'react';
-import {IScheme} from "../../interfaces/IScheme";
-import {
-    IBackgroundElement,
-    IOtherElements,
-    IRoadElement,
-    IStation,
-    IStationElement
-} from "../../interfaces/ISchemeElements";
+import {IScheme, ISchemeBackground, ISchemeOther, ISchemeRoad, ISchemeStation} from "../../interfaces/IScheme";
 import {useAppSelector} from "../../hooks/redux";
 import * as ST from '../../styled';
+import {ZoomView} from "d3-interpolate";
 
-const Background: React.FC<{ background: IBackgroundElement, selectStation(station: IStation | undefined): void }> = ({background, selectStation}) => {
+const SchemeBackground: React.FC<ISchemeBackground> = ({background}) => {
     return (
-        <g className={"background"} onClick={() => selectStation(undefined)}>
+        <g className={"background"}>
             {React.createElement(background.type, background.props)}
         </g>
     )
 }
 
-const OtherElements: React.FC<{ others: IOtherElements[], selectStation(station: IStation | undefined): void }> = ({others, selectStation}) => {
+const SchemeOther: React.FC<ISchemeOther> = ({others}) => {
     return (
-        <g className={"other_elements"} onClick={() => selectStation(undefined)}>
+        <g className={"other_elements"}>
             {others.map((element) => {
                 return React.createElement(element.type, element.props);
             })}
@@ -28,33 +22,39 @@ const OtherElements: React.FC<{ others: IOtherElements[], selectStation(station:
     )
 }
 
-const RoadsElements: React.FC<{ roads: IRoadElement[], selectStation(station: IStation | undefined): void }> = ({roads, selectStation}) => {
+const SchemeRoads: React.FC<ISchemeRoad> = ({roads, way}) => {
+    const roads_way: string[] = [];
+    if (way) for (let i = 0; i < way.length - 1; i++) roads_way.push(way.slice(i, i + 2).join('-'));
     return (
-        <g className={"roads"} onClick={() => selectStation(undefined)}>
+        <g className={"roads"}>
             {roads.map((element) => {
-                return React.createElement(element.type, element.props);
+                const show: boolean = !way || roads_way.includes(element.from + '-' + element.to) || roads_way.includes(element.to + '-' + element.from);
+                if (show)
+                    return React.createElement(element.type, element.props);
+                else
+                    return null;
             })}
         </g>
     )
 }
 
-const StationElements: React.FC<{ stations: IStationElement[], selectStation(station: IStation | undefined): void, stationState: string[] }> = ({stations, selectStation, stationState}) => {
+const SchemeStations: React.FC<ISchemeStation> = ({stations, selectStation, stationState, way}) => {
     return (
         <g className={"stations"}>
             {stations.map((station) => {
-                const stationInfo: IStation = {
-                    name: station.stationName,
-                    cords: {
-                        x: station.stationX,
-                        y: station.stationY,
-                    }
-                };
-                const clickHandler = () => selectStation(stationInfo);
-                const selected = (stationState.includes(stationInfo.name));
-                return React.createElement("g", {onClick: clickHandler, key: ("g_stations_" + station.stationName)},
-                    station.stationElements.map((element) => {
-                        return React.createElement(element.type, {...element.props, selected:selected});
-                    }));
+                const show: boolean = !way || way.includes(station.stationName);
+                const clickHandler = () => selectStation(station.stationName);
+                const selected = (stationState?.includes(station.stationName));
+                if (show)
+                    return React.createElement("g", {
+                            onClick: clickHandler,
+                            key: ("g_stations_" + station.stationName)
+                        },
+                        station.stationElements.map((element) => {
+                            return React.createElement(element.type, {...element.props, selected: selected});
+                        }));
+                else
+                    return null;
             })}
         </g>
     )
@@ -63,55 +63,32 @@ const StationElements: React.FC<{ stations: IStationElement[], selectStation(sta
 const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
     const {way, to, from} = useAppSelector(state => state.input);
     const wayRef = useRef<null | SVGSVGElement>(null);
-    let roads: string[] = [];
-    for (let i = 0; i < way.length - 1; i++) roads.push(way.slice(i, i + 2).join('-'));
     useEffect(() => {
         if (way.length !== 0) {
             const bounds = wayRef.current!.getBBox();
-            zoomPath(bounds);
+            const zoom_cords: ZoomView = [bounds.x + (bounds.width) / 2, bounds.y + (bounds.height) / 2, Math.max(bounds.width, bounds.height)];
+            zoomPath(zoom_cords);
         }
     }, [way, zoomPath])
     if (way.length === 0) return (
         <g>
-            <Background background={elements.background} selectStation={selectStation}/>
-            <OtherElements others={elements.others} selectStation={selectStation}/>
-            <RoadsElements roads={elements.roads} selectStation={selectStation}/>
-            <StationElements stations={elements.stations} selectStation={selectStation} stationState={[to.state, from.state]}/>
+            <SchemeBackground background={elements.background}/>
+            <SchemeOther others={elements.others}/>
+            <SchemeRoads roads={elements.roads}/>
+            <SchemeStations stations={elements.stations} selectStation={selectStation}
+                            stationState={[to.state, from.state]}/>
         </g>
     ); else return (
         <g>
-            <g className={"roads"} ref={wayRef}>
-                {elements.roads.map((element) => {
-                    const show: boolean = roads.includes(element.from + '-' + element.to) || roads.includes(element.to + '-' + element.from);
-                    if (show) return React.createElement(element.type, element.props); else return null;
-                })}
-            </g>
             <ST.MapOpacity>
-                <Background background={elements.background} selectStation={selectStation}/>
-                <OtherElements others={elements.others} selectStation={selectStation}/>
-                <RoadsElements roads={elements.roads} selectStation={selectStation}/>
-                <StationElements stations={elements.stations} selectStation={selectStation} stationState={[to.state, from.state]}/>
+                <SchemeBackground background={elements.background}/>
+                <SchemeOther others={elements.others}/>
+                <SchemeRoads roads={elements.roads}/>
+                <SchemeStations stations={elements.stations} selectStation={selectStation}/>
             </ST.MapOpacity>
-            <g className={"stations"}>
-                {elements.stations.map((station) => {
-                    const show: boolean = way.includes(station.stationName);
-                    const stationInfo: IStation = {
-                        name: station.stationName,
-                        cords: {
-                            x: station.stationX,
-                            y: station.stationY,
-                        }
-                    };
-                    const clickHandler = () => selectStation(stationInfo);
-                    if (show) return React.createElement("g", {
-                            onClick: clickHandler,
-                            key: ("g_stations_" + station.stationName)
-                        },
-                        station.stationElements.map((element) => {
-                            return React.createElement(element.type, element.props);
-                        }));
-                    else return null;
-                })}
+            <g className={"way"} ref={wayRef}>
+                <SchemeRoads roads={elements.roads} way={way}/>
+                <SchemeStations stations={elements.stations} selectStation={selectStation} way={way}/>
             </g>
         </g>
     );

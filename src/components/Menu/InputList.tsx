@@ -30,8 +30,11 @@ const InputList: React.FC = () => {
 
     //Autofocus
     useEffect(() => {
-        const screenWidth = window.innerWidth;
-        if (screenWidth > 700) {
+        const screen = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        if ((screen.width > 700)&&(screen.height > 500)) {
             //For PC
             if (from.state === "") {
                 fromRef.current?.focus();
@@ -72,8 +75,10 @@ const InputList: React.FC = () => {
                 <ST.SwapButtonContent disabled={!from.state && !to.state} status={rotate}>
                     <SwapButton style={{width: "100%"}}
                                 onClick={() => {
-                                    dispatch(swap());
-                                    setRotate(!rotate);
+                                    if(from.state || to.state){
+                                        dispatch(swap());
+                                        setRotate(!rotate);
+                                    }
                                 }}
                     />
                 </ST.SwapButtonContent>

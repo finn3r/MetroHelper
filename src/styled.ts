@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 export const AppWrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     height: calc(var(--vh, 1vh) * 100);
   }
 `;
@@ -46,13 +46,15 @@ export const MenuContainer = styled.div`
   width: 25rem;
   flex-direction: column;
   margin: .5rem;
+  padding: .5rem;
 
   backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     margin: 0;
+    padding: 0;
     position: fixed;
     bottom: 0;
     border-radius: 10px 10px 0 0;
@@ -64,22 +66,21 @@ export const MenuContainer = styled.div`
 const MenuItem = styled.div`
   width: 100%;
   text-align: center;
-  padding: .3rem 0;
   color: ${props => props.theme.fg};
 `;
 
 export const MenuHeaderContainer = styled(MenuItem)`
   display: grid;
   grid-template-columns: 1fr 10fr;
-  height: 3rem;
   margin-right: .3rem;
   align-items: center;
   justify-content: space-around;
   border-bottom: 2px solid rgba(255, 255, 255, 0.18);
   font-size: 1.3rem;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     position: fixed;
-    margin: 0;
+    margin: 0 0 0 -1px;
+    width: calc(100% + 2px);
     font-size: 1.1rem;
     color: black;
     top: calc(100% - var(--vh, 1vh) * 100 + 1px);
@@ -94,7 +95,8 @@ export const MenuInputListContainer = styled(MenuItem)`
                        "clear hide";
   grid-template-rows: 1fr 1fr .5fr;
   grid-template-columns: 87% 13%;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
+    padding: .5rem;
     grid-template-areas: "inputFrom swap inputTo"
                          "clear clear hide";
     grid-template-rows: 1fr .2fr;
@@ -130,7 +132,7 @@ export const SwapButtonContainer = styled(ButtonContainer)`
 
 export const HideButtonContainer = styled(ButtonContainer)`
   justify-content: center;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     justify-content: right;
   }
 `;
@@ -140,10 +142,10 @@ export const HideButtonContent = styled(ButtonContent)<{ status: boolean }>`
 `;
 
 export const SwapButtonContent = styled(ButtonContent)<{ status: boolean }>`
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     transform: ${props => props.status ? "rotate(270deg)" : "rotate(90deg)"};
   }
-  transform: ${props => props.status ? "rotate(360deg)" : ""};
+  transform: ${props => props.status ? "rotate(180deg)" : ""};
 `;
 
 export const InputContainer = styled.div`
@@ -151,7 +153,7 @@ export const InputContainer = styled.div`
   grid-template-areas: "circle field";
   grid-template-columns: 13% 87%;
 
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     &[data-type='Куда'] {
       grid-template-columns: 87% 13%;
       grid-template-areas: "field circle";
@@ -164,7 +166,7 @@ export const InputCircle = styled.div`
   align-items: center;
   justify-content: center;
   padding: 25%;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     padding: 0;
     &.focused {
       left: .25rem;
@@ -187,7 +189,7 @@ export const InputFieldContainer = styled.div`
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     &.focused {
       text-align: left;
       background: ${props => props.theme.bg};
@@ -206,7 +208,7 @@ export const InputFieldContainer = styled.div`
       .input__field {
         margin-left: 2rem;
         margin-top: 1rem;
-        width: calc(100% - 9rem);
+        width: calc(100% - 10rem);
       }
 
       .input__clear_button {
@@ -306,7 +308,7 @@ export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs
   max-height: 530%;
   overflow-y: auto;
   display: none;
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (max-height: 500px) {
     max-height: none;
     visibility: visible;
     position: fixed;
@@ -330,7 +332,7 @@ export const InputAutoCompleteContent = styled.div`
   &[id="selected"] {
     backdrop-filter: blur(5px);
     background: ${props => props.theme.menu_input_bg};
-    @media (max-width: 700px) {
+    @media (max-width: 700px), (max-height: 500px) {
       background: ${props => props.theme.menu_bg_no_opacity};
     }
   }
@@ -338,8 +340,14 @@ export const InputAutoCompleteContent = styled.div`
 
 export const MenuWayListContainer = styled(MenuItem)`
   max-height: 100%;
-  width: 100%;
+  width: calc(100% + 1rem);
   padding-bottom: 0;
+  margin-left: -.5rem;
+  margin-bottom: -.5rem;
+  @media (max-width: 700px), (max-height: 500px) {
+    margin: 0;
+    width: 100%;
+  }
 `;
 
 export const MenuWayListVariant = styled.div<{ hide?: boolean, nowWay?: boolean }>`
@@ -399,13 +407,6 @@ export const MapBackground = styled.rect`
 
 export const MapRiver = styled.path`
   fill: ${props => props.theme.bg_blue};
-`;
-
-export const MapRiverNoFill = styled.path`
-  fill: none;
-  stroke: ${props => props.theme.bg_blue};
-  stroke-linejoin: round;
-  stroke-width: 40px;
 `;
 
 export const MapText = styled.text.attrs({

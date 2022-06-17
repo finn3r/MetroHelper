@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IStation} from "../../interfaces/ISchemeElements";
 
 interface InputState {
     from: {
@@ -13,7 +12,6 @@ interface InputState {
     cleared: boolean;
     way: string[];
     hideWays: boolean;
-    selectedStation: IStation | undefined
 }
 
 const initialState: InputState = {
@@ -28,7 +26,6 @@ const initialState: InputState = {
     cleared: true,
     way: [],
     hideWays: true,
-    selectedStation: undefined
 }
 
 export const inputSlice = createSlice({
@@ -78,20 +75,14 @@ export const inputSlice = createSlice({
         changeWay(state, action: PayloadAction<string[]>) {
             state.way = action.payload;
         },
-        selectStation(state, action: PayloadAction<IStation | undefined>) {
-            if(state.selectedStation !== action.payload){
-                if(action.payload === undefined){
-                    state.selectedStation = undefined;
-                }else if ((state.from.state === "")&&(action.payload.name !== state.to.state)) {
-                    state.from = {value: action.payload.name, state: action.payload.name};
-                } else if ((state.to.state === "")&&(action.payload.name !== state.from.state)) {
-                    state.to = {value: action.payload.name, state: action.payload.name};
-                } else {
-                    state.selectedStation = action.payload;
-                }
+        selectStation(state, action: PayloadAction<string>) {
+            if ((state.from.state === "") && (action.payload !== state.to.state)) {
+                state.from = {value: action.payload, state: action.payload};
+            } else if ((state.to.state === "") && (action.payload !== state.from.state)) {
+                state.to = {value: action.payload, state: action.payload};
             }
         },
-        changeHideWays(state, action: PayloadAction<boolean>){
+        changeHideWays(state, action: PayloadAction<boolean>) {
             state.hideWays = action.payload;
         }
     }
