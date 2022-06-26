@@ -89,7 +89,7 @@ export const MenuHeaderContainer = styled(MenuItem)`
 `;
 
 export const MenuHeaderCityChanger = styled.div`
-  margin: 0 5px;
+  margin: 0 10px;
 `
 
 export const MenuInputListContainer = styled(MenuItem)`
