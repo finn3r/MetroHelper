@@ -1,11 +1,11 @@
 import {IStationNames} from "../../interfaces/IStationNames";
 
 const colors = {
-    green: "#038A22",
-    blue: "#0B86BD",
-    red: "#EE6352",
-    orange: "#FC8C17",
-    purple: "#4A02C9"
+    green: "#1EAD35",
+    blue: "#4757E2",
+    red: "#ec2222",
+    orange: "#FF9519",
+    purple: "#8a40ad"
 }
 
 const metroStationsListSPB: IStationNames = {
