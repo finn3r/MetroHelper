@@ -24,6 +24,7 @@ export interface ISchemeOther {
 
 export interface ISchemeRoad {
     roads: IRoadElement[];
+    stations: IStationElement[];
     way?: string[];
 }
 

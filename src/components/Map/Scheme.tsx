@@ -22,17 +22,26 @@ const SchemeOther: React.FC<ISchemeOther> = ({others}) => {
     )
 }
 
-const SchemeRoads: React.FC<ISchemeRoad> = ({roads, way}) => {
+const SchemeRoads: React.FC<ISchemeRoad> = ({roads, way, stations}) => {
     const roads_way: string[] = [];
     if (way) for (let i = 0; i < way.length - 1; i++) roads_way.push(way.slice(i, i + 2).join('-'));
     return (
         <g className={"roads"}>
             {roads.map((element) => {
                 const show: boolean = !way || roads_way.includes(element.from + '-' + element.to) || roads_way.includes(element.to + '-' + element.from);
-                if (show)
-                    return React.createElement(element.type, element.props);
-                else
+                if (show) {
+                    const station_from = stations.filter(station => station.stationName===element.from)[0];
+                    const station_to = stations.filter(station => station.stationName===element.to)[0];
+                    return (
+                        <g key={element.props.key}>
+                            {React.createElement(element.type, element.props)}
+                            {React.createElement(ST.MapStationCircle, {cx: station_from.stationX, cy: station_from.stationY, r:"20" , bg_circle: true})}
+                            {React.createElement(ST.MapStationCircle, {cx: station_to.stationX, cy: station_to.stationY, r:"20" , bg_circle: true})}
+                        </g>
+                    )
+                } else {
                     return null;
+                }
             })}
         </g>
     )
@@ -45,14 +54,22 @@ const SchemeStations: React.FC<ISchemeStation> = ({stations, selectStation, stat
                 const show: boolean = !way || way.includes(station.stationName);
                 const clickHandler = () => selectStation(station.stationName);
                 const selected = (stationState?.includes(station.stationName));
+                const StationElement = React.createElement(ST.MapStation, {
+                        onClick: clickHandler,
+                        key: ("g_stations_" + station.stationName),
+                        selected: selected
+                    },
+                    station.stationElements.map((element, id) => {
+                        return(id===1 ?
+                            <g key={"g_stations_text_" + id}>
+                                {React.createElement((element.type===ST.MapText) ? ST.MapTextStroke : ST.MapTextStrokeLeft, {...element.props, selected: selected, key:(element.props.key + "_1")})}
+                                {React.createElement(element.type, {...element.props, key:(element.props.key + "_2")})}
+                            </g>
+                            :
+                            React.createElement(element.type, element.props))
+                    }));
                 if (show)
-                    return React.createElement("g", {
-                            onClick: clickHandler,
-                            key: ("g_stations_" + station.stationName)
-                        },
-                        station.stationElements.map((element) => {
-                            return React.createElement(element.type, {...element.props, selected: selected});
-                        }));
+                    return StationElement;
                 else
                     return null;
             })}
@@ -74,7 +91,7 @@ const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
         <g>
             <SchemeBackground background={elements.background}/>
             <SchemeOther others={elements.others}/>
-            <SchemeRoads roads={elements.roads}/>
+            <SchemeRoads roads={elements.roads} stations={elements.stations}/>
             <SchemeStations stations={elements.stations} selectStation={selectStation}
                             stationState={[to.state, from.state]}/>
         </g>
@@ -83,13 +100,15 @@ const Scheme: React.FC<IScheme> = ({elements, zoomPath, selectStation}) => {
             <ST.MapOpacity>
                 <SchemeBackground background={elements.background}/>
                 <SchemeOther others={elements.others}/>
-                <SchemeRoads roads={elements.roads}/>
-                <SchemeStations stations={elements.stations} selectStation={selectStation}/>
+                <SchemeRoads roads={elements.roads} stations={elements.stations}/>
             </ST.MapOpacity>
             <g className={"way"} ref={wayRef}>
-                <SchemeRoads roads={elements.roads} way={way}/>
+                <SchemeRoads roads={elements.roads} way={way} stations={elements.stations}/>
                 <SchemeStations stations={elements.stations} selectStation={selectStation} way={way}/>
             </g>
+            <ST.MapOpacity>
+                <SchemeStations stations={elements.stations} selectStation={selectStation}/>
+            </ST.MapOpacity>
         </g>
     );
 };
