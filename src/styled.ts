@@ -3,25 +3,25 @@ import {IColors} from "./interfaces/IColors";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Kdam Thmor Pro', sans-serif;
-    font-size: clamp(15px, calc(0.9375rem + ((1vw - 3px) * 0.2469)), 19px);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     margin: 0;
   }
 
   ::-webkit-scrollbar {
-    width: 1rem;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    border-radius: .6rem;
+    border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: .6rem;
+    border-radius: 10px;
     opacity: 0.7;
   }
 
@@ -41,12 +41,12 @@ export const AppWrapper = styled.div`
 export const MenuContainer = styled.div`
   display: flex;
   background: ${props => props.theme.menu_bg};
-  
+
   position: absolute;
-  width: 25rem;
+  width: 350px;
   flex-direction: column;
-  margin: .5rem;
-  padding: .5rem;
+  margin: 10px;
+  padding: 10px;
 
   backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -70,23 +70,27 @@ const MenuItem = styled.div`
 `;
 
 export const MenuHeaderContainer = styled(MenuItem)`
-  display: grid;
-  grid-template-columns: 1fr 10fr;
-  margin-right: .3rem;
+  display: flex;
+  width: 100%;
+  margin-right: 5px;
+  padding-bottom: 5px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: 2px solid rgba(255, 255, 255, 0.18);
-  font-size: 1.3rem;
+  font-size: 20px;
   @media (max-width: 700px), (max-height: 500px) {
     position: fixed;
     margin: 0 0 0 -1px;
+    padding: 5px 0;
     width: calc(100% + 2px);
-    font-size: 1.1rem;
-    color: black;
-    top: calc(100% - var(--vh, 1vh) * 100 + 1px);
+    top: calc(100% - var(--vh, 1vh) * 100);
     background: ${props => props.theme.menu_bg_no_opacity};
   }
 `;
+
+export const MenuHeaderCityChanger = styled.div`
+  margin: 0 5px;
+`
 
 export const MenuInputListContainer = styled(MenuItem)`
   display: grid;
@@ -96,11 +100,9 @@ export const MenuInputListContainer = styled(MenuItem)`
   grid-template-rows: 1fr 1fr .5fr;
   grid-template-columns: 87% 13%;
   @media (max-width: 700px), (max-height: 500px) {
-    padding: .5rem;
-    grid-template-areas: "inputFrom swap inputTo"
-                         "clear clear hide";
-    grid-template-rows: 1fr .2fr;
-    grid-template-columns: 40% 15% 40%;
+    grid-template-areas: "inputFrom swap inputTo";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 40px 1fr;
   }
 `;
 
@@ -108,8 +110,12 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 .3rem;
+  padding: 0 5px;
 `;
+
+export const SwapThemeButtonContainer = styled(ButtonContainer)`
+  width: auto;
+`
 
 export const ButtonContent = styled.div<{ disabled?: boolean, hidden?: boolean }>`
   display: flex;
@@ -130,10 +136,17 @@ export const SwapButtonContainer = styled(ButtonContainer)`
   justify-content: center;
 `;
 
+export const ClearButtonContainer = styled(ButtonContainer)`
+  grid-area: clear;
+  @media (max-width: 700px), (max-height: 500px) {
+    display: none;
+  }
+`;
+
 export const HideButtonContainer = styled(ButtonContainer)`
   justify-content: center;
   @media (max-width: 700px), (max-height: 500px) {
-    justify-content: right;
+    display: none;
   }
 `;
 
@@ -148,40 +161,27 @@ export const SwapButtonContent = styled(ButtonContent)<{ status: boolean }>`
   transform: ${props => props.status ? "rotate(180deg)" : ""};
 `;
 
-export const InputContainer = styled.div`
-  display: grid;
-  grid-template-areas: "circle field";
-  grid-template-columns: 13% 87%;
-
-  @media (max-width: 700px), (max-height: 500px) {
-    &[data-type='Куда'] {
-      grid-template-columns: 87% 13%;
-      grid-template-areas: "field circle";
-    }
-  }
-`;
-
 export const InputCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 25%;
+  margin: 5px;
   @media (max-width: 700px), (max-height: 500px) {
-    padding: 0;
     &.focused {
-      left: .25rem;
-      width: 1.5rem;
-      height: 2rem;
-      top: calc(100% - var(--vh, 1vh) * 100 + 1.25rem);
-      position: fixed;
+      left: 2px;
+      top: 23px;
+      position: absolute;
       z-index: 15;
     }
   }
 `;
 
-export const InputFieldContainer = styled.div`
+export const InputContainer = styled.div`
   position: relative;
-  margin: .5rem;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :hover {
     & > .input__clear_button {
@@ -190,32 +190,39 @@ export const InputFieldContainer = styled.div`
   }
 
   @media (max-width: 700px), (max-height: 500px) {
+    margin: 15px 5px;
     &.focused {
       text-align: left;
       background: ${props => props.theme.bg};
       z-index: 10;
       position: fixed;
-      left: 0;
+      left: -1px;
       margin: 0;
       top: calc(100% - var(--vh, 1vh) * 100 + 1px);
-      width: calc(100vw - 2px);
+      width: calc(100vw);
       height: calc(var(--vh, 1vh) * 100);
 
       .input__autocomplete, .input__unfocus_button {
         display: block;
       }
 
-      .input__field {
-        margin-left: 2rem;
-        margin-top: 1rem;
-        width: calc(100% - 10rem);
+      .input__autocomplete {
+        margin-top: 15px;
+        left: 0;
+        border-radius: 0;
+      }
+
+      .input__field_container {
+        position: absolute;
+        top: 15px;
+        width: calc(100% - 100px);
+        right: 70px;
       }
 
       .input__clear_button {
-        bottom: 0;
-        margin-top: 1rem;
+        top: 23px;
         align-items: start;
-        right: 4.5rem;
+        right: 70px;
       }
     }
   }
@@ -225,10 +232,10 @@ export const InputField = styled.input.attrs({
     className: "input__field"
 })`
   background: ${props => props.theme.menu_input_bg};
-  font-size: 1rem;
-  width: calc(100% - 2.6rem);
-  padding: .6rem 2rem .6rem .6rem;
-  border-radius: .5rem;
+  font-size: 14px;
+  width: calc(100% - 35px);
+  padding: 10px 25px 10px 10px;
+  border-radius: 10px;
   transition: border 150ms ease-in;
   border: 1px solid rgba(0, 0, 0, 0);
   text-overflow: ellipsis;
@@ -269,10 +276,10 @@ export const InputClearButton = styled(ButtonContent).attrs({
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: calc(100% - 1rem);
-  width: 2rem;
-  right: .5rem;
-  top: .5rem;
+  right: 0;
+  @media (max-width: 700px), (max-height: 500px) {
+    display: flex;
+  }
 `;
 
 export const InputUnFocusButton = styled(ButtonContent).attrs({
@@ -283,16 +290,22 @@ export const InputUnFocusButton = styled(ButtonContent).attrs({
   justify-content: center;
   position: absolute;
   color: black;
-  height: calc(100% - 1rem);
-  right: .2rem;
-  top: 1.2rem;
+  right: 5px;
+  top: 23px;
 `;
 
 export const InputUnFocusButtonText = styled.div`
-  border: 1px ${props => props.theme.fg} solid;
-  padding: .2rem;
-  border-radius: .5rem;
+  color: ${props => props.theme.fg_second};
+  padding: 3px;
+  border-radius: 10px;
 `;
+
+export const InputFieldContainer = styled.div.attrs({
+    className: "input__field_container"
+})`
+  width: 100%;
+  position: relative;
+`
 
 export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs({
     className: "input__autocomplete"
@@ -301,7 +314,7 @@ export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs
   position: absolute;
   visibility: ${props => props.hidden ? "hidden" : "visible"};
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 10px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   background: ${props => props.theme.menu_bg};
   backdrop-filter: blur(3px);
@@ -321,9 +334,9 @@ export const InputAutoCompleteContent = styled.div`
   display: grid;
   align-items: center;
   text-align: left;
-  padding: .2rem .5rem;
-  grid-template-columns: 1rem 1fr;
-  grid-column-gap: .3rem;
+  padding: 5px 10px;
+  grid-template-columns: 15px 1fr;
+  grid-column-gap: 5px;
 
   :hover {
     cursor: pointer;
@@ -340,10 +353,10 @@ export const InputAutoCompleteContent = styled.div`
 
 export const MenuWayListContainer = styled(MenuItem)`
   max-height: 100%;
-  width: calc(100% + 1rem);
+  width: calc(100% + 20px);
   padding-bottom: 0;
-  margin-left: -.5rem;
-  margin-bottom: -.5rem;
+  margin-left: -10px;
+  margin-bottom: -10px;
   @media (max-width: 700px), (max-height: 500px) {
     margin: 0;
     width: 100%;
@@ -351,36 +364,37 @@ export const MenuWayListContainer = styled(MenuItem)`
 `;
 
 export const MenuWayListVariant = styled.div<{ hide?: boolean, nowWay?: boolean }>`
-  font-size: 1.2rem;
+  font-size: 20px;
   text-align: left;
-  height: 3rem;
   border-left: 4px solid ${props => props.nowWay ? props.theme.bg_blue : "rgba(0, 0, 0, 0)"};
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1.2rem .8rem;
+  padding: 10px;
   transition: all 0.2s, opacity 0.35s, margin-top 0.7s;
-  border-radius: .8rem;
+  border-radius: 10px;
+  height: 54px;
 
   :hover {
     cursor: pointer;
   }
 
-  margin-top: ${props => (props.hide && !props.nowWay) ? "-5.4rem" : "0"};
+  margin-top: ${props => (props.hide && !props.nowWay) ? "-75px" : "0"};
   opacity: ${props => (props.hide && !props.nowWay) ? "0" : "1"};
   visibility: ${props => (props.hide && !props.nowWay) ? "hidden" : "visible"};
 `;
 
 export const MenuWayListTime = styled.span`
-  font-weight: 600;
+  
 `;
 
 export const MenuWayListTransferText = styled.span`
-  font-size: 1rem;
-  margin-left: 1rem;
+  font-size: 14px;
+  margin-left: 10px;
   color: ${props => props.theme.fg};
   opacity: 0.5;
 `;
 
 export const MenuWayListTransferCircles = styled.div`
+  margin-top: 5px;
 `;
 
 export const MapContainer = styled.div`
@@ -409,74 +423,88 @@ export const MapRiver = styled.path`
   fill: ${props => props.theme.bg_blue};
 `;
 
-export const MapText = styled.text.attrs({
-    className: "map_text"
-})<{ selected?: boolean }>`
-  font-size: 1.2rem;
-  font-weight: 600;
-  fill:  ${props => props.selected ? "tomato" : props.theme.fg};
-  transition: 0.1s;
+const colors: IColors = {
+    "blue": {
+        road: "#4757E2",
+        station: "#4757E2"
+    },
+    "red": {
+        road: "#ec2222",
+        station: "#ec2222"
+    },
+    "purple": {
+        road: "#8a40ad",
+        station: "#8a40ad"
+    },
+    "orange": {
+        road: "#FF9519",
+        station: "#FF9519"
+    },
+    "green": {
+        road: "#1EAD35",
+        station: "#1EAD35"
+    }
+};
+
+export const MapStation = styled.g<{ selected?: boolean }>`
+  .map_text {
+    font-weight: ${props => props.selected ? "bold" : ""};
+  }
+
+  .map_circle {
+    stroke-width: ${props => props.selected ? "2px" : ""};
+    stroke: ${props => props.selected ? props.theme.bg : ""};
+  }
 
   :hover {
     cursor: pointer;
-    fill: tomato;
+
+    & > g > .map_text {
+      fill: tomato;
+    }
+
+    & > .map_circle {
+      stroke-width: 2px;
+      stroke: ${props => props.theme.bg};
+    }
   }
+`
+
+export const MapText = styled.text.attrs({
+    className: "map_text"
+})`
+  fill: ${props => props.theme.fg};
+  font-size: 20px;
+  transition: 0.1s;
 `;
+
+export const MapTextStroke = styled(MapText)`
+  stroke-width: 4px;
+  stroke: ${props => props.theme.bg};
+`
 
 export const MapTextLeft = styled(MapText)`
   text-anchor: end;
 `;
 
-const colors: IColors = {
-    "blue": {
-        road: "#29335c",
-        station: "#0b86bd"
-    },
-    "red": {
-        road: "#780116",
-        station: "#ee6352"
-    },
-    "purple": {
-        road: "#4A02C9",
-        station: "#7302C9"
-    },
-    "orange": {
-        road: "#C96902",
-        station: "#FC8C17"
-    },
-    "green": {
-        road: "#055718",
-        station: "#038A22"
-    }
-};
+export const MapTextStrokeLeft = styled(MapTextStroke)`
+  text-anchor: end;
+`
 
 export const MapRoad = styled.path<{ color: string }>`
-  fill: ${props => colors[props.color].road};
   stroke: ${props => colors[props.color].road};
   stroke-miterlimit: 10;
-  stroke-width: 25px;
+  stroke-width: 20px;
 `;
 
-export const MapStationCircle = styled.circle<{ color: string }>`
-  fill: ${props => colors[props.color].station};
-
-  :hover {
-    cursor: pointer;
-
-    & + .map_text {
-      fill: tomato;
-    }
-  }
+export const MapStationCircle = styled.circle.attrs({
+    className: "map_circle"
+})<{ color?: string, bg_circle?: boolean }>`
+  fill: ${props => props.bg_circle ? props.theme.bg : colors[props.color ?? 0].station};
 `;
 
-export const MapStationPath = styled.path<{ color: string }>`
-  fill: ${props => colors[props.color].station};
-
-  :hover {
-    cursor: pointer;
-
-    & + .map_text {
-      fill: tomato;
-    }
-  }
+export const MapStationPath = styled.path.attrs({
+    className: "map_circle"
+})<{ color?: string, bg_circle?: boolean }>`
+  fill: ${props => props.bg_circle ? props.theme.bg : colors[props.color ?? 0].station};
 `;

@@ -8,16 +8,18 @@ interface ThemeState {
     menu_bg_no_opacity: string;
     menu_input_bg: string;
     fg: string;
+    fg_second: string;
 }
 
 const lightTheme: ThemeState = {
     name: "light",
     bg: "whitesmoke",
     bg_blue: "rgba(109, 191, 224, 1)",
-    menu_bg: "rgba(192, 192, 192, 0.8)",
-    menu_bg_no_opacity: "rgb(192, 192, 192)",
-    menu_input_bg: "rgba(229,229,227,0.5)",
-    fg: "rgba(0, 0, 0, 1)"
+    menu_bg: "rgba(227,227,227,0.8)",
+    menu_bg_no_opacity: "rgb(222,222,222)",
+    menu_input_bg: "rgba(255,255,255,0.5)",
+    fg: "rgba(0, 0, 0, 1)",
+    fg_second: "rgb(25,109,255)"
 }
 
 const darkTheme: ThemeState = {
@@ -27,7 +29,8 @@ const darkTheme: ThemeState = {
     menu_bg: "rgba(70,70,70,0.8)",
     menu_bg_no_opacity: "rgb(70,70,70)",
     menu_input_bg: "rgba(140,139,139,0.5)",
-    fg: "rgb(255,255,255)"
+    fg: "rgb(255,255,255)",
+    fg_second: "rgb(25,109,255)"
 }
 
 export const themeSlice = createSlice({
