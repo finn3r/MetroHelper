@@ -5,6 +5,7 @@ import {inputSlice} from "../../store/reducers/InputSlice";
 import get_ways from "../../scripts/getWays";
 import {IStationNames} from "../../interfaces/IStationNames";
 import {ReactComponent as CircleInput} from "../../svg/CircleInput.svg";
+import {ReactComponent as ArrowForward} from "../../svg/ArrowForward.svg";
 
 const WayTransfers = (stations: IStationNames, way: string[]) => {
     let NowStation = way[0];
@@ -56,7 +57,10 @@ const WayList: React.FC = () => {
                         className="menu__waylist_transfers_text">{(WayTransfers(stations, way).length - 1 === 0) ? "Без пересадок" : (WayTransfers(stations, way).length - 1 === 1) ? "1 пересадка" : (WayTransfers(stations, way).length - 1) + " пересадки"}</ST.MenuWayListTransferText>
                     <ST.MenuWayListTransferCircles
                         className="menu__waylist_transfers">{WayTransfers(stations, way).map((transfer, j) =>
-                        <CircleInput style={{paddingRight: ".2rem"}} fill={transfer} key={j + transfer}/>
+                        <span style={{display: "inline-flex", justifyContent: "center", alignItems: "center"}} key={j + transfer}>
+                            <CircleInput fill={transfer}/>
+                            {j !== (WayTransfers(stations, way).length - 1) ? <ArrowForward/> : null}
+                        </span>
                     )}</ST.MenuWayListTransferCircles>
                 </ST.MenuWayListVariant>
             ) : null}
