@@ -32,14 +32,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "100",
-                r: "30",
+                r: "20",
                 key: "circle_1"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "105",
+                y: "107",
                 children: "Парнас",
                 key: "text_1"
             },
@@ -54,14 +54,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "200",
-                r: "30",
+                r: "20",
                 key: "circle_2"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "205",
+                y: "198",
                 children: ["Проспект", React.createElement("tspan", {
                     x: "1035",
                     dy: "1em",
@@ -80,14 +80,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "300",
-                r: "30",
+                r: "20",
                 key: "circle_3"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "305",
+                y: "307",
                 children: "Озерки",
                 key: "text_3"
             },
@@ -102,14 +102,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "400",
-                r: "30",
+                r: "20",
                 key: "circle_4"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "405",
+                y: "407",
                 children: "Удельная",
                 key: "text_4"
             },
@@ -124,14 +124,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "500",
-                r: "30",
+                r: "20",
                 key: "circle_5"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "505",
+                y: "507",
                 children: "Пионерская",
                 key: "text_5"
             },
@@ -146,14 +146,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "600",
-                r: "30",
+                r: "20",
                 key: "circle_6"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "605",
+                y: "607",
                 children: "Чёрная речка",
                 key: "text_6"
             },
@@ -168,14 +168,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "700",
-                r: "30",
+                r: "20",
                 key: "circle_7"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "705",
+                y: "707",
                 children: "Петроградская",
                 key: "text_7"
             },
@@ -190,14 +190,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "800",
-                r: "30",
+                r: "20",
                 key: "circle_8"
             },
         }, {
             type: ST.MapText,
             props: {
                 x: "1035",
-                y: "805",
+                y: "807",
                 children: "Горьковская",
                 key: "text_8"
             },
@@ -210,16 +210,16 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "blue",
-                d: "M1000,1030a30,30,0,0,0,0-60",
+                d: "M1000,1020a20,20,0,0,0,0-40",
                 key: "circle_69"
             },
         }, {
             type: ST.MapText,
             props: {
-                x: "1035",
+                x: "1025",
                 y: "960",
                 children: ["Невский", React.createElement("tspan", {
-                    x: "1035",
+                    x: "1025",
                     dy: "1em",
                     key: "text_9_2"
                 }, "проспект")],
@@ -234,7 +234,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "blue",
-                d: "M1025.98 1115C1023.35 1119.56 1019.56 1123.35 1015 1125.98C1010.44 1128.61 1005.27 1130 1000 1130C994.738 1130 989.565 1128.62 985.004 1125.98C980.444 1123.35 976.656 1119.57 974.022 1115.01L1000 1100L1025.98 1115Z",
+                d: "M1017.32 1110C1015.57 1113.04 1013.04 1115.56 1010 1117.32C1006.96 1119.08 1003.51 1120 1000 1120C996.492 1120 993.043 1119.08 990.003 1117.32C986.962 1115.57 984.437 1113.04 982.682 1110L1000 1100L1017.32 1110Z",
                 key: "circle_10"
             },
         }, {
@@ -243,7 +243,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 x: "970",
                 y: "1140",
                 children: ["Сенная", React.createElement("tspan", {
-                    dx: "-4.4em",
+                    dx: "-4.2em",
                     dy: "1em",
                     key: "text_10_2"
                 }, "площадь")],
@@ -252,22 +252,22 @@ const metroStationsElementsSPB: ISchemeElements = {
         }]
     }, {
         stationName: "Технологический институт 2",
-        stationX: 1015,
+        stationX: 1000,
         stationY: 1300,
         stationElements: [{
             type: ST.MapStationPath,
             props: {
                 color: "blue",
-                d: "M1000,1330a30,30,0,0,0,0-60",
+                d: "M1000,1320a20,20,0,0,0,0-40",
                 key: "circle_11"
             },
         }, {
             type: ST.MapText,
             props: {
-                x: "1035",
-                y: "1335",
+                x: "1025",
+                y: "1340",
                 children: ["Технологический", React.createElement("tspan", {
-                    x: "1035",
+                    x: "1025",
                     dy: "1em",
                     key: "text_11_2"
                 }, "институт 2")],
@@ -284,7 +284,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1400",
-                r: "30",
+                r: "20",
                 key: "circle_12"
             },
         }, {
@@ -306,7 +306,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1500",
-                r: "30",
+                r: "20",
                 key: "circle_13"
             },
         }, {
@@ -328,7 +328,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1600",
-                r: "30",
+                r: "20",
                 key: "circle_14"
             },
         }, {
@@ -350,7 +350,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1700",
-                r: "30",
+                r: "20",
                 key: "circle_15"
             },
         }, {
@@ -372,7 +372,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1800",
-                r: "30",
+                r: "20",
                 key: "circle_16"
             },
         }, {
@@ -394,7 +394,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "1900",
-                r: "30",
+                r: "20",
                 key: "circle_17"
             },
         }, {
@@ -416,7 +416,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "blue",
                 cx: "1000",
                 cy: "2000",
-                r: "30",
+                r: "20",
                 key: "circle_18"
             },
         }, {
@@ -438,7 +438,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "100",
-                r: "30",
+                r: "20",
                 key: "circle_19"
             },
         }, {
@@ -461,7 +461,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "200",
-                r: "30",
+                r: "20",
                 key: "circle_20"
             },
         }, {
@@ -483,7 +483,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "300",
-                r: "30",
+                r: "20",
                 key: "circle_21"
             },
         }, {
@@ -506,7 +506,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "400",
-                r: "30",
+                r: "20",
                 key: "circle_22"
             },
         }, {
@@ -529,7 +529,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "500",
-                r: "30",
+                r: "20",
                 key: "circle_23"
             },
         }, {
@@ -552,7 +552,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "600",
-                r: "30",
+                r: "20",
                 key: "circle_24"
             },
         }, {
@@ -575,7 +575,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "700",
-                r: "30",
+                r: "20",
                 key: "circle_25"
             },
         }, {
@@ -598,7 +598,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "800",
-                r: "30",
+                r: "20",
                 key: "circle_26"
             },
         }, {
@@ -621,7 +621,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "1300",
                 cy: "900",
-                r: "30",
+                r: "20",
                 key: "circle_27"
             },
         }, {
@@ -642,7 +642,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "red",
-                d: "M1300,1030a30,30,0,0,0,0-60",
+                d: "M1300,1020a20,20,0,0,0,0-40",
                 key: "circle_67"
             },
         }, {
@@ -663,7 +663,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "red",
-                d: "M1300,1130a30,30,0,0,0,0-60",
+                d: "M1300,1120a20,20,0,0,0,0-40",
                 key: "circle_29"
             },
         }, {
@@ -684,7 +684,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "red",
-                d: "M1300,1330a30,30,0,0,0,0-60",
+                d: "M1300,1320a20,20,0,0,0,0-40",
                 key: "circle_29"
             },
         }, {
@@ -699,13 +699,13 @@ const metroStationsElementsSPB: ISchemeElements = {
 
     }, {
         stationName: "Технологический институт 1",
-        stationX: 985,
+        stationX: 1000,
         stationY: 1300,
         stationElements: [{
             type: ST.MapStationPath,
             props: {
                 color: "red",
-                d: "M1000,1330a30,30,0,0,1,0-60",
+                d: "M1000,1320a20,20,0,0,1,0-40",
                 key: "circle_31"
             },
         }, {
@@ -732,7 +732,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "1500",
-                r: "30",
+                r: "20",
                 key: "circle_32"
             },
         }, {
@@ -755,7 +755,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "1600",
-                r: "30",
+                r: "20",
                 key: "circle_33"
             },
         }, {
@@ -778,7 +778,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "1700",
-                r: "30",
+                r: "20",
                 key: "circle_34"
             },
         }, {
@@ -801,7 +801,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "1800",
-                r: "30",
+                r: "20",
                 key: "circle_35"
             },
         }, {
@@ -824,7 +824,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "1900",
-                r: "30",
+                r: "20",
                 key: "circle_36"
             },
         }, {
@@ -847,7 +847,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "red",
                 cx: "705",
                 cy: "2000",
-                r: "30",
+                r: "20",
                 key: "circle_37"
             },
         }, {
@@ -869,7 +869,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1400",
-                r: "30",
+                r: "20",
                 key: "circle_38"
             },
         }, {
@@ -892,7 +892,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1500",
-                r: "30",
+                r: "20",
                 key: "circle_39"
             },
         }, {
@@ -915,7 +915,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1600",
-                r: "30",
+                r: "20",
                 key: "circle_40"
             },
         }, {
@@ -938,7 +938,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1700",
-                r: "30",
+                r: "20",
                 key: "circle_41"
             },
         }, {
@@ -961,7 +961,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1800",
-                r: "30",
+                r: "20",
                 key: "circle_42"
             },
         }, {
@@ -984,7 +984,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "1900",
-                r: "30",
+                r: "20",
                 key: "circle_43"
             },
         }, {
@@ -1007,7 +1007,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "1300",
                 cy: "2000",
-                r: "30",
+                r: "20",
                 key: "circle_44"
             },
         }, {
@@ -1030,7 +1030,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "1100",
-                r: "30",
+                r: "20",
                 key: "circle_45"
             },
         }, {
@@ -1053,7 +1053,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "900",
-                r: "30",
+                r: "20",
                 key: "circle_46"
             },
         }, {
@@ -1076,7 +1076,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "800",
-                r: "30",
+                r: "20",
                 key: "circle_47"
             },
         }, {
@@ -1099,14 +1099,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "700",
-                r: "30",
+                r: "20",
                 key: "circle_48"
             },
         }, {
             type: ST.MapTextLeft,
             props: {
                 x: "670",
-                y: "710",
+                y: "700",
                 children: ["Крестовский", React.createElement("tspan", {
                     dx: "-3.5em",
                     dy: "1em",
@@ -1126,14 +1126,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "600",
-                r: "30",
+                r: "20",
                 key: "circle_49"
             },
         }, {
             type: ST.MapTextLeft,
             props: {
                 x: "670",
-                y: "610",
+                y: "605",
                 children: "Старая Деревня",
                 key: "text_49"
             },
@@ -1149,14 +1149,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "purple",
                 cx: "705",
                 cy: "500",
-                r: "30",
+                r: "20",
                 key: "circle_50"
             },
         }, {
             type: ST.MapTextLeft,
             props: {
                 x: "670",
-                y: "510",
+                y: "500",
                 children: ["Комендантский", React.createElement("tspan", {
                     dx: "-4.5em",
                     dy: "1em",
@@ -1176,7 +1176,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "425",
                 cy: "1000",
-                r: "30",
+                r: "20",
                 key: "circle_51"
             },
         }, {
@@ -1199,7 +1199,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "425",
                 cy: "800",
-                r: "30",
+                r: "20",
                 key: "circle_52"
             },
         }, {
@@ -1222,14 +1222,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "425",
                 cy: "700",
-                r: "30",
+                r: "20",
                 key: "circle_53"
             },
         }, {
             type: ST.MapTextLeft,
             props: {
                 x: "390",
-                y: "710",
+                y: "707",
                 children: "Зенит",
                 key: "text_53"
             },
@@ -1245,14 +1245,14 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "425",
                 cy: "600",
-                r: "30",
+                r: "20",
                 key: "circle_54"
             },
         }, {
             type: ST.MapTextLeft,
             props: {
                 x: "390",
-                y: "610",
+                y: "605",
                 children: "Беговая",
                 key: "text_54"
             },
@@ -1268,7 +1268,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "1860",
                 cy: "1200",
-                r: "30",
+                r: "20",
                 key: "circle_55"
             },
         }, {
@@ -1291,7 +1291,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "1860",
                 cy: "1300",
-                r: "30",
+                r: "20",
                 key: "circle_56"
             },
         }, {
@@ -1314,7 +1314,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "1860",
                 cy: "1400",
-                r: "30",
+                r: "20",
                 key: "circle_57"
             },
         }, {
@@ -1337,7 +1337,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "1860",
                 cy: "1500",
-                r: "30",
+                r: "20",
                 key: "circle_58"
             },
         }, {
@@ -1360,7 +1360,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "green",
                 cx: "1860",
                 cy: "1600",
-                r: "30",
+                r: "20",
                 key: "circle_59"
             },
         }, {
@@ -1383,7 +1383,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "orange",
                 cx: "2140",
                 cy: "1200",
-                r: "30",
+                r: "20",
                 key: "circle_60"
             },
         }, {
@@ -1406,7 +1406,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "orange",
                 cx: "2140",
                 cy: "1300",
-                r: "30",
+                r: "20",
                 key: "circle_61"
             },
         }, {
@@ -1429,7 +1429,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "orange",
                 cx: "2140",
                 cy: "1400",
-                r: "30",
+                r: "20",
                 key: "circle_62"
             },
         }, {
@@ -1452,7 +1452,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "orange",
                 cx: "2140",
                 cy: "1500",
-                r: "30",
+                r: "20",
                 key: "circle_63"
             },
         }, {
@@ -1473,7 +1473,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "green",
-                d: "M1860,1130a30,30,0,0,1,0-60",
+                d: "M1860,1120a20,20,0,0,1,0-40",
                 key: "circle_64"
             },
         }, {
@@ -1494,7 +1494,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "orange",
-                d: "M1860,1130a30,30,0,0,0,0-60",
+                d: "M1860,1120a20,20,0,0,0,0-40",
                 key: "circle_64"
             },
         }, {
@@ -1517,7 +1517,7 @@ const metroStationsElementsSPB: ISchemeElements = {
                 color: "orange",
                 cx: "1580",
                 cy: "1100",
-                r: "30",
+                r: "20",
                 key: "circle_65"
             },
         }, {
@@ -1538,7 +1538,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "orange",
-                d: "M1300,1130a30,30,0,0,1,0-60",
+                d: "M1300,1120a20,20,0,0,1,0-40",
                 key: "circle_66"
             },
         }, {
@@ -1559,7 +1559,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "green",
-                d: "M1300,1030a30,30,0,0,1,0-60",
+                d: "M1300,1020a20,20,0,0,1,0-40",
                 key: "circle_67"
             },
         }, {
@@ -1580,14 +1580,14 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "purple",
-                d: "M1300,1330a30,30,0,0,1,0-60",
+                d: "M1300,1320a20,20,0,0,1,0-40",
                 key: "circle_68"
             },
         }, {
-            type: ST.MapText,
+            type: ST.MapTextLeft,
             props: {
-                x: "1325",
-                y: "1330",
+                x: "1275",
+                y: "1280",
                 children: "Звенигородская",
                 key: "text_68"
             },
@@ -1601,16 +1601,16 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "green",
-                d: "M1000,1030a30,30,0,0,1,0-60",
+                d: "M1000,1020a20,20,0,0,1,0-40",
                 key: "circle_69"
             },
         }, {
             type: ST.MapText,
             props: {
-                x: "875",
+                x: "885",
                 y: "960",
                 children: ["Гостиный", React.createElement("tspan", {
-                    dx: "-2.5em",
+                    dx: "-2.3em",
                     dy: "1em",
                     key: "text_69_2"
                 }, "двор")],
@@ -1626,7 +1626,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "orange",
-                d: "M1000 1070C1005.27 1070 1010.44 1071.39 1015 1074.02C1019.56 1076.65 1023.35 1080.44 1025.98 1085.01C1028.62 1089.57 1030 1094.74 1030 1100.01C1030 1105.28 1028.61 1110.45 1025.97 1115.01L1000 1100L1000 1070Z",
+                d: "M1000 1080C1003.51 1080 1006.96 1080.92 1010 1082.68C1013.04 1084.44 1015.57 1086.96 1017.32 1090C1019.08 1093.04 1020 1096.49 1020 1100.01C1020 1103.52 1019.07 1106.97 1017.32 1110.01L1000 1100L1000 1080Z",
                 key: "circle_70"
             },
         }, {
@@ -1647,7 +1647,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapStationPath,
             props: {
                 color: "purple",
-                d: "M974.019 1115C971.386 1110.44 970 1105.27 970 1100C970 1094.74 971.385 1089.56 974.018 1085C976.65 1080.44 980.436 1076.66 984.996 1074.02C989.556 1071.39 994.728 1070 999.994 1070L1000 1100L974.019 1115Z",
+                d: "M982.679 1110C980.924 1106.96 980 1103.51 980 1100C980 1096.49 980.924 1093.04 982.678 1090C984.433 1086.96 986.957 1084.44 989.997 1082.68C993.037 1080.93 996.485 1080 999.996 1080L1000 1100L982.679 1110Z",
                 key: "circle_71"
             },
         }, {
@@ -1929,7 +1929,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapRoad,
             props: {
                 color: "red",
-                d: "M705 1500L981.5 1300H1000",
+                d: "M705 1500L1000 1300H1000",
                 key: "road_30"
             }
         }, {
@@ -2037,7 +2037,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapRoad,
             props: {
                 color: "green",
-                d: "M1860,987.5v120",
+                d: "M1860,990v120",
                 key: "road_42"
             }
         }, {
@@ -2136,7 +2136,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapRoad,
             props: {
                 color: "purple",
-                d: "M705 1100H1001",
+                d: "M705 1100H1000",
                 key: "road_53"
             }
         }, {
@@ -2145,7 +2145,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapRoad,
             props: {
                 color: "purple",
-                d: "M1000 1100H1017.5L1300 1295V1300",
+                d: "M983 1100H1005L1290 1295V1300",
                 key: "road_54"
             }
         }, {
@@ -2153,8 +2153,8 @@ const metroStationsElementsSPB: ISchemeElements = {
             to: "Обводный канал",
             type: ST.MapRoad,
             props: {
-                color: "purple",
-                d: "M1300,1299v110",
+                color: "purple",/*M1300,1299v110 */
+                d: "M1285 1294L1300 1303V1400",
                 key: "road_55"
             }
         }, {
@@ -2253,7 +2253,7 @@ const metroStationsElementsSPB: ISchemeElements = {
             type: ST.MapRoad,
             props: {
                 color: "orange",
-                d: "M2140,1087.5v120",
+                d: "M2140,1090v120",
                 key: "road_66"
             }
         }, {
