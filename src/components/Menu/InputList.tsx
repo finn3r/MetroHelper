@@ -84,11 +84,11 @@ const InputList: React.FC = () => {
                 </ST.SwapButtonContent>
             </ST.SwapButtonContainer>
             {/*CLEAR BUTTON*/}
-            <ST.ButtonContainer style={{gridArea: "clear", marginLeft: ".7rem"}}>
+            <ST.ClearButtonContainer style={{gridArea: "clear", marginLeft: ".7rem"}}>
                 <ST.ButtonContent onClick={() => dispatch(clear())} hidden={!from.state && !to.state}>
                     Очистить маршрут
                 </ST.ButtonContent>
-            </ST.ButtonContainer>
+            </ST.ClearButtonContainer>
             {/*HIDE BUTTON*/}
             <ST.HideButtonContainer style={{gridArea: "hide"}}>
                 <ST.HideButtonContent hidden={!from.state || !to.state} status={hideWays}>
