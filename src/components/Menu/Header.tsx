@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import * as ST from '../../styled';
 import {ReactComponent as SunButton} from "../../svg/SunButton.svg";
 import {ReactComponent as MoonButton} from "../../svg/MoonButton.svg";
-import {useAppDispatch} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {themeSlice} from "../../store/reducers/ThemeSlice";
 
 const Header: React.FC = () => {
+    const {name} = useAppSelector(state => state.city);
     const {changeTheme} = themeSlice.actions;
     const [theme, setTheme] = useState(false);
     const dispatch = useAppDispatch();
@@ -17,16 +18,18 @@ const Header: React.FC = () => {
 
     return (
         <ST.MenuHeaderContainer>
-            <ST.ButtonContainer>
+            <ST.SwapThemeButtonContainer>
                 <ST.ButtonContent>
                     {
                         theme ?
-                            <SunButton style={{width: "3rem"}} onClick={handleClick}/> :
-                            <MoonButton style={{width: "3rem"}} onClick={handleClick}/>
+                            <SunButton onClick={handleClick}/> :
+                            <MoonButton onClick={handleClick}/>
                     }
                 </ST.ButtonContent>
-            </ST.ButtonContainer>
-            MetroHelper - "Санкт-Петербург"
+            </ST.SwapThemeButtonContainer>
+            <ST.MenuHeaderCityChanger>
+                {name}
+            </ST.MenuHeaderCityChanger>
         </ST.MenuHeaderContainer>
     );
 };

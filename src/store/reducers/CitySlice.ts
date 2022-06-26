@@ -4,12 +4,14 @@ import {IStationNames} from "../../interfaces/IStationNames";
 import {ISchemeElements} from "../../interfaces/ISchemeElements";
 
 interface CityState {
+    name: string,
     stations: IStationNames,
     times: IStationTimes,
     elements: ISchemeElements
 }
 
 const initialState: CityState = {
+    name: "Санкт-Петербург",
     stations: require("../../cities/spb/stations").default,
     times: require("../../cities/spb/times").default,
     elements: require("../../cities/spb/elements").default,
