@@ -17,6 +17,8 @@ const initialState: CityState = {
     elements: require("../../cities/spb/elements").default,
 }
 
+export const cities = ["Санкт-Петербург", "More cities will be added later..."]
+
 export const citySlice = createSlice({
     name: 'city',
     initialState,
