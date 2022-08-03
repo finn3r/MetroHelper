@@ -4,7 +4,7 @@ import {IColors} from "./interfaces/IColors";
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
   }
 
@@ -89,7 +89,49 @@ export const MenuHeaderContainer = styled(MenuItem)`
 `;
 
 export const MenuHeaderCityChanger = styled.div`
-  margin: 0 10px;
+  height: 25px;
+  position: relative;
+  padding-top: 15px;
+  width: 220px;
+  background: ${props => props.theme.menu_bg_no_opacity};
+  border-radius: 10px;
+  z-index: 20;
+  @media (max-width: 700px), (max-height: 500px) {
+    margin: 0 10px;
+    padding-top: 10px;
+  }
+`
+
+export const MenuHeaderCityVariantSelector = styled.div`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top:0;
+  border-radius: 10px;
+  border: 1px solid ${props => props.theme.fg};
+  background: ${props => props.theme.menu_bg_no_opacity};
+`
+
+export const MenuHeaderCityVariant = styled.div`
+  display: flex;
+  padding: 5px;
+  border-radius: 10px;
+  min-height: 25px;
+  align-items: center;
+  list-style: none;
+  text-align: start;
+  width: calc(100% - 10px);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  :hover{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.18);
+  }
+`
+
+export const MenuHeaderCitySelectedVariant = styled(MenuHeaderCityVariant)`
+  height: 25px;
+  border-top: 0;
+  justify-content: space-between;
 `
 
 export const MenuInputListContainer = styled(MenuItem)`
@@ -164,12 +206,16 @@ export const SwapButtonContent = styled(ButtonContent)<{ status: boolean }>`
 export const InputCircle = styled.div`
   display: flex;
   align-items: center;
+  top:25%;
+  left: 0;
+  z-index: 5;
   justify-content: center;
+  position: absolute;
   margin: 5px;
   @media (max-width: 700px), (max-height: 500px) {
     &.focused {
-      left: 2px;
-      top: 23px;
+      left: 4.5px;
+      top: 25px;
       position: absolute;
       z-index: 15;
     }
@@ -190,7 +236,7 @@ export const InputContainer = styled.div`
   }
 
   @media (max-width: 700px), (max-height: 500px) {
-    margin: 15px 5px;
+    margin: 15px 8px;
     &.focused {
       text-align: left;
       background: ${props => props.theme.bg};
@@ -199,7 +245,7 @@ export const InputContainer = styled.div`
       left: -1px;
       margin: 0;
       top: calc(100% - var(--vh, 1vh) * 100 + 1px);
-      width: calc(100vw);
+      width: 100vw;
       height: calc(var(--vh, 1vh) * 100);
 
       .input__autocomplete, .input__unfocus_button {
@@ -214,15 +260,20 @@ export const InputContainer = styled.div`
 
       .input__field_container {
         position: absolute;
-        top: 15px;
-        width: calc(100% - 100px);
-        right: 70px;
+        top: 14px;
+        width: calc(100% - 110px);
+        right: 80px;
       }
 
       .input__clear_button {
         top: 23px;
         align-items: start;
-        right: 70px;
+        right: 80px;
+      }
+
+      .input__field {
+        padding: 10px 25px 10px 10px;
+        width: calc(100% - 35px);
       }
     }
   }
@@ -232,9 +283,9 @@ export const InputField = styled.input.attrs({
     className: "input__field"
 })`
   background: ${props => props.theme.menu_input_bg};
-  font-size: 14px;
-  width: calc(100% - 35px);
-  padding: 10px 25px 10px 10px;
+  font-size: 16px;
+  width: calc(100% - 50px);
+  padding: 10px 25px;
   border-radius: 10px;
   transition: border 150ms ease-in;
   border: 1px solid rgba(0, 0, 0, 0);
@@ -257,6 +308,7 @@ export const InputField = styled.input.attrs({
 
   :focus {
     border: 1px solid ${props => props.theme.fg};
+    outline: none;
 
     & ~ .input__clear_button {
       display: flex;
@@ -304,6 +356,7 @@ export const InputFieldContainer = styled.div.attrs({
     className: "input__field_container"
 })`
   width: 100%;
+  height: 100%;
   position: relative;
 `
 
@@ -327,7 +380,7 @@ export const InputAutoCompleteContainer = styled.div<{ hidden?: boolean }>.attrs
     position: fixed;
     box-shadow: none;
     background: ${props => props.theme.bg};
-    height: calc(var(--vh, 1vh) * 100 - 43%);
+    height: calc(100vh - 75px);
   }
 `
 export const InputAutoCompleteContent = styled.div`
@@ -383,11 +436,11 @@ export const MenuWayListVariant = styled.div<{ hide?: boolean, nowWay?: boolean 
 `;
 
 export const MenuWayListTime = styled.span`
-  
+
 `;
 
 export const MenuWayListTransferText = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 10px;
   color: ${props => props.theme.fg};
   opacity: 0.5;
