@@ -33,18 +33,19 @@ const Header: React.FC = () => {
             </ST.SwapThemeButtonContainer>
             <ST.MenuHeaderCityChanger>
                 <ST.MenuHeaderCityVariantSelector>
-                    <ST.MenuHeaderCitySelectedVariant onClick={() => setHideSelector(!hideSelector)}>
+                    <ST.MenuHeaderCitySelectedVariant onClick={() => setHideSelector(!hideSelector)} onBlur={() => setHideSelector(false)}>
                         {name}
                         <ST.HideButtonContent hidden={false} status={!hideSelector}>
                             <HideButton/>
                         </ST.HideButtonContent>
                     </ST.MenuHeaderCitySelectedVariant>
-                    {hideSelector ? cities.filter((city) => city !== name).map((city) =>
+                    {hideSelector ? cities.filter((city) => city !== name).map((city,id) =>
                         <ST.MenuHeaderCityVariant
                             onClick={() => {
                                 dispatch(changeCity(city));
                                 setHideSelector(!hideSelector);
                             }}
+                            key={id}
                         >{city}</ST.MenuHeaderCityVariant>) : null}
                 </ST.MenuHeaderCityVariantSelector>
             </ST.MenuHeaderCityChanger>

@@ -92,8 +92,7 @@ export const MenuHeaderCityChanger = styled.div`
   height: 25px;
   position: relative;
   padding-top: 15px;
-  width: 220px;
-  background: ${props => props.theme.menu_bg_no_opacity};
+  width: 207px;
   border-radius: 10px;
   z-index: 20;
   @media (max-width: 700px), (max-height: 500px) {
@@ -107,24 +106,34 @@ export const MenuHeaderCityVariantSelector = styled.div`
   width: 100%;
   left: 0;
   top:0;
+  transition: border 150ms ease-in;
   border-radius: 10px;
-  border: 1px solid ${props => props.theme.fg};
-  background: ${props => props.theme.menu_bg_no_opacity};
+  border: 1px solid rgba(0, 0, 0, 0);
+  background: ${props => props.theme.menu_input_bg};
+  backdrop-filter: blur(3px);
+  :hover {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
 `
 
-export const MenuHeaderCityVariant = styled.div`
+export const MenuHeaderCityVariant = styled.button`
+  border: none;
+  font-size: 20px;
+  outline: none;
   display: flex;
   padding: 5px;
   border-radius: 10px;
-  min-height: 25px;
+  min-height: 30px;
   align-items: center;
   list-style: none;
   text-align: start;
-  width: calc(100% - 10px);
+  width: 100%;
   border-top: 2px solid rgba(255, 255, 255, 0.3);
+  background: none;
+  color: ${props => props.theme.fg};
   :hover{
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.18);
+    background: ${props => props.theme.menu_bg_no_opacity};
   }
 `
 
@@ -132,6 +141,9 @@ export const MenuHeaderCitySelectedVariant = styled(MenuHeaderCityVariant)`
   height: 25px;
   border-top: 0;
   justify-content: space-between;
+  :hover{
+    background: none;
+  }
 `
 
 export const MenuInputListContainer = styled(MenuItem)`
